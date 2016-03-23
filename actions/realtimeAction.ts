@@ -30,5 +30,5 @@ export interface RealtimeAction<TPayload> extends BaseAction<TPayload> {
  * Type guard
  */
 export function isRealtimeAction<TPayload>(action: any): action is RealtimeAction<TPayload> {
-    return (isBaseAction(action) && typeof (action.meta !== "undefined") && action.meta.realtime);
+    return (isBaseAction(action) && (typeof action.meta !== "undefined") && action.meta.realtime);
 }
