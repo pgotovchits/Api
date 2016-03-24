@@ -95,7 +95,7 @@ export class ValidationError extends ApiError {
     }
 }
 
-function isApiError(error): error is ApiError {
+export function isApiError(error): error is ApiError {
     return (error && error.type);
 }
 

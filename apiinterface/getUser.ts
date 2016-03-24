@@ -14,4 +14,8 @@ export interface APIUserInterface {
      * User last name
      */
     lastName: string;
+    /**
+     * User websites
+     */
+    websites: Array<{ id: number, name: string }>;
 }

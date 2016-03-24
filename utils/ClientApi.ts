@@ -83,7 +83,7 @@ export class ClientApi {
      * @param data
      * @param authToken
      */
-    public call(endpoint: string, method: string = ClientApi.GET, data?: { [key: string]: any }, authToken?: string) {
+    public call(endpoint: string, method: string = ClientApi.GET, data?: { [key: string]: any }, authToken?: string): Promise<any> {
         let fullUrl = this.normalizeUrl(endpoint, method, data);
 
         let requestData: RequestInit = {
