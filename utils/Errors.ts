@@ -35,6 +35,10 @@ export interface ApiErrorInterface {
  */
 export class ApiError extends Error implements ApiErrorInterface {
     /**
+     * Error message
+     */
+    public message: string;
+    /**
      * HTTP Backend URL
      */
     public url: string;
@@ -64,7 +68,7 @@ export class ApiError extends Error implements ApiErrorInterface {
     }
 
     /**
-     * Convert error to object represtantion
+     * Convert error to object representation
      */
     public toObject(): ApiErrorInterface {
         return {
@@ -95,12 +99,12 @@ export class ValidationError extends ApiError {
     }
 }
 
-export function isApiError(error): error is ApiError {
+export function isApiError(error): error is ApiErrorInterface {
     return (error && error.type);
 }
 
 /**
- * Error factory. Needed to convert error objects from realtime client to propert error instances
+ * Error factory. Needed to convert error objects from realtime client to proper error instances
  */
 export function createFromObject(error: ApiErrorInterface | Error): Error | ApiError | ValidationError | TokenError {
     if (!error) {

@@ -1,7 +1,11 @@
 /**
- * Interface for JSON output from backend /user endpoint
+ * Response from API GET /user
  */
-export interface APIUserInterface {
+export interface APIUserInfo {
+    /**
+     * User id
+     */
+    id: number;
     /**
      * User email
      */
