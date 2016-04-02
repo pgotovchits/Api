@@ -10,6 +10,11 @@ import {BaseAction, isBaseAction} from "./action";
 export interface RealtimeAction<TPayload> extends BaseAction<TPayload> {
     meta: {
         /**
+         * If true and was set then use authenticated route
+         */
+        authenticated?: boolean;
+        
+        /**
          * If true sends action to realtime server
          */
         realtime: boolean;
