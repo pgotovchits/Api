@@ -26,3 +26,9 @@ export const SIGNUP = "auth/SIGNUP";
  */
 export const LOGIN = "auth/LOGIN";
 
+/**
+ * Async validate email action
+ * @type {string}
+ */
+export const VALIDATE_EMAIL = "auth/VALIDATE_EMAIL";
+

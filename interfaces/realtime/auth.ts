@@ -121,3 +121,18 @@ export interface TokenUpdateRealtimePayload {
      */
     token: string;
 }
+
+/**
+ * Async validate email request payload
+ */
+export interface ValidateEmailRequestPayload {
+    /**
+     * Email to validate
+     */
+    email: string;
+}
+
+/**
+ * Async validate email response payload
+ */
+export interface ValidateEmailResponsePayload { }
