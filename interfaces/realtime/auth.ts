@@ -5,7 +5,7 @@
  * 
  * Suffix request indicates what actions is coming from frontend
  * Suffix response indicates what action is being sent by backend to frontend
- * Suffix realtime indicates what action is being sent by backend to frontend as some realtime updates, not triggered by user request
+ * Suffix realtime indicates what action is being sent by backend to frontend for some realtime updates, not triggered by user request
  */
 
 /**
