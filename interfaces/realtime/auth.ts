@@ -95,7 +95,7 @@ interface UserInformation {
     /**
      * User websites
      */
-    websites: Array<{ id: number, name: string }>;
+    websites: Array<{ id: number, role: string, name: string }>;
 }
 
 /**
