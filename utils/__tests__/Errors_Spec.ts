@@ -1,94 +1,90 @@
-jest.dontMock("../Errors");
+import {expect} from "chai";
 import {ApiError, ValidationError, TokenError, createFromObject} from "../Errors";
 
 describe("Errors", () => {
     describe("ApiError", () => {
         it("Should be instance of ApiError", () => {
             let error = new ApiError("test", "test.com", 500);
-            expect(error instanceof ApiError).toBeTruthy();
+            expect(error).to.be.instanceOf(ApiError);
         });
         
-        it("Should be instance of Error", () => {
-            let error = new ApiError("test", "test.com", 500);
-            expect(error instanceof Error).toBeTruthy();
-        });
         
         it("Should contain properties", () => {
             let error = new ApiError("test", "test.com", 500, { error: "test" });
-            expect(error.message).toEqual("test");
-            expect(error.code).toEqual(500);
-            expect(error.url).toEqual("test.com");
-            expect(error.error).toEqual({ error: "test" });
+            expect(error.message).to.equal("test");
+            expect(error.code).to.equal(500);
+            expect(error.url).to.equal("test.com");
+            expect(error.error).to.deep.equal({ error: "test" });
         });
         
         it("Could be converted to object", () => {
             let errorObj = new ApiError("test", "test.com", 500, { error: "test" }).toObject();
-            expect(errorObj.code).toEqual(500);
-            expect(errorObj.type).toEqual("ApiError");
-            expect(errorObj.message).toEqual("test");
-            expect(errorObj.url).toEqual("test.com");
-            expect(errorObj.error).toEqual({ error: "test" });
+            expect(errorObj.code).to.equal(500);
+            expect(errorObj.type).to.equal("ApiError");
+            expect(errorObj.message).to.equal("test");
+            expect(errorObj.url).to.equal("test.com");
+            expect(errorObj.error).to.deep.equal({ error: "test" });
         });
     });
     
     describe("TokenError", () => {
         it("Should be proper type", () => {
             let error = new TokenError("invalid", "test.com", 400);
-            expect(error instanceof TokenError).toBeTruthy();
-            expect(error instanceof ApiError).toBeTruthy();
-            expect(error instanceof Error).toBeTruthy();
+            expect(error).to.be.instanceOf(TokenError);
+            expect(error).to.be.instanceOf(ApiError);
+            expect(error).to.be.instanceOf(Error);
         });
     });
     
     describe("ValidationError", () => {
         it("Should be proper type", () => {
             let error = new ValidationError("test.com", { email: "required" });
-            expect(error instanceof ValidationError).toBeTruthy();
-            expect(error instanceof ApiError).toBeTruthy();
-            expect(error instanceof Error).toBeTruthy();
+            expect(error).to.be.instanceOf(ValidationError);
+            expect(error).to.be.instanceOf(ApiError);
+            expect(error).to.be.instanceOf(Error);
         });
         
         it("Should containt properties", () => {
             let error = new ValidationError("test.com", { email: "required" });
-            expect(error.message).toEqual("Validation error");
-            expect(error.code).toEqual(422);
-            expect(error.url).toEqual("test.com");
-            expect(error.error).toEqual({ email: "required" });
+            expect(error.message).to.equal("Validation error");
+            expect(error.code).to.equal(422);
+            expect(error.url).to.equal("test.com");
+            expect(error.error).to.deep.equal({ email: "required" });
         });
     });
     
     describe("createFromObject", () => {
         it("Should return new empty error if given null or undefined", () => {
             let error = createFromObject(null);
-            expect(error instanceof Error).toBeTruthy();
-            expect(error instanceof ApiError).toBeFalsy();
+            expect(error).to.be.instanceOf(Error);
+            expect(error).to.not.be.instanceOf(ApiError);
         });
         
         it("Should return new error if given object doesn't have type property", () => {
             let error = createFromObject({ message: "simple" } as any);
-            expect(error instanceof Error).toBeTruthy();
-            expect(error instanceof ApiError).toBeFalsy();
-            expect(error.message).toEqual("simple");
+            expect(error).to.be.instanceOf(Error);
+            expect(error).to.not.be.instanceOf(ApiError);
+            expect(error.message).to.equal("simple");
         });
         
         it("Should create api error", () => {
             let error = createFromObject({ type: "ApiError", url: "test.com", message: "testmsg", code: 500 });
-            expect(error instanceof Error).toBeTruthy();
-            expect(error instanceof ApiError).toBeTruthy();
+            expect(error).to.be.instanceOf(Error);
+            expect(error).to.be.instanceOf(ApiError);
         });
         
         it("Should create token error", () => {
             let error = createFromObject({ type: "TokenError", url: "test.com", message: "testmsg", code: 400 });
-            expect(error instanceof Error).toBeTruthy();
-            expect(error instanceof ApiError).toBeTruthy();
-            expect(error instanceof TokenError).toBeTruthy();
+            expect(error).to.be.instanceOf(Error);
+            expect(error).to.be.instanceOf(ApiError);
+            expect(error).to.be.instanceOf(TokenError);
         });
         
         it("Should create validation error", () => {
             let error = createFromObject({ type: "ValidationError", url: "test.com", message: "testmsg", code: 422 });
-            expect(error instanceof Error).toBeTruthy();
-            expect(error instanceof ApiError).toBeTruthy();
-            expect(error instanceof ValidationError).toBeTruthy();
+            expect(error).to.be.instanceOf(Error);
+            expect(error).to.be.instanceOf(ApiError);
+            expect(error).to.be.instanceOf(ValidationError);
         });
     });
 });
