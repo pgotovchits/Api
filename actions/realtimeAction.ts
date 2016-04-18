@@ -18,6 +18,11 @@ export interface RealtimeAction<TPayload> extends BaseAction<TPayload> {
          * If true sends action to realtime server
          */
         realtime: boolean;
+
+        /**
+         * True if action is optimistic and should use optimistic ui updates
+         */
+        isOptimistic?: boolean;
         
         /**
          * Array of action types:
