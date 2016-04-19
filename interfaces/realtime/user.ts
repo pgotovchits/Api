@@ -32,7 +32,7 @@ export interface BasicUserInformation {
  * Change user action request
  * Same as BasicUserInformation but fields may be optional
  */
-export interface ChangeUserRequestPayload {
+export interface UpdateUserRequestPayload {
     /**
      * User email
      */
@@ -50,4 +50,4 @@ export interface ChangeUserRequestPayload {
 /**
  * Change user action response
  */
-export interface ChangeUserResponsePayload extends BasicUserInformation {}
+export interface UpdateUserResponsePayload extends BasicUserInformation {}

@@ -27,7 +27,7 @@ export interface APIUserInfo {
 /**
  * Response from /user/modify
  */
-export interface APIChangeUser {
+export interface APIModifyUser {
     /**
      * User id
      */
