@@ -8,6 +8,7 @@
  * Suffix realtime indicates what action is being sent by backend to frontend for some realtime updates, not triggered by user request
  */
 
+import {BasicUserInformation} from "./user";
 /**
  * Signup request
  */
@@ -67,7 +68,7 @@ export interface LoginByCredentialsRequestPayload {
      */
     username: string;
     /**
-     * Passwrd
+     * Password
      */
     password: string;
 }
@@ -75,23 +76,7 @@ export interface LoginByCredentialsRequestPayload {
 /**
  * User information in login response
  */
-interface UserInformation {
-    /**
-     * User id
-     */
-    id: number;
-    /**
-     * User email
-     */
-    email: string;
-    /**
-     * User first name
-     */
-    firstName: string;
-    /**
-     * User last name
-     */
-    lastName: string;
+interface LoginResponseUserInformation extends BasicUserInformation {
     /**
      * User websites
      */
@@ -109,7 +94,7 @@ export interface LoginResponsePayload {
     /**
      * User information
      */
-    user: UserInformation;
+    user: LoginResponseUserInformation;
 }
 
 /**

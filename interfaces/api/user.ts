@@ -23,3 +23,25 @@ export interface APIUserInfo {
      */
     websites: Array<{ id: number, role: string, name: string }>;
 }
+
+/**
+ * Response from /user/modify
+ */
+export interface APIChangeUser {
+    /**
+     * User id
+     */
+    id: number;
+    /**
+     * User email
+     */
+    email: string;
+    /**
+     * User first name
+     */
+    firstName: string;
+    /**
+     * User last name
+     */
+    lastName: string;
+}
