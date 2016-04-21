@@ -64,9 +64,9 @@ export interface LoginByTokenRequestPayload {
  */
 export interface LoginByCredentialsRequestPayload {
     /**
-     * Username
+     * Email
      */
-    username: string;
+    email: string;
     /**
      * Password
      */
