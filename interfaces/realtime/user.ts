@@ -48,6 +48,25 @@ export interface UpdateUserRequestPayload {
 }
 
 /**
+ * Update user password request
+ */
+export interface UpdateUserPasswordRequestPayload {
+    /**
+     * Old password, required if user is updating the password
+     */
+    oldPassword: string;
+    /**
+     * User's new password
+     */
+    password: string;
+}
+
+/**
  * Change user action response
  */
 export interface UpdateUserResponsePayload extends BasicUserInformation {}
+
+/**
+ * Update user password response
+ */
+export interface UpdateUserPasswordResponsePayload {}
