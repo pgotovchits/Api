@@ -9,6 +9,7 @@
  */
 
 import {BasicUserInformation} from "./user";
+import { WebsiteInfo } from "./website";
 /**
  * Signup request
  */
@@ -80,7 +81,7 @@ interface LoginResponseUserInformation extends BasicUserInformation {
     /**
      * User websites
      */
-    websites: Array<{ id: number, role: string, name: string }>;
+    websites: WebsiteInfo[];
 }
 
 /**
