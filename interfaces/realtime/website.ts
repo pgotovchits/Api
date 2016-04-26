@@ -35,3 +35,27 @@ export interface DeleteWebsiteRequestPayload {
 export interface DeleteWebsiteResponsePayload {
     // TODO: complete
 }
+
+/**
+ * Create website request
+ */
+export interface CreateWebsiteRequestPayload {
+    /**
+     * Website name
+     */
+    name: string;
+    /**
+     * Array of invite emails
+     */
+    invites?: string[];
+}
+
+/**
+ * Response
+ */
+export interface CreateWebsiteResponsePayload {
+    /**
+     * Created website info
+     */
+    website: WebsiteInfo;
+}
