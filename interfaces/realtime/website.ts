@@ -59,3 +59,22 @@ export interface CreateWebsiteResponsePayload {
      */
     website: WebsiteInfo;
 }
+
+/**
+ * Change website name request
+ */
+export interface ChangeWebsiteNameRequestPayload {
+    /**
+     * Website id
+     */
+    id: number;
+    /**
+     * Website new name
+     */
+    name: string;
+}
+
+/**
+ * Change website name response
+ */
+export interface ChangeWebsiteNameResponsePayload {}

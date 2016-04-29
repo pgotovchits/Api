@@ -13,3 +13,9 @@ export const DELETE_WEBSITE = "website/DELETE_WEBSITE";
  * @type {string}
  */
 export const CREATE_WEBSITE = "website/CREATE_WEBSITE";
+
+/**
+ * Change website name
+ * @type {string}
+ */
+export const CHANGE_WEBSITE_NAME = "website/CHANGE_WEBSITE_NAME";
