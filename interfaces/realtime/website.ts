@@ -8,9 +8,27 @@
 export type WebsiteRole = "owner" | "admin" | "agent";
 
 /**
+ * Website role -> member mapping
+ */
+export interface WebsiteMemberInfo {
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * Member id
+     */
+    memberId: number;
+    /**
+     * Website role
+     */
+    role: WebsiteRole;
+}
+
+/**
  * Basic website information
  */
-export interface WebsiteInfo {
+export interface UserWebsiteInfo {
     /**
      * Website id
      */
@@ -57,7 +75,7 @@ export interface CreateWebsiteResponsePayload {
     /**
      * Created website info
      */
-    website: WebsiteInfo;
+    website: UserWebsiteInfo;
 }
 
 /**
