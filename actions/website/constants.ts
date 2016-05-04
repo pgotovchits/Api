@@ -19,3 +19,21 @@ export const CREATE_WEBSITE = "website/CREATE_WEBSITE";
  * @type {string}
  */
 export const CHANGE_WEBSITE_NAME = "website/CHANGE_WEBSITE_NAME";
+
+/**
+ * Delete website invite
+ * @type {string}
+ */
+export const DELETE_WEBSITE_INVITE = "website/DELETE_INVITE";
+
+/**
+ * Delete website member
+ * @type {string}
+ */
+export const DELETE_WEBSITE_MEMBER = "website/DELETE_MEMBER";
+
+/**
+ * Change member role
+ * @type {string}
+ */
+export const CHANGE_WEBSITE_MEMBER_ROLE = "website/CHANGE_MEMBER_ROLE";

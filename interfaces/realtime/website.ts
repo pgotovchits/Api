@@ -96,3 +96,64 @@ export interface ChangeWebsiteNameRequestPayload {
  * Change website name response
  */
 export interface ChangeWebsiteNameResponsePayload {}
+
+/**
+ * Delete website invite request
+ */
+export interface DeleteWebsiteInviteRequestPayload {
+    /**
+     * Invite code
+     */
+    code: string;
+}
+
+/**
+ * Delete website invite response
+ */
+export interface DeleteWebsiteInviteResponsePayload {}
+
+/**
+ * Delete website member request
+ */
+export interface DeleteWebsiteMemberRequestPayload {
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * User id
+     */
+    userId: number;
+}
+
+/**
+ * Delete website member response
+ */
+export interface DeleteWebsiteMemberResponsePayload {
+    
+}
+
+/**
+ * Change member role request
+ */
+export interface ChangeWebsiteMemberRoleRequestPayload {
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * User id
+     */
+    userId: number;
+    /**
+     * New user role
+     */
+    role: string;
+}
+
+/**
+ * Change member role response
+ */
+export interface ChangeWebsiteMemberRoleResponsePayload {
+    
+}
