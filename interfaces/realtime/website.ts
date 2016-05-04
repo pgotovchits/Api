@@ -105,6 +105,10 @@ export interface DeleteWebsiteInviteRequestPayload {
      * Invite code
      */
     code: string;
+    /**
+     * Website id
+     */
+    websiteId: number;
 }
 
 /**
@@ -148,7 +152,7 @@ export interface ChangeWebsiteMemberRoleRequestPayload {
     /**
      * New user role
      */
-    role: string;
+    role: WebsiteRole;
 }
 
 /**
