@@ -37,3 +37,9 @@ export const DELETE_WEBSITE_MEMBER = "website/DELETE_MEMBER";
  * @type {string}
  */
 export const CHANGE_WEBSITE_MEMBER_ROLE = "website/CHANGE_MEMBER_ROLE";
+
+/**
+ * Leave website
+ * @type {string}
+ */
+export const LEAVE_WEBSITE = "website/LEAVE";

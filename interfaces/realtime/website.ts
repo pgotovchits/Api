@@ -161,3 +161,17 @@ export interface ChangeWebsiteMemberRoleRequestPayload {
 export interface ChangeWebsiteMemberRoleResponsePayload {
     
 }
+
+/**
+ * Leave website request
+ */
+export interface LeaveWebsiteRequestPayload {
+    id: number;
+}
+
+/**
+ * Leave website response
+ */
+export interface LeaveWebsiteResponsePayload {
+    
+}

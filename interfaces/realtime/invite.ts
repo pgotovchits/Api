@@ -68,3 +68,37 @@ export interface GetInviteInfoResponsePayload {
      */
     name: string;
 }
+
+/**
+ * Accept invite request
+ */
+export interface AcceptInviteRequestPayload {
+    /**
+     * Invite code
+     */
+    code: string;
+}
+
+/**
+ * Accept invite response
+ */
+export interface AcceptInviteResponsePayload {
+    
+}
+
+/**
+ * Decline invite request
+ */
+export interface DeclineInviteRequestPayload {
+    /**
+     * Invite code
+     */
+    code: string;
+}
+
+/**
+ * Decline invite response
+ */
+export interface DeclineInviteResponsePayload {
+    
+}
