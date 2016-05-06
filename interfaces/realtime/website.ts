@@ -175,3 +175,24 @@ export interface LeaveWebsiteRequestPayload {
 export interface LeaveWebsiteResponsePayload {
     
 }
+
+/**
+ * Create website invites request
+ */
+export interface CreateWebsiteInvitesRequestPayload {
+    /**
+     * Website id
+     */
+    id: number;
+    /**
+     * Invites array
+     */
+    invites: string[];
+}
+
+/**
+ * Create website invites response
+ */
+export interface CreateWebsiteInvitesResponsePayload {
+    
+}

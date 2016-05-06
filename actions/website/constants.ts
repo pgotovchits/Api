@@ -43,3 +43,9 @@ export const CHANGE_WEBSITE_MEMBER_ROLE = "website/CHANGE_MEMBER_ROLE";
  * @type {string}
  */
 export const LEAVE_WEBSITE = "website/LEAVE";
+
+/**
+ * Create invites for website
+ * @type {string}
+ */
+export const CREATE_WEBSITE_INVITES = "website/CREATE_INVITES";
