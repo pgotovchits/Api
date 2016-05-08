@@ -102,3 +102,8 @@ export interface DeclineInviteRequestPayload {
 export interface DeclineInviteResponsePayload {
     
 }
+
+/**
+ * New realtime invite
+ */
+export interface IncomingInviteRealtimePayload extends UserInviteInfo { }

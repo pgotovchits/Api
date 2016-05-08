@@ -19,3 +19,9 @@ export const ACCEPT_INVITE = "invite/ACCEPT_INVITE";
  * @type {string}
  */
 export const DECLINE_INVITE = "invite/DECLINE_INVITE";
+
+/**
+ * Incoming invite to user
+ * @type {string}
+ */
+export const REALTIME_INCOMING_INVITE = "invite/INCOMING";
