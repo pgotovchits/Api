@@ -197,6 +197,10 @@ export interface CreateWebsiteInvitesRequestPayload {
  */
 export interface CreateWebsiteInvitesResponsePayload {
     /**
+     * Website id
+     */
+    id: number;
+    /**
      * Array of created invites
      */
     invites: WebsiteInviteInfo[];
