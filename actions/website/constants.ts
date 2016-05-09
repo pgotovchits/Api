@@ -49,3 +49,9 @@ export const LEAVE_WEBSITE = "website/LEAVE";
  * @type {string}
  */
 export const CREATE_WEBSITE_INVITES = "website/CREATE_INVITES";
+
+/**
+ * Invites was created by other user in website
+ * @type {string}
+ */
+export const REALTIME_WEBSITE_INVITES_CREATED_BY_MEMBER = "website/INVITES_CREATED_BY_MEMBER";

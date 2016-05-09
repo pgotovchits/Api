@@ -205,3 +205,13 @@ export interface CreateWebsiteInvitesResponsePayload {
      */
     members: BasicUserInformation[];
 }
+
+/**
+ * one or more invites was created by someone in website
+ */
+export interface WebsiteInvitesCreatedByMemberRealtimePayload extends CreateWebsiteInvitesResponsePayload {
+    /**
+     * User id which was created invites
+     */
+    createdByUserId: number;
+}
