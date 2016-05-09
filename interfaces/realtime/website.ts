@@ -111,6 +111,10 @@ export interface DeleteWebsiteInviteRequestPayload {
      * Website id
      */
     websiteId: number;
+    /**
+     * User id which this invite belongs to, may be omitted
+     */
+    userId?: number;
 }
 
 /**
@@ -218,4 +222,22 @@ export interface WebsiteInvitesCreatedByMemberRealtimePayload extends CreateWebs
      * User id which was created invites
      */
     createdByUserId: number;
+}
+
+/**
+ * Invite was canceled/deleted by someone in website
+ */
+export interface WebsiteInviteWasCancledByMemberRealtimePayload {
+    /**
+     * Invite code
+     */
+    code: string;
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * User id which deleted the invite
+     */
+    deletedByUserId: number;
 }

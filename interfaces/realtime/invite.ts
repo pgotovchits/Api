@@ -107,3 +107,17 @@ export interface DeclineInviteResponsePayload {
  * New realtime invite
  */
 export interface IncomingInviteRealtimePayload extends UserInviteInfo { }
+
+/**
+ * User invite was canceled
+ */
+export interface InviteWasCancledRealtimePayload {
+    /**
+     * Invite code
+     */
+    code: string;
+    /**
+     * Website id
+     */
+    websiteId: number;
+}

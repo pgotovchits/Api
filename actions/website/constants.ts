@@ -55,3 +55,9 @@ export const CREATE_WEBSITE_INVITES = "website/CREATE_INVITES";
  * @type {string}
  */
 export const REALTIME_WEBSITE_INVITES_CREATED_BY_MEMBER = "website/INVITES_CREATED_BY_MEMBER";
+
+/**
+ * Invite was deleted/canceled by other user in website
+ * @type {string}
+ */
+export const REALTIME_WEBSITE_INVITE_WAS_CANCELED_BY_MEMBER = "website/INVITE_WAS_CANCELED_BY_MEMBER";

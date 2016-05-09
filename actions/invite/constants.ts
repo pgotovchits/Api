@@ -25,3 +25,9 @@ export const DECLINE_INVITE = "invite/DECLINE_INVITE";
  * @type {string}
  */
 export const REALTIME_INCOMING_INVITE = "invite/INCOMING";
+
+/**
+ * Invite was canceled for user
+ * @type {string}
+ */
+export const REALTIME_INVITE_CANCLED = "invite/INVITE_CANCELED";
