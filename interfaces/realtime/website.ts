@@ -5,6 +5,8 @@
  * Suffix realtime indicates what action is being sent by backend to frontend for some realtime updates, not triggered by user request
  */
 
+import { WebsiteInviteInfo } from "./invite";
+import { BasicUserInformation } from "./user";
 export type WebsiteRole = "owner" | "admin" | "agent";
 
 /**
@@ -194,5 +196,12 @@ export interface CreateWebsiteInvitesRequestPayload {
  * Create website invites response
  */
 export interface CreateWebsiteInvitesResponsePayload {
-    
+    /**
+     * Array of created invites
+     */
+    invites: WebsiteInviteInfo[];
+    /**
+     * New members linked to invites
+     */
+    members: BasicUserInformation[];
 }
