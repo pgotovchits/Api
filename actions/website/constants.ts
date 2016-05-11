@@ -73,3 +73,9 @@ export const REALTIME_WEBSITE_INVITE_WAS_ACCEPTED = "website/INVITE_WAS_ACCEPTED
  * @type {string}
  */
 export const REALTIME_WEBSITE_INVITE_WAS_DECLINED = "website/INVITE_WAS_DECLINED";
+
+/**
+ * Member leave website
+ * @type {string}
+ */
+export const REALTIME_WEBSITE_MEMBER_LEAVE = "website/MEMBER_LEAVED";

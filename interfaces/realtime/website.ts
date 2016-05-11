@@ -277,3 +277,17 @@ export interface WebsiteInviteWasDeclinedRealtimePayload {
      */
     code: string;
 }
+
+/**
+ * Member leave website
+ */
+export interface WebsiteMemberLeaveRealtimePayload {
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * User id
+     */
+    userId: number;
+}
