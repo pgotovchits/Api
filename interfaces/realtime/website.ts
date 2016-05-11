@@ -100,6 +100,24 @@ export interface ChangeWebsiteNameRequestPayload {
 export interface ChangeWebsiteNameResponsePayload {}
 
 /**
+ * Website name was changed by someone in website group
+ */
+export interface ChangeWebsiteNameRealtimePayload {
+    /**
+     * Website id
+     */
+    id: number;
+    /**
+     * New website name
+     */
+    name: string;
+    /**
+     * User id which changed website name
+     */
+    userId: number;
+}
+
+/**
  * Delete website invite request
  */
 export interface DeleteWebsiteInviteRequestPayload {

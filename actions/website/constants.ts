@@ -21,6 +21,12 @@ export const CREATE_WEBSITE = "website/CREATE_WEBSITE";
 export const CHANGE_WEBSITE_NAME = "website/CHANGE_WEBSITE_NAME";
 
 /**
+ * Website name was changed
+ * @type {string}
+ */
+export const REALTIME_WEBSITE_NAME_CHANGED = "website/NAME_CHANGED";
+
+/**
  * Delete website invite
  * @type {string}
  */
