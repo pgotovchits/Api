@@ -9,6 +9,12 @@
 export const DELETE_WEBSITE = "website/DELETE_WEBSITE";
 
 /**
+ * Website was deleted
+ * @type {string}
+ */
+export const REALTIME_WEBSITE_WAS_DELETED = "website/WAS_DELETED";
+
+/**
  * Create website
  * @type {string}
  */

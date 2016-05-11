@@ -56,6 +56,17 @@ export interface DeleteWebsiteResponsePayload {
     // TODO: complete
 }
 
+export interface DeleteWebsiteRealtimePayload {
+    /**
+     * Website id
+     */
+    id: number;
+    /**
+     * User which deleted website
+     */
+    deletedByUserId: number;
+}
+
 /**
  * Create website request
  */
