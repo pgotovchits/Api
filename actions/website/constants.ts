@@ -67,3 +67,9 @@ export const REALTIME_WEBSITE_INVITE_WAS_CANCELED_BY_MEMBER = "website/INVITE_WA
  * @type {string}
  */
 export const REALTIME_WEBSITE_INVITE_WAS_ACCEPTED = "website/INVITE_WAS_ACCEPTED";
+
+/**
+ * User declined website invite
+ * @type {string}
+ */
+export const REALTIME_WEBSITE_INVITE_WAS_DECLINED = "website/INVITE_WAS_DECLINED";

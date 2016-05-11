@@ -263,3 +263,17 @@ export interface WebsiteInviteWasAcceptedRealtimePayload {
      */
     role: WebsiteRole;
 }
+
+/**
+ * Invite was declined by user
+ */
+export interface WebsiteInviteWasDeclinedRealtimePayload {
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * Invite code
+     */
+    code: string;
+}
