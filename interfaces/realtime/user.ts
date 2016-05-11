@@ -67,6 +67,11 @@ export interface UpdateUserPasswordRequestPayload {
 export interface UpdateUserResponsePayload extends BasicUserInformation {}
 
 /**
+ * User updated his info
+ */
+export interface UpdateUserRealtimePayload extends BasicUserInformation {}
+
+/**
  * Update user password response
  */
 export interface UpdateUserPasswordResponsePayload {}

@@ -276,6 +276,10 @@ export interface WebsiteInviteWasDeclinedRealtimePayload {
      * Invite code
      */
     code: string;
+    /**
+     * User id assigned to invite
+     */
+    userId: number;
 }
 
 /**
