@@ -78,6 +78,14 @@ export interface CreateWebsiteResponsePayload {
      * Created website info
      */
     website: UserWebsiteInfo;
+    /**
+     * Array of created invites
+     */
+    invites: WebsiteInviteInfo[];
+    /**
+     * New members linked to invites
+     */
+    members: BasicUserInformation[];
 }
 
 /**
