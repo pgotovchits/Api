@@ -9,6 +9,8 @@
  */
 
 // TODO asvetliakov: Having two invite interfaces is not good
+import { UserWebsiteInfo, WebsiteMemberInfo } from "./website";
+import { BasicUserInformation } from "./user";
 /**
  * User invite information
  */
@@ -83,7 +85,26 @@ export interface AcceptInviteRequestPayload {
  * Accept invite response
  */
 export interface AcceptInviteResponsePayload {
-    
+    /**
+     * Original invite code
+     */
+    code: string;
+    /**
+     * New website information
+     */
+    website: UserWebsiteInfo;
+    /**
+     * Website member -> role mapping for new website
+     */
+    websiteMembers: WebsiteMemberInfo[];
+    /**
+     * Website invites
+     */
+    websiteInvites?: WebsiteInviteInfo[];
+    /**
+     * Other users (website members, invite members, etc...)
+     */
+    members: BasicUserInformation[];
 }
 
 /**

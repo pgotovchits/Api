@@ -61,3 +61,9 @@ export const REALTIME_WEBSITE_INVITES_CREATED_BY_MEMBER = "website/INVITES_CREAT
  * @type {string}
  */
 export const REALTIME_WEBSITE_INVITE_WAS_CANCELED_BY_MEMBER = "website/INVITE_WAS_CANCELED_BY_MEMBER";
+
+/**
+ * User accepts website invite
+ * @type {string}
+ */
+export const REALTIME_WEBSITE_INVITE_WAS_ACCEPTED = "website/INVITE_WAS_ACCEPTED";

@@ -241,3 +241,25 @@ export interface WebsiteInviteWasCancledByMemberRealtimePayload {
      */
     deletedByUserId: number;
 }
+
+/**
+ * Invite was accepted by user
+ */
+export interface WebsiteInviteWasAcceptedRealtimePayload {
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * Invite code
+     */
+    code: string;
+    /**
+     * User information
+     */
+    userInfo: BasicUserInformation;
+    /**
+     * Website role
+     */
+    role: WebsiteRole;
+}
