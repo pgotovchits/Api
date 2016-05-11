@@ -45,6 +45,12 @@ export const DELETE_WEBSITE_MEMBER = "website/DELETE_MEMBER";
 export const CHANGE_WEBSITE_MEMBER_ROLE = "website/CHANGE_MEMBER_ROLE";
 
 /**
+ * Role was changed for user
+ * @type {string}
+ */
+export const REALTIME_WEBSITE_MEMBER_ROLE_WAS_CHANGED = "website/ROLE_WAS_CHANGED";
+
+/**
  * Leave website
  * @type {string}
  */

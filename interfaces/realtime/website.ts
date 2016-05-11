@@ -187,6 +187,28 @@ export interface ChangeWebsiteMemberRoleResponsePayload {
 }
 
 /**
+ * Member role was changed
+ */
+export interface ChangeWebsiteMemberRoleRealtimePayload {
+    /**
+     * website id
+     */
+    websiteId: number;
+    /**
+     * User id
+     */
+    userId: number;
+    /**
+     * New user role
+     */
+    role: WebsiteRole;
+    /**
+     * User id which changed role
+     */
+    changedByUserId: number;
+}
+
+/**
  * Leave website request
  */
 export interface LeaveWebsiteRequestPayload {
