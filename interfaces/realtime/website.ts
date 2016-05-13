@@ -180,6 +180,21 @@ export interface DeleteWebsiteMemberResponsePayload {
     
 }
 
+export interface DeleteWebsiteMemberRealtimePayload {
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * User id which has been deleted
+     */
+    userId: number;
+    /**
+     * User id which deleted member
+     */
+    deletedByUserId: number;
+}
+
 /**
  * Change member role request
  */

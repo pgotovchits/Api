@@ -97,3 +97,9 @@ export const REALTIME_WEBSITE_INVITE_WAS_DECLINED = "website/INVITE_WAS_DECLINED
  * @type {string}
  */
 export const REALTIME_WEBSITE_MEMBER_LEAVE = "website/MEMBER_LEAVED";
+
+/**
+ * Member was deleted by someone in website
+ * @type {string}
+ */
+export const REALTIME_WEBSITE_MEMBER_WAS_DELETED = "website/MEMBER_WAS_DELETED";
