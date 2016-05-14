@@ -103,3 +103,15 @@ export const REALTIME_WEBSITE_MEMBER_LEAVE = "website/MEMBER_LEAVED";
  * @type {string}
  */
 export const REALTIME_WEBSITE_MEMBER_WAS_DELETED = "website/MEMBER_WAS_DELETED";
+
+/**
+ * Member role was changed. Being sent only to affected member
+ * @type {string}
+ */
+export const REALTIME_YOUR_WEBSITE_ROLE_WAS_CHANGED = "website/YOUR_ROLE_WAS_CHANGED";
+
+/**
+ * Member was deleted from website. Being sent only to affected member
+ * @type {string}
+ */
+export const REALTIME_YOU_HAS_BEEN_DELETED_FROM_WEBSITE = "website/YOU_HAS_BEEN_DELETED";
