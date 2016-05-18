@@ -77,7 +77,7 @@ export class ApiError extends Error implements ApiErrorInterface {
             code: this.code,
             error: this.error,
             message: this.message
-        }
+        };
     }
 }
 
@@ -94,12 +94,12 @@ export class TokenError extends ApiError {
  */
 export class ValidationError extends ApiError {
     public type: string = "ValidationError";
-    constructor(url: string, error: Object) {
+    public constructor(url: string, error: Object) {
         super("Validation error", url, 422, error);
     }
 }
 
-export function isApiError(error): error is ApiErrorInterface {
+export function isApiError(error: any): error is ApiErrorInterface {
     return (error && error.type);
 }
 

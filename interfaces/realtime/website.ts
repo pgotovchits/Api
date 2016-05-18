@@ -60,6 +60,17 @@ export interface DeleteWebsiteResponsePayload {
     // TODO: complete
 }
 
+export interface DeleteWebsiteRealtimePayload {
+    /**
+     * Website id
+     */
+    id: number;
+    /**
+     * User which deleted website
+     */
+    deletedByUserId: number;
+}
+
 /**
  * Create website request
  */
@@ -82,6 +93,14 @@ export interface CreateWebsiteResponsePayload {
      * Created website info
      */
     website: UserWebsiteInfo;
+    /**
+     * Array of created invites
+     */
+    invites: WebsiteInviteInfo[];
+    /**
+     * New members linked to invites
+     */
+    members: BasicUserInformation[];
 }
 
 /**
@@ -102,6 +121,24 @@ export interface ChangeWebsiteNameRequestPayload {
  * Change website name response
  */
 export interface ChangeWebsiteNameResponsePayload {}
+
+/**
+ * Website name was changed by someone in website group
+ */
+export interface ChangeWebsiteNameRealtimePayload {
+    /**
+     * Website id
+     */
+    id: number;
+    /**
+     * New website name
+     */
+    name: string;
+    /**
+     * User id which changed website name
+     */
+    userId: number;
+}
 
 /**
  * Delete website invite request
@@ -147,6 +184,21 @@ export interface DeleteWebsiteMemberResponsePayload {
     
 }
 
+export interface DeleteWebsiteMemberRealtimePayload {
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * User id which has been deleted
+     */
+    userId: number;
+    /**
+     * User id which deleted member
+     */
+    deletedByUserId: number;
+}
+
 /**
  * Change member role request
  */
@@ -170,6 +222,28 @@ export interface ChangeWebsiteMemberRoleRequestPayload {
  */
 export interface ChangeWebsiteMemberRoleResponsePayload {
     
+}
+
+/**
+ * Member role was changed
+ */
+export interface ChangeWebsiteMemberRoleRealtimePayload {
+    /**
+     * website id
+     */
+    websiteId: number;
+    /**
+     * User id
+     */
+    userId: number;
+    /**
+     * New user role
+     */
+    role: WebsiteRole;
+    /**
+     * User id which changed role
+     */
+    changedByUserId: number;
 }
 
 /**
@@ -244,4 +318,58 @@ export interface WebsiteInviteWasCancledByMemberRealtimePayload {
      * User id which deleted the invite
      */
     deletedByUserId: number;
+}
+
+/**
+ * Invite was accepted by user
+ */
+export interface WebsiteInviteWasAcceptedRealtimePayload {
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * Invite code
+     */
+    code: string;
+    /**
+     * User information
+     */
+    userInfo: BasicUserInformation;
+    /**
+     * Website role
+     */
+    role: WebsiteRole;
+}
+
+/**
+ * Invite was declined by user
+ */
+export interface WebsiteInviteWasDeclinedRealtimePayload {
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * Invite code
+     */
+    code: string;
+    /**
+     * User id assigned to invite
+     */
+    userId: number;
+}
+
+/**
+ * Member leave website
+ */
+export interface WebsiteMemberLeaveRealtimePayload {
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * User id
+     */
+    userId: number;
 }
