@@ -40,6 +40,10 @@ export interface UserWebsiteInfo {
      */
     name: string;
     /**
+     * Website code
+     */
+    code: string;
+    /**
      * Website role
      */
     role: WebsiteRole;
