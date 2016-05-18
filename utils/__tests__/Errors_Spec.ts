@@ -4,13 +4,13 @@ import {ApiError, ValidationError, TokenError, createFromObject} from "../Errors
 describe("Errors", () => {
     describe("ApiError", () => {
         it("Should be instance of ApiError", () => {
-            let error = new ApiError("test", "test.com", 500);
+            const error = new ApiError("test", "test.com", 500);
             expect(error).to.be.instanceOf(ApiError);
         });
         
         
         it("Should contain properties", () => {
-            let error = new ApiError("test", "test.com", 500, { error: "test" });
+            const error = new ApiError("test", "test.com", 500, { error: "test" });
             expect(error.message).to.equal("test");
             expect(error.code).to.equal(500);
             expect(error.url).to.equal("test.com");
@@ -18,7 +18,7 @@ describe("Errors", () => {
         });
         
         it("Could be converted to object", () => {
-            let errorObj = new ApiError("test", "test.com", 500, { error: "test" }).toObject();
+            const errorObj = new ApiError("test", "test.com", 500, { error: "test" }).toObject();
             expect(errorObj.code).to.equal(500);
             expect(errorObj.type).to.equal("ApiError");
             expect(errorObj.message).to.equal("test");
@@ -29,7 +29,7 @@ describe("Errors", () => {
     
     describe("TokenError", () => {
         it("Should be proper type", () => {
-            let error = new TokenError("invalid", "test.com", 400);
+            const error = new TokenError("invalid", "test.com", 400);
             expect(error).to.be.instanceOf(TokenError);
             expect(error).to.be.instanceOf(ApiError);
             expect(error).to.be.instanceOf(Error);
@@ -38,14 +38,14 @@ describe("Errors", () => {
     
     describe("ValidationError", () => {
         it("Should be proper type", () => {
-            let error = new ValidationError("test.com", { email: "required" });
+            const error = new ValidationError("test.com", { email: "required" });
             expect(error).to.be.instanceOf(ValidationError);
             expect(error).to.be.instanceOf(ApiError);
             expect(error).to.be.instanceOf(Error);
         });
         
         it("Should containt properties", () => {
-            let error = new ValidationError("test.com", { email: "required" });
+            const error = new ValidationError("test.com", { email: "required" });
             expect(error.message).to.equal("Validation error");
             expect(error.code).to.equal(422);
             expect(error.url).to.equal("test.com");
@@ -55,33 +55,33 @@ describe("Errors", () => {
     
     describe("createFromObject", () => {
         it("Should return new empty error if given null or undefined", () => {
-            let error = createFromObject(null);
+            const error = createFromObject(null);
             expect(error).to.be.instanceOf(Error);
             expect(error).to.not.be.instanceOf(ApiError);
         });
         
         it("Should return new error if given object doesn't have type property", () => {
-            let error = createFromObject({ message: "simple" } as any);
+            const error = createFromObject({ message: "simple" } as any);
             expect(error).to.be.instanceOf(Error);
             expect(error).to.not.be.instanceOf(ApiError);
             expect(error.message).to.equal("simple");
         });
         
         it("Should create api error", () => {
-            let error = createFromObject({ type: "ApiError", url: "test.com", message: "testmsg", code: 500 });
+            const error = createFromObject({ type: "ApiError", url: "test.com", message: "testmsg", code: 500 });
             expect(error).to.be.instanceOf(Error);
             expect(error).to.be.instanceOf(ApiError);
         });
         
         it("Should create token error", () => {
-            let error = createFromObject({ type: "TokenError", url: "test.com", message: "testmsg", code: 400 });
+            const error = createFromObject({ type: "TokenError", url: "test.com", message: "testmsg", code: 400 });
             expect(error).to.be.instanceOf(Error);
             expect(error).to.be.instanceOf(ApiError);
             expect(error).to.be.instanceOf(TokenError);
         });
         
         it("Should create validation error", () => {
-            let error = createFromObject({ type: "ValidationError", url: "test.com", message: "testmsg", code: 422 });
+            const error = createFromObject({ type: "ValidationError", url: "test.com", message: "testmsg", code: 422 });
             expect(error).to.be.instanceOf(Error);
             expect(error).to.be.instanceOf(ApiError);
             expect(error).to.be.instanceOf(ValidationError);
