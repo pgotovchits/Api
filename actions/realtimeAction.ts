@@ -33,7 +33,7 @@ export interface RealtimeAction<TPayload> extends BaseAction<TPayload> {
          * If omitted then server will not send action updates
          */
         realtimeActionTypes?: [string, string, string];
-    }
+    };
 }
 
 /**
