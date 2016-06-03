@@ -154,6 +154,10 @@ export interface CreateChatRealtimePayload {
      */
     websiteId: number;
     /**
+     * Chat started time in UTC string
+     */
+    startTime: string;
+    /**
      * Visitor information
      */
     visitor: VisitorInfo;
