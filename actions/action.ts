@@ -33,3 +33,12 @@ export interface KeyMapPayload {
 export function isBaseAction<TPayload>(action: any): action is BaseAction<TPayload> {
     return (typeof action === "object" && typeof action.type !== "undefined");
 }
+
+/**
+ * True if action contains another payload (in case of failed/success response of realtime action)
+ * @param action
+ * @returns {boolean}
+ */
+export function hasOriginalPayload<TPayload>(action: any): action is BaseAction<TPayload> & { originalPayload: TPayload } {
+    return (typeof action === "object" && typeof action.originalPayload !== "undefined");
+}
