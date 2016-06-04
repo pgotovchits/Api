@@ -1,13 +1,68 @@
+export type SocialProfileType = "facebook" | "googleplus" | "instagram" | "twitter";
 
-interface VisitSocialProfile {
+export interface VisitorSocialProfile {
     /**
      * Profile type
      */
-    type: "facebook" | "googleplus" | "instagram" | "twitter";
+    type: SocialProfileType;
     /**
      * Profile url
      */
     url: string;
+}
+
+export interface VisitorLocationInterface {
+    /**
+     * Country
+     */
+    country: string;
+    /**
+     * State
+     */
+    state: string;
+    /**
+     * City
+     */
+    city: string;
+    /**
+     * Latitude
+     */
+    lat: number;
+    /**
+     * Longitude
+     */
+    lon: number;
+}
+
+export interface VisitInfoInterface {
+    /**
+     * Visitor ip
+     */
+    ip: string;
+    /**
+     * Domain
+     */
+    domain: string;
+    /**
+     * Page
+     */
+    page: string;
+    /**
+     * OS name/family
+     */
+    os: string;
+    /**
+     * OS version
+     */
+    osVersion: string;
+    /**
+     * Browser name/family
+     */
+    browser: string;
+    /**
+     * Browser version
+     */
+    browserVersion: string;
 }
 
 /**
@@ -35,73 +90,17 @@ export interface VisitorInfo {
      */
     profileImage?: string;
     /**
-     * Visitor ip
-     */
-    ip: string;
-    /**
      * Visitor location
      */
-    location?: {
-        /**
-         * Country
-         */
-        country: string;
-        /**
-         * State
-         */
-        state: string;
-        /**
-         * City
-         */
-        city: string;
-        /**
-         * Latitude
-         */
-        lat: number;
-        /**
-         * Longitude
-         */
-        lon: number;
-    };
+    location?: VisitorLocationInterface;
     /**
      * Visit information (Populated from referrer)
      */
-    visit?: {
-        /**
-         * Domain
-         */
-        domain: string;
-        /**
-         * Page
-         */
-        page: string;
-    };
-    /**
-     * System information (from user agent)
-     */
-    system: {
-        /**
-         * OS name/family
-         */
-        os: string;
-        /**
-         * OS version
-         */
-        osVersion: string;
-        /**
-         * Browser name/family
-         */
-        browser: string;
-        /**
-         * Browser version
-         */
-        browserVersion: string;
-    };
-    
+    visit?: VisitInfoInterface;
     /**
      * List of social profiles if any
      */
-    socialProfiles?: VisitSocialProfile[];
+    socialProfiles?: VisitorSocialProfile[];
 }
 
 
