@@ -1,6 +1,6 @@
 export type SocialProfileType = "facebook" | "googleplus" | "instagram" | "twitter";
 
-export interface VisitorSocialProfile {
+export interface VisitorSocialProfileInterface {
     /**
      * Profile type
      */
@@ -68,7 +68,7 @@ export interface VisitInfoInterface {
 /**
  * Basic visitor info
  */
-export interface VisitorInfo {
+export interface VisitorInfoInterface {
     /**
      * Visitor name
      */
@@ -100,7 +100,7 @@ export interface VisitorInfo {
     /**
      * List of social profiles if any
      */
-    socialProfiles?: VisitorSocialProfile[];
+    socialProfiles?: VisitorSocialProfileInterface[];
 }
 
 
@@ -159,7 +159,7 @@ export interface CreateChatRealtimePayload {
     /**
      * Visitor information
      */
-    visitor: VisitorInfo;
+    visitor: VisitorInfoInterface;
 }
 
 export type CancellationType = "request" | "timeout" | "leave";
