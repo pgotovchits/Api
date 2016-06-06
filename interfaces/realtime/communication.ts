@@ -255,6 +255,14 @@ export interface ChatWasAnsweredRealtimePayload {
      * Answered agent id
      */
     agentId: number;
+    /**
+     * Agent first name
+     */
+    agentFirstName: string;
+    /**
+     * Agent last name
+     */
+    agentLastName: string;
 }
 
 export type ChatUpdateType = "message" | "typing";
