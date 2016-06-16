@@ -15,23 +15,23 @@ export interface VisitorLocationInterface {
     /**
      * Country
      */
-    country: string;
+    country?: string;
     /**
      * State
      */
-    state: string;
+    state?: string;
     /**
      * City
      */
-    city: string;
+    city?: string;
     /**
      * Latitude
      */
-    lat: number;
+    lat?: number;
     /**
      * Longitude
      */
-    lon: number;
+    lon?: number;
 }
 
 export interface VisitInfoInterface {
@@ -50,19 +50,19 @@ export interface VisitInfoInterface {
     /**
      * OS name/family
      */
-    os: string;
+    os?: string;
     /**
      * OS version
      */
-    osVersion: string;
+    osVersion?: string;
     /**
      * Browser name/family
      */
-    browser: string;
+    browser?: string;
     /**
      * Browser version
      */
-    browserVersion: string;
+    browserVersion?: string;
 }
 
 /**
@@ -96,7 +96,7 @@ export interface VisitorInfoInterface {
     /**
      * Visit information (Populated from referrer)
      */
-    visit?: VisitInfoInterface;
+    visit: VisitInfoInterface;
     /**
      * List of social profiles if any
      */
