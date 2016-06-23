@@ -111,7 +111,7 @@ export interface CreateChatRequestPayload {
     /**
      * Website code
      */
-    code: string;
+    code?: string;
     /**
      * User (visitor) email
      */
@@ -120,6 +120,10 @@ export interface CreateChatRequestPayload {
      * User (visitor) name
      */
     name?: string;
+    /**
+     * URL page which visitor came from. Taken from referrer
+     */
+    page?: string;
 }
 
 /**
@@ -328,11 +332,23 @@ export interface CreateMessageRequestPayload {
     /**
      * Website code
      */
-    code: string;
+    code?: string;
     /**
      * Message
      */
     message: string;
+    /**
+     * User (visitor) email
+     */
+    email?: string;
+    /**
+     * User (visitor) name
+     */
+    name?: string;
+    /**
+     * URL page which visitor came from. Taken from referrer
+     */
+    page?: string;
 }
 
 /**
