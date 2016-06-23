@@ -318,3 +318,75 @@ export interface ChatWasUpdatedRealtimePayload extends UpdateChatRequestPayload 
      */
     date: string;
 }
+
+/**
+ * Create message request
+ * @export
+ * @interface CreateMessageRequestPayload
+ */
+export interface CreateMessageRequestPayload {
+    /**
+     * Website code
+     */
+    code: string;
+    /**
+     * Message
+     */
+    message: string;
+}
+
+/**
+ * Create message response
+ * 
+ * @export
+ * @interface CreateMessageResponsePayload
+ */
+export interface CreateMessageResponsePayload {}
+
+/**
+ * Message was created realtime payload
+ * 
+ * @export
+ * @interface CreateMessageRealtimePayload
+ */
+export interface CreateMessageRealtimePayload {
+    /**
+     * Message UUID
+     */
+    id: string;
+    /**
+     * Website id
+     */
+    websiteId: number;
+    /**
+     * Message created time in UTC string
+     */
+    startTime: string;
+    /**
+     * Visitor information
+     */
+    visitor: VisitorInfoInterface;
+}
+
+/**
+ * Update message status
+ */
+export interface UpdateMessageStatusRequestPayload {
+    /**
+     * Message UUID
+     */
+    id: string;
+    /**
+     * New status
+     */
+    status: "viewed";
+}
+
+export interface UpdateMessageStatusResponsePayload {}
+
+/**
+ * Update message realtime payload
+ */
+export interface MessageStatusWasUpdatedRealtimePayload {
+    
+}

@@ -57,3 +57,27 @@ export const REALTIME_CHAT_ANSWERED = "communication/CHAT_ANSWERED";
  * @type {string}
  */
 export const REALTIME_CHAT_UPDATED = "communication/CHAT_UPDATED";
+
+/**
+ * New message
+ * @type {string}
+ */
+export const CREATE_MESSAGE = "communication/CREATE_MESSAGE";
+
+/**
+ * New message realtime action (for website agents)
+ * @type {string}
+ */
+export const REALTIME_NEW_MESSAGE = "communication/NEW_MESSAGE";
+
+/**
+ * Update message status (view)
+ * @type {string}
+ */
+export const UPDATE_MESSAGE_STATUS = "communication/UPDATE_MESSAGE_STATUS";
+
+/**
+ * Message updated realtime action (viewed by agent)
+ * @type {string}
+ */
+export const REALTIME_MESSAGE_STATUS_UPDATED = "communication/REALTIME_MESSAGE_STATUS_UPDATED";
