@@ -46,7 +46,7 @@ export interface WebsiteInviteInfo {
      */
     websiteId: number;
     /**
-     * User id if invite was linked with existing user, otherwise null
+     * User id if invite was linked with existing user, otherwise undefined
      */
     userId?: number;
 }
@@ -100,7 +100,7 @@ export interface AcceptInviteResponsePayload {
     /**
      * Website invites
      */
-    websiteInvites?: WebsiteInviteInfo[];
+    websiteInvites: WebsiteInviteInfo[];
     /**
      * Other users (website members, invite members, etc...)
      */

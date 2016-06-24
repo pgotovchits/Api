@@ -49,7 +49,7 @@ export class ApiError extends Error implements ApiErrorInterface {
     /**
      * JSON error object
      */
-    public error: Object;
+    public error?: Object;
     /**
      * Error string type
      */
@@ -106,7 +106,7 @@ export function isApiError(error: any): error is ApiErrorInterface {
 /**
  * Error factory. Needed to convert error objects from realtime client to proper error instances
  */
-export function createFromObject(error: ApiErrorInterface | Error): Error | ApiError | ValidationError | TokenError {
+export function createFromObject(error?: ApiErrorInterface | Error): Error | ApiError | ValidationError | TokenError {
     if (!error) {
         return new Error();
     }
@@ -118,7 +118,7 @@ export function createFromObject(error: ApiErrorInterface | Error): Error | ApiE
             case "TokenError":
                 return new TokenError(error.message, error.url, error.code, error.error);
             case "ValidationError":
-                return new ValidationError(error.url, error.error);
+                return new ValidationError(error.url, error.error ? error.error : {} );
             default:
                 return new ApiError(error.message, error.url, error.code, error.error);
         }

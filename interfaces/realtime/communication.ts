@@ -42,11 +42,11 @@ export interface VisitInfoInterface {
     /**
      * Domain
      */
-    domain: string;
+    domain?: string;
     /**
      * Page
      */
-    page: string;
+    page?: string;
     /**
      * OS name/family
      */

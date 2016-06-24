@@ -44,7 +44,7 @@ describe("Errors", () => {
             expect(error).to.be.instanceOf(Error);
         });
         
-        it("Should containt properties", () => {
+        it("Should contain properties", () => {
             const error = new ValidationError("test.com", { email: "required" });
             expect(error.message).to.equal("Validation error");
             expect(error.code).to.equal(422);
@@ -55,7 +55,7 @@ describe("Errors", () => {
     
     describe("createFromObject", () => {
         it("Should return new empty error if given null or undefined", () => {
-            const error = createFromObject(null);
+            const error = createFromObject();
             expect(error).to.be.instanceOf(Error);
             expect(error).to.not.be.instanceOf(ApiError);
         });

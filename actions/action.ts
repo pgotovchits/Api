@@ -9,7 +9,7 @@ export interface BaseAction<TPayload> {
     /**
      * Action payload
      */
-    payload?: TPayload;
+    payload: TPayload;
     /**
      * True if action is error
      */

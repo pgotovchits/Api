@@ -93,23 +93,23 @@ export interface LoginResponsePayload {
     /**
      * User websites
      */
-    websites?: UserWebsiteInfo[];
+    websites: UserWebsiteInfo[];
     /**
      * Website member -> role mapping
      */
-    websiteMembers?: WebsiteMemberInfo[];
+    websiteMembers: WebsiteMemberInfo[];
     /**
      * Website invites
      */
-    websiteInvites?: WebsiteInviteInfo[];
+    websiteInvites: WebsiteInviteInfo[];
     /**
      * Other users (website members, invite members, etc...)
      */
-    members?: BasicUserInformation[];
+    members: BasicUserInformation[];
     /**
      * User invites
      */
-    invites?: UserInviteInfo[];
+    invites: UserInviteInfo[];
 }
 
 /**
