@@ -4,7 +4,7 @@ export interface VisitorSocialProfileInterface {
     /**
      * Profile type
      */
-    type: SocialProfileType;
+    type: string;
     /**
      * Profile url
      */
@@ -17,6 +17,10 @@ export interface VisitorLocationInterface {
      */
     country?: string;
     /**
+     * Country code
+     */
+    countryCode?: string;
+    /**
      * State
      */
     state?: string;
@@ -27,11 +31,11 @@ export interface VisitorLocationInterface {
     /**
      * Latitude
      */
-    lat?: number;
+    lat?: string;
     /**
      * Longitude
      */
-    lon?: number;
+    lon?: string;
 }
 
 export interface VisitInfoInterface {
@@ -82,7 +86,7 @@ export interface VisitorInfoInterface {
      */
     sex?: "male" | "female";
     /**
-     * Visitor age
+     * Visitor approximate age
      */
     age?: number;
     /**
