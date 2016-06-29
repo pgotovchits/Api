@@ -336,7 +336,7 @@ export interface CreateMessageRequestPayload {
     /**
      * Website code
      */
-    code?: string;
+    code: string;
     /**
      * Message
      */
