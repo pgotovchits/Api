@@ -1,112 +1,24 @@
+import { VisitorInfoInterface } from "./visitor";
 export type SocialProfileType = "facebook" | "googleplus" | "instagram" | "twitter";
 
-export interface VisitorSocialProfileInterface {
+export interface CommonCommunicationInfo {
     /**
-     * Profile type
+     * Communication UUID
      */
-    type: string;
+    id: string;
     /**
-     * Profile url
+     * Website id
      */
-    url: string;
+    websiteId: number;
+    /**
+     * Communication started time in UTC string
+     */
+    startTime: string;
+    /**
+     * Visitor information
+     */
+    visitor: VisitorInfoInterface;
 }
-
-export interface VisitorLocationInterface {
-    /**
-     * Country
-     */
-    country?: string;
-    /**
-     * Country code
-     */
-    countryCode?: string;
-    /**
-     * State
-     */
-    state?: string;
-    /**
-     * City
-     */
-    city?: string;
-    /**
-     * Latitude
-     */
-    lat?: string;
-    /**
-     * Longitude
-     */
-    lon?: string;
-}
-
-export interface VisitInfoInterface {
-    /**
-     * Visitor ip
-     */
-    ip: string;
-    /**
-     * Domain
-     */
-    domain?: string;
-    /**
-     * Page
-     */
-    page?: string;
-    /**
-     * OS name/family
-     */
-    os?: string;
-    /**
-     * OS version
-     */
-    osVersion?: string;
-    /**
-     * Browser name/family
-     */
-    browser?: string;
-    /**
-     * Browser version
-     */
-    browserVersion?: string;
-}
-
-/**
- * Basic visitor info
- */
-export interface VisitorInfoInterface {
-    /**
-     * Visitor name
-     */
-    name?: string;
-    /**
-     * Visitor email
-     */
-    email?: string;
-    /**
-     * Visitor sex
-     */
-    sex?: "male" | "female";
-    /**
-     * Visitor approximate age
-     */
-    age?: number;
-    /**
-     * Visitor profile image
-     */
-    profileImage?: string;
-    /**
-     * Visitor location
-     */
-    location?: VisitorLocationInterface;
-    /**
-     * Visit information (Populated from referrer)
-     */
-    visit: VisitInfoInterface;
-    /**
-     * List of social profiles if any
-     */
-    socialProfiles?: VisitorSocialProfileInterface[];
-}
-
 
 /**
  * Create chat request
@@ -151,23 +63,7 @@ export interface CreateChatResponsePayload {
 /**
  * New chat payload
  */
-export interface CreateChatRealtimePayload {
-    /**
-     * Chat UUID
-     */
-    id: string;
-    /**
-     * Website id
-     */
-    websiteId: number;
-    /**
-     * Chat started time in UTC string
-     */
-    startTime: string;
-    /**
-     * Visitor information
-     */
-    visitor: VisitorInfoInterface;
+export interface CreateChatRealtimePayload extends CommonCommunicationInfo {
 }
 
 export type CancellationType = "request" | "timeout" | "leave";
@@ -329,8 +225,6 @@ export interface ChatWasUpdatedRealtimePayload extends UpdateChatRequestPayload 
 
 /**
  * Create message request
- * @export
- * @interface CreateMessageRequestPayload
  */
 export interface CreateMessageRequestPayload {
     /**
@@ -357,56 +251,15 @@ export interface CreateMessageRequestPayload {
 
 /**
  * Create message response
- * 
- * @export
- * @interface CreateMessageResponsePayload
  */
 export interface CreateMessageResponsePayload {}
 
 /**
  * Message was created realtime payload
- * 
- * @export
- * @interface CreateMessageRealtimePayload
  */
-export interface CreateMessageRealtimePayload {
+export interface CreateMessageRealtimePayload extends CommonCommunicationInfo {
     /**
-     * Message UUID
+     * Message text
      */
-    id: string;
-    /**
-     * Website id
-     */
-    websiteId: number;
-    /**
-     * Message created time in UTC string
-     */
-    startTime: string;
-    /**
-     * Visitor information
-     */
-    visitor: VisitorInfoInterface;
-}
-
-/**
- * Update message status
- */
-export interface UpdateMessageStatusRequestPayload {
-    /**
-     * Message UUID
-     */
-    id: string;
-    /**
-     * New status
-     */
-    status: "viewed";
-}
-
-export interface UpdateMessageStatusResponsePayload {}
-
-/**
- * Update message realtime payload
- */
-export interface MessageStatusWasUpdatedRealtimePayload {
-    
+    message: string;
 }

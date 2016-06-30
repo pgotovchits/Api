@@ -69,15 +69,3 @@ export const CREATE_MESSAGE = "communication/CREATE_MESSAGE";
  * @type {string}
  */
 export const REALTIME_NEW_MESSAGE = "communication/NEW_MESSAGE";
-
-/**
- * Update message status (view)
- * @type {string}
- */
-export const UPDATE_MESSAGE_STATUS = "communication/UPDATE_MESSAGE_STATUS";
-
-/**
- * Message updated realtime action (viewed by agent)
- * @type {string}
- */
-export const REALTIME_MESSAGE_STATUS_UPDATED = "communication/REALTIME_MESSAGE_STATUS_UPDATED";
