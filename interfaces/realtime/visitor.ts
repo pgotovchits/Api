@@ -23,11 +23,11 @@ export interface VisitorLocationInterface {
     /**
      * Country
      */
-    country?: string;
+    country: string;
     /**
      * Country code
      */
-    countryCode?: string;
+    countryCode: string;
     /**
      * State
      */

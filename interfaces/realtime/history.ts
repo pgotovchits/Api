@@ -18,11 +18,11 @@ interface HistoryCommunicationRequest {
     /**
      * Start date filter
      */
-    startDate?: string;
+    startTime?: string;
     /**
      * End date filter
      */
-    endDate?: string;
+    endTime?: string;
 }
 
 /**
@@ -36,7 +36,7 @@ interface HistoryCommunicationNote {
     /**
      * Created date
      */
-    createdDate: string;
+    createdTime: string;
     /**
      * Agent id which created note
      */
@@ -80,11 +80,11 @@ interface ChatHistoryCommunicationInfo extends HistoryCommunicationInfo {
     /**
      * Chat ends date
      */
-    endDate?: string;
+    endTime?: string;
     /**
      * Chat answered date
      */
-    answeredDate?: string;
+    answeredTime?: string;
     /**
      * Chat messages
      */
@@ -99,7 +99,7 @@ interface MessageHistoryCommunicationInfo extends HistoryCommunicationInfo {
     /**
      * Message viewed date
      */
-    viewedDate?: string;
+    viewedTime?: string;
     /**
      * Message text
      */
@@ -120,9 +120,9 @@ export interface GetChatsRequestPayload extends HistoryCommunicationRequest {}
  */
 export interface GetChatsResponsePayload {
     /**
-     * Array of chats
+     * Map of communication UUID -> chat info
      */
-    [key: number]: ChatHistoryCommunicationInfo;
+    [key: string]: ChatHistoryCommunicationInfo;
 }
 
 /**
@@ -150,9 +150,9 @@ export interface GetMessagesRequestPayload extends HistoryCommunicationRequest {
  */
 export interface GetMessagesResponsePayload {
     /**
-     * Array of messages
+     * Map of communication UUID -> message info
      */
-    [key: number]: MessageHistoryCommunicationInfo;
+    [key: string]: MessageHistoryCommunicationInfo;
 }
 
 /**
