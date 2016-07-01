@@ -110,6 +110,10 @@ export interface LoginResponsePayload {
      * User invites
      */
     invites: UserInviteInfo[];
+    /**
+     * Total unread messages for all user websites
+     */
+    totalUnreadMessages: number;
 }
 
 /**
