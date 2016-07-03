@@ -11,10 +11,6 @@ export interface CreateNoteRequestPayload {
      */
     communicationId: string;
     /**
-     * Communication type
-     */
-    communicationType: "chat" | "message";
-    /**
      * Note text
      */
     noteText: string;
@@ -34,10 +30,6 @@ export interface NoteWasCreatedRealtimePayload {
      * Communication id
      */
     communicationId: string;
-    /**
-     * Communication type
-     */
-    communicationType: "chat" | "message";
     /**
      * Note text
      */
@@ -64,10 +56,6 @@ export interface DeleteNoteRequestPayload {
      * Communication id
      */
     communicationId: string;
-    /**
-     * Communication type
-     */
-    communicationType: "chat" | "message";
 }
 
 /**
@@ -86,10 +74,6 @@ export interface NoteWasDeletedRealtimePayload {
      */
     communicationId: string;
     /**
-     * Communication type
-     */
-    communicationType: "chat" | "message";
-    /**
      * Agent id which deleted note
      */
     agentId: number;
@@ -107,10 +91,6 @@ export interface ChangeNoteRequestPayload {
      * Communication id
      */
     communicationId: string;
-    /**
-     * Communication type
-     */
-    communicationType: "chat" | "message";
     /**
      * New note text
      */
@@ -132,10 +112,6 @@ export interface NoteWasChangedRealtimePayload {
      * Communication id
      */
     communicationId: string;
-    /**
-     * Communication type
-     */
-    communicationType: "chat" | "message";
     /**
      * Agent id which changed note
      */
