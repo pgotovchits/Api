@@ -120,9 +120,13 @@ export interface GetChatsRequestPayload extends HistoryCommunicationRequest {}
  */
 export interface GetChatsResponsePayload {
     /**
+     * Total number of chats
+     */
+    total: number;
+    /**
      * Map of communication UUID -> chat info
      */
-    [key: string]: ChatHistoryCommunicationInfo;
+    chats: { [key: string]: ChatHistoryCommunicationInfo };
 }
 
 /**
@@ -150,9 +154,13 @@ export interface GetMessagesRequestPayload extends HistoryCommunicationRequest {
  */
 export interface GetMessagesResponsePayload {
     /**
+     * Total number of messages
+     */
+    total: number;
+    /**
      * Map of communication UUID -> message info
      */
-    [key: string]: MessageHistoryCommunicationInfo;
+    messages: { [key: string]: MessageHistoryCommunicationInfo };
 }
 
 /**
