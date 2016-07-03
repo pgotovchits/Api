@@ -76,7 +76,7 @@ interface ChatMessageInfo {
     agentId?: number;
 }
 
-interface ChatHistoryCommunicationInfo extends HistoryCommunicationInfo {
+export interface ChatHistoryCommunicationInfo extends HistoryCommunicationInfo {
     /**
      * Chat ends date
      */
@@ -95,7 +95,7 @@ interface ChatHistoryCommunicationInfo extends HistoryCommunicationInfo {
     status: "missed" | "answered";
 }
 
-interface MessageHistoryCommunicationInfo extends HistoryCommunicationInfo {
+export interface MessageHistoryCommunicationInfo extends HistoryCommunicationInfo {
     /**
      * Message viewed date
      */
