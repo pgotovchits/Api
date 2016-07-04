@@ -80,7 +80,7 @@ export interface ChatHistoryCommunicationInfo extends HistoryCommunicationInfo {
     /**
      * Chat ends date
      */
-    endTime?: string;
+    endTime: string;
     /**
      * Chat answered date
      */
