@@ -1,6 +1,6 @@
 {
   "name": "ramble-shared",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Shared sources",
   "main": "compiled/index.js",
   "scripts": {

@@ -1,6 +1,11 @@
+.idea
 .npmrc
 gulpfile.js
 testIndex.js
 tsconfig.json
 tslint.json
+typings
 typings.json
+!compiled/index.js
+!compiled/index.d.ts
+!compiled/index.js.map
