@@ -1,5 +1,5 @@
 {
-  "name": "ramble-shared",
+  "name": "@ramble/shared",
   "version": "1.0.5",
   "description": "Shared sources",
   "main": "compiled/index.js",
