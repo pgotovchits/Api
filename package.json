@@ -1,8 +1,9 @@
 {
   "name": "ramble-shared",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Shared sources",
   "main": "compiled/index.js",
+  "typings": "compiled/index.d.ts",
   "scripts": {
     "test": "gulp tests"
   },
