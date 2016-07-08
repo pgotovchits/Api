@@ -1,0 +1,36 @@
+{
+  "name": "ramble-shared",
+  "version": "1.0.0",
+  "description": "Shared sources",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/SharedSources"
+  },
+  "author": "Alexey Svetliakov <asvetliakov@teledini.com>",
+  "license": "Private",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-subset": "^1.2.2",
+    "del": "^2.2.1",
+    "dotenv": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-tslint": "^5.0.0",
+    "gulp-typescript": "^2.13.6",
+    "gulp-util": "^3.0.7",
+    "merge2": "^1.0.2",
+    "mocha": "^2.5.3",
+    "sinon-chai": "^2.8.1-sinon2",
+    "source-map-support": "^0.4.1",
+    "ts-node": "^0.9.3",
+    "tslint": "^3.13.0",
+    "tslint-eslint-rules": "^1.3.0",
+    "tslint-microsoft-contrib": "^2.0.9-pre",
+    "typescript": "^2.0.0-dev.20160707",
+    "yargs": "^4.7.1"
+  }
+}

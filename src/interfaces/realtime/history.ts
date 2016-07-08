@@ -2,7 +2,7 @@ import { CommonCommunicationInfo } from "./communication";
 /**
  * Common history communication request
  */
-interface HistoryCommunicationRequest {
+export interface HistoryCommunicationRequest {
     /**
      * Page number
      */
@@ -28,7 +28,7 @@ interface HistoryCommunicationRequest {
 /**
  * Communication note
  */
-interface HistoryCommunicationNote {
+export interface HistoryCommunicationNote {
     /**
      * Note text
      */
@@ -43,7 +43,7 @@ interface HistoryCommunicationNote {
     agentId: number;
 }
 
-interface HistoryCommunicationInfo extends CommonCommunicationInfo {
+export interface HistoryCommunicationInfo extends CommonCommunicationInfo {
     /**
      * Agent id assigned to communication
      */
@@ -57,7 +57,7 @@ interface HistoryCommunicationInfo extends CommonCommunicationInfo {
 /**
  * Chat message serialization interface
  */
-interface ChatMessageInfo {
+export interface ChatMessageInfo {
     /**
      * Message date in UTC string
      */

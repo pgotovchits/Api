@@ -1,0 +1,7 @@
+src
+.npmrc
+gulpfile.js
+testIndex.js
+tsconfig.json
+tslint.json
+typings.json
