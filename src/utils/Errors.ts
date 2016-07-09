@@ -2,6 +2,49 @@
  * Application Custom errors
  */
 
+export interface RealtimeErrorInterface {
+    /**
+     * Error message
+     */
+    message: string;
+    /**
+     * Action produced error
+     */
+    action: string;
+}
+
+export class RealtimeError extends Error implements RealtimeErrorInterface {
+    /**
+     * Error message
+     */
+    public message: string;
+    /**
+     * Action produced error
+     */
+    public action: string;
+
+    /**
+     * @constructor
+     * @param message
+     * @param action
+     */
+    public constructor(message: string, action: string) {
+        super(message);
+        this.message = message;
+        this.action = action;
+    }
+
+    /**
+     * Convert error to object
+     */
+    public toObject(): RealtimeErrorInterface {
+        return {
+            action: this.action,
+            message: this.message
+        };
+    }
+}
+
 /**
  * Error object interface
  */
@@ -103,10 +146,14 @@ export function isApiError(error: any): error is ApiErrorInterface {
     return (error && error.type);
 }
 
+export function isRealtimeError(error: any): error is RealtimeErrorInterface {
+    return (error && typeof error.action !== "undefined");
+}
+
 /**
  * Error factory. Needed to convert error objects from realtime client to proper error instances
  */
-export function createFromObject(error?: ApiErrorInterface | Error): Error | ApiError | ValidationError | TokenError {
+export function createFromObject(error?: RealtimeErrorInterface | ApiErrorInterface | Error): Error | RealtimeError | ApiError | ValidationError | TokenError {
     if (!error) {
         return new Error();
     }
@@ -118,10 +165,12 @@ export function createFromObject(error?: ApiErrorInterface | Error): Error | Api
             case "TokenError":
                 return new TokenError(error.message, error.url, error.code, error.error);
             case "ValidationError":
-                return new ValidationError(error.url, error.error ? error.error : {} );
+                return new ValidationError(error.url, error.error ? error.error : {});
             default:
                 return new ApiError(error.message, error.url, error.code, error.error);
         }
+    } else if (isRealtimeError(error)) {
+        return new RealtimeError(error.message, error.action);
     } else {
         return new Error(error.message);
     }
