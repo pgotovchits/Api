@@ -5,7 +5,8 @@
   "main": "compiled/index.js",
   "typings": "compiled/index.d.ts",
   "scripts": {
-    "test": "gulp tests"
+    "test": "gulp tests",
+    "prepublish": "gulp clean-build"
   },
   "repository": {
     "type": "git",
