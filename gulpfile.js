@@ -29,11 +29,8 @@ gulp.task("clean", () => {
 
 gulp.task("lint", () => {
     return gulp.src("./src/**/*.ts", { since: gulp.lastRun("lint") })
-        .pipe(tslint({ tslint: require("tslint") }))
-        .pipe(tslint.report("verbose", {
-            summarizeFailureOutput: true,
-            emitError: false
-        }));
+        .pipe(tslint({ tslint: require("tslint"), formatter: "verbose" }))
+        .pipe(tslint.report());
 });
 
 const tsProject = ts.createProject("tsconfig.json", {
