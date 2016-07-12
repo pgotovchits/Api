@@ -16,11 +16,16 @@ class Test extends BaseImmutableRecord {
         return clone;
     }
 
+    public testCloneIfNeed() {
+        return this.cloneIfNeed();
+    }
+
     protected clone(): this {
         const clone = new Test();
         clone._test = this._test;
         return clone as this;
     }
+
 }
 
 describe("immutable/immutableRecord", () => {
@@ -68,6 +73,26 @@ describe("immutable/immutableRecord", () => {
             //noinspection JSUnusedAssignment
             expect(mutatedRecord).to.equal(changed);
             expect(changed).to.not.equal(initialRecord);
+        });
+
+        it("cloneIfNeed should return same instance within mutator", () => {
+            initialRecord.withMutations(mutated => {
+                const clone = mutated.testCloneIfNeed();
+                expect(clone).to.equal(mutated);
+            });
+        });
+    });
+
+    describe("cloneIfNeed", () => {
+        it("Should return same instance if this is mutable", () => {
+            const record = initialRecord.asMutable();
+            const clone = record.testCloneIfNeed();
+            expect(clone).to.equal(record);
+        });
+
+        it("Should return new instance if this is immutable", () => {
+            const clone = initialRecord.testCloneIfNeed();
+            expect(clone).to.not.equal(initialRecord);
         });
     });
 });

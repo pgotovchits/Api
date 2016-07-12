@@ -46,6 +46,14 @@ export abstract class BaseImmutableRecord {
     }
 
     /**
+     * Returns this instance if already mutating or clone of this
+     * @returns {this}
+     */
+    protected cloneIfNeed(): this {
+        return this.isMutating ? this : this.clone();
+    }
+
+    /**
      * Clone record. Should be overridden in implementations
      */
     protected abstract clone(): this;
