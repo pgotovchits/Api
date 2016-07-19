@@ -41,8 +41,21 @@ export interface GetAnalyticsResponsePayload {
          */
         totalPageViews: number;
         /**
-         * Chat graph for period. Each key is day and number is total. Includes totals/missed chats
+         * Chat graph for period. Each key is day of metric and value is object of metric
          */
-        chatGraph: { [key: string]: number };
+        chatGraph: { [key: string]: {
+            /**
+             * Total chats
+             */
+            total: number;
+            /**
+             * Missed chats
+             */
+            missed: number;
+            /**
+             * Answered chats
+             */
+            answered: number;
+        } };
     };
 }
