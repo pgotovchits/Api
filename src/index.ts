@@ -11,6 +11,7 @@ export * from "./interfaces/realtime/response";
 export * from "./interfaces/realtime/user";
 export * from "./interfaces/realtime/visitor";
 export * from "./interfaces/realtime/website";
+export * from "./interfaces/realtime/analytics";
 
 // Events
 export * from "./events/realtimeEvents";
@@ -26,6 +27,7 @@ export * from "./actions/invite/constants";
 export * from "./actions/note/constants";
 export * from "./actions/user/constants";
 export * from "./actions/website/constants";
+export * from "./actions/analytics/constants";
 
 // Immutable stuff
 export * from "./immutable/immutableRecord";
