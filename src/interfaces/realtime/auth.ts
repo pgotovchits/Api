@@ -140,3 +140,13 @@ export interface ValidateEmailRequestPayload {
  * Async validate email response payload
  */
 export interface ValidateEmailResponsePayload { }
+
+/**
+ * Logout request
+ */
+export interface LogoutRequestPayload {}
+
+/**
+ * Logout response
+ */
+export interface LogoutResponsePayload {}

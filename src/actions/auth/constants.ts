@@ -32,3 +32,8 @@ export const LOGIN = "auth/LOGIN";
  */
 export const VALIDATE_EMAIL = "auth/VALIDATE_EMAIL";
 
+/**
+ * User logout action
+ * @type {string}
+ */
+export const LOGOUT = "auth/LOGOUT";
