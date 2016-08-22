@@ -150,3 +150,8 @@ export interface LogoutRequestPayload {}
  * Logout response
  */
 export interface LogoutResponsePayload {}
+
+/**
+ * Logout realtime. Sent to all same connected device identifiers (usually same tabs in the browser)
+ */
+export interface LogoutRealtimePayload {}

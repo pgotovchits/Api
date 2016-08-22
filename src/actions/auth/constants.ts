@@ -37,3 +37,9 @@ export const VALIDATE_EMAIL = "auth/VALIDATE_EMAIL";
  * @type {string}
  */
 export const LOGOUT = "auth/LOGOUT";
+
+/**
+ * Realtime logout action
+ * @type {string}
+ */
+export const REALTIME_LOGOUT = "auth/REALTIME_LOGOUT";
