@@ -14,4 +14,8 @@ export const FRONTEND_UNAUTHENTICATED_REALTIME_EVENT = "@@frontend/unauth-realti
  * Indicates that event is coming from backend
  */
 export const BACKEND_REALTIME_EVENT = "@@backend/realtime";
-
+/**
+ * Indicates that event is coming from visitor app
+ * @type {string}
+ */
+export const VISITOR_REALTIME_EVENT = "@@visitor/realtime";
