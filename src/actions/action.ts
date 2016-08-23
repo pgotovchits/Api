@@ -36,6 +36,7 @@ export function isBaseAction<TPayload>(action: any): action is BaseAction<TPaylo
 
 /**
  * True if action contains another payload (in case of failed/success response of realtime action)
+ * @deprecated
  * @param action
  * @returns {boolean}
  */

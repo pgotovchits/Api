@@ -7,7 +7,6 @@ export * from "./interfaces/realtime/communication";
 export * from "./interfaces/realtime/history";
 export * from "./interfaces/realtime/invite";
 export * from "./interfaces/realtime/note";
-export * from "./interfaces/realtime/response";
 export * from "./interfaces/realtime/user";
 export * from "./interfaces/realtime/visitor";
 export * from "./interfaces/realtime/website";

@@ -1,11 +1,7 @@
-/**
- * Realtime action interface
- */
-
 import { BaseAction, isBaseAction } from "./action";
 
 /**
- * Action interface
+ * Realtime action interface
  */
 export interface RealtimeAction<TPayload> extends BaseAction<TPayload> {
     meta: {
@@ -39,8 +35,43 @@ export interface RealtimeAction<TPayload> extends BaseAction<TPayload> {
 }
 
 /**
+ * Realtime response
+ */
+export interface RealtimeResponse<TPayload> {
+    /**
+     * True if response is error response
+     */
+    error: boolean;
+    
+    /**
+     * Response payload
+     */
+    payload: TPayload | Error;
+}
+
+/**
+ * Realtime response action interface
+ */
+export interface RealtimeResponseAction<TRequestPayload, TResponsePayload> extends RealtimeAction<TRequestPayload> {
+    /**
+     * Original request payload. Being set by node for propagated actions or by client middleware
+     */
+    originalPayload: TResponsePayload;
+}
+
+/**
  * Type guard
+ * @param action
  */
 export function isRealtimeAction<TPayload>(action: any): action is RealtimeAction<TPayload> {
     return (isBaseAction(action) && (typeof action.meta !== "undefined") && action.meta.realtime);
+}
+
+/**
+ * Type guard
+ * @param action
+ * @return {boolean|boolean}
+ */
+export function isRealtimeResponseAction<TRequestPayload, TResponsePayload>(action: any): action is RealtimeResponseAction<TRequestPayload, TResponsePayload> {
+    return (isRealtimeAction(action) && action.originalPayload != null);
 }
