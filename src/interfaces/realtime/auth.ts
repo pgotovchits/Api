@@ -11,6 +11,7 @@
 import { BasicUserInformation } from "./user";
 import { UserWebsiteInfo, WebsiteMemberInfo } from "./website";
 import { WebsiteInviteInfo, UserInviteInfo } from "./invite";
+import { IncomingChatCommunicationInfo, ActiveChatCommunicationInfo } from "./communication";
 /**
  * Signup request
  */
@@ -114,6 +115,14 @@ export interface LoginResponsePayload {
      * Total unread messages for all user websites
      */
     totalUnreadMessages: number;
+    /**
+     * Incoming chats
+     */
+    incomingChats: IncomingChatCommunicationInfo[];
+    /**
+     * Active chats
+     */
+    activeChats: ActiveChatCommunicationInfo[];
 }
 
 /**
