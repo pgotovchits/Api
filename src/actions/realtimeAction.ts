@@ -31,6 +31,10 @@ export interface RealtimeAction<TPayload> extends BaseAction<TPayload> {
          * If omitted then server will not send action updates
          */
         realtimeActionTypes?: [string, string, string];
+        /**
+         * Do not perform action propagation to other user connections
+         */
+        noPropagate?: boolean;
     };
 }
 
