@@ -9,7 +9,8 @@
     "strictNullChecks": true,
     "noEmitOnError": true,
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "types": ["mocha", "chai-subset", "sinon-chai"]
   },
   "exclude": [
     "node_modules",

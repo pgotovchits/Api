@@ -5,7 +5,7 @@ export interface BaseAction<TPayload> {
     /**
      * Action type
      */
-    type: string | number;
+    type: string;
     /**
      * Action payload
      */

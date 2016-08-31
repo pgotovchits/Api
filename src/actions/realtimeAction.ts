@@ -56,11 +56,11 @@ export interface RealtimeResponse<TPayload> {
 /**
  * Realtime response action interface
  */
-export interface RealtimeResponseAction<TRequestPayload, TResponsePayload> extends RealtimeAction<TRequestPayload> {
+export interface RealtimeResponseAction<TRequestPayload, TResponsePayload> extends RealtimeAction<TResponsePayload> {
     /**
      * Original request payload. Being set by node for propagated actions or by client middleware
      */
-    originalPayload: TResponsePayload;
+    originalPayload: TRequestPayload;
 }
 
 /**
@@ -77,5 +77,5 @@ export function isRealtimeAction<TPayload>(action: any): action is RealtimeActio
  * @return {boolean|boolean}
  */
 export function isRealtimeResponseAction<TRequestPayload, TResponsePayload>(action: any): action is RealtimeResponseAction<TRequestPayload, TResponsePayload> {
-    return (isRealtimeAction(action) && action.originalPayload != null);
+    return (isRealtimeAction(action) && typeof (action as any).originalPayload !== undefined);
 }
