@@ -43,3 +43,15 @@ export const LOGOUT = "auth/LOGOUT";
  * @type {string}
  */
 export const REALTIME_LOGOUT = "auth/REALTIME_LOGOUT";
+
+/**
+ * Request to send the email to reset the password
+ * @type {string}
+ */
+export const RESET_PASSWORD_EMAIL_SEND = "auth/RESET_PASSWORD_EMAIL_SEND";
+
+/**
+ * Reset password with code
+ * @type {string}
+ */
+export const RESET_PASSWORD = "auth/RESET_PASSWORD";

@@ -164,3 +164,32 @@ export interface LogoutResponsePayload {}
  * Logout realtime. Sent to all same connected device identifiers (usually same tabs in the browser)
  */
 export interface LogoutRealtimePayload {}
+
+
+/**
+ * Send the email to reset the password
+ */
+export interface ResetPasswordEmailSendRequestPayload {
+    /**
+     * Email to send the password reset
+     */
+    email: string;
+}
+
+/**
+ * Reset password payload
+ */
+export interface ResetPasswordRequestPayload {
+    /**
+     * User email
+     */
+    email: string;
+    /**
+     * Reset code
+     */
+    code: string;
+    /**
+     * New password
+     */
+    password: string;
+}
