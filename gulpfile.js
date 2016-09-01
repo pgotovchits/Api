@@ -33,7 +33,7 @@ gulp.task("lint", () => {
         .pipe(tslint.report());
 });
 
-const tsProject = ts.createProject("tsconfig.json", {
+const tsProject = ts.createProject("tsconfig.build.json", {
     typescript: typescript,
     noEmitOnError: true,
     noEmit: false
