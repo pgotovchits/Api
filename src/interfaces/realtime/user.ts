@@ -75,3 +75,18 @@ export interface UpdateUserRealtimePayload extends BasicUserInformation {}
  * Update user password response
  */
 export interface UpdateUserPasswordResponsePayload {}
+
+/**
+ * Register for push notifications request
+ */
+export interface RegisterForPushNotificationsRequestPayload {
+    /**
+     * Push token
+     */
+    pushToken: string;
+}
+
+/**
+ * Register for push notifications response
+ */
+export interface RegisterForPushNotificationsResponsePayload {}
