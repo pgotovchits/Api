@@ -45,7 +45,7 @@ const tsProject = ts.createProject("tsconfig.build.json", {
 gulp.task("typescript", () => {
     const tsResult = tsProject.src()
         .pipe(gulpSourcemaps.init())
-        .pipe(ts(tsProject))
+        .pipe(tsProject())
         .once("error", function () {
             this.once("finish", () => process.exit(1));
         });
