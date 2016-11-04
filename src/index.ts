@@ -17,6 +17,7 @@ export * from "./actions/invite";
 export * from "./actions/note";
 export * from "./actions/user";
 export * from "./actions/website";
+export * from "./actions/visitor";
 
 // Immutable stuff
 export * from "./immutable/immutableRecord";
