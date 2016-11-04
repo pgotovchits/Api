@@ -101,24 +101,3 @@ export interface ServerRealtimeAction<TType, TPayload> extends BaseAction<TType,
 export function isRealtimeAction<TType, TPayload>(action: any): action is RealtimeAction<TType, TPayload> {
     return (isBaseAction(action) && (typeof action.meta !== "undefined") && action.meta.realtime);
 }
-
-
-/**
- * Realtime response action interface
- * @deprecated Use syncronization actions or RealtimeResponse/RealtimeErrorResponse
- */
-export interface RealtimeResponseAction<TType, TRequestPayload, TResponsePayload> extends RealtimeAction<TType, TResponsePayload> {
-    /**
-     * Original request payload. Being set by node for propagated actions or by client middleware
-     */
-    originalPayload: TRequestPayload;
-}
-/**
- * Type guard
- * @deprecated Use type guards on client sides
- * @param action
- * @return {boolean|boolean}
- */
-export function isRealtimeResponseAction<TType, TRequestPayload, TResponsePayload>(action: any): action is RealtimeResponseAction<TType, TRequestPayload, TResponsePayload> {
-    return (isRealtimeAction(action) && typeof (action as any).originalPayload !== undefined);
-}
