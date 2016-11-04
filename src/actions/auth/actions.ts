@@ -1,17 +1,19 @@
-/**
- * Common payload types for auth realtime actions
- * These may be differ than API backend responses payloads, since API backend could contain additional information for
- * realtime update other website members
- *
- * Suffix request indicates what actions is coming from frontend
- * Suffix response indicates what action is being sent by backend to frontend
- * Suffix realtime indicates what action is being sent by backend to frontend for some realtime updates, not triggered by user request
- */
+import { RealtimeAction, RealtimeErrorResponse, RealtimeResponse, ServerRealtimeAction } from "../realtimeAction";
+import { BasicUserInformation } from "../user";
+import { UserWebsiteInfo, WebsiteMemberInfo } from "../website";
+import { WebsiteInviteInfo, UserInviteInfo } from "../invite";
+import { IncomingChatCommunicationInfo, ActiveChatCommunicationInfo } from "../communication";
+import {
+    LOGIN,
+    LOGOUT,
+    REALTIME_LOGOUT,
+    REALTIME_TOKEN_UPDATE,
+    RESET_PASSWORD,
+    RESET_PASSWORD_EMAIL_SEND,
+    SIGNUP,
+    VALIDATE_EMAIL
+} from "./constants";
 
-import { BasicUserInformation } from "./user";
-import { UserWebsiteInfo, WebsiteMemberInfo } from "./website";
-import { WebsiteInviteInfo, UserInviteInfo } from "./invite";
-import { IncomingChatCommunicationInfo, ActiveChatCommunicationInfo } from "./communication";
 /**
  * Signup request
  */
@@ -51,6 +53,9 @@ export interface SignupResponsePayload {
      */
     token: string;
 }
+
+export type SignupAction = RealtimeAction<typeof SIGNUP, SignupRequestPayload>;
+export type SignupResponse = RealtimeResponse<SignupResponsePayload> | RealtimeErrorResponse;
 
 /**
  * Login by token request
@@ -125,6 +130,9 @@ export interface LoginResponsePayload {
     activeChats: ActiveChatCommunicationInfo[];
 }
 
+export type LoginAction = RealtimeAction<typeof LOGIN, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>
+export type LoginResponse = RealtimeResponse<LoginResponsePayload> | RealtimeErrorResponse;
+
 /**
  * Used by REALTIME_TOKEN_UPDATE notification
  */
@@ -134,6 +142,8 @@ export interface TokenUpdateRealtimePayload {
      */
     token: string;
 }
+
+export type TokenUpdateServerAction = ServerRealtimeAction<typeof REALTIME_TOKEN_UPDATE, TokenUpdateRealtimePayload>;
 
 /**
  * Async validate email request payload
@@ -150,6 +160,9 @@ export interface ValidateEmailRequestPayload {
  */
 export interface ValidateEmailResponsePayload { }
 
+export type ValidateEmailAction = RealtimeAction<typeof VALIDATE_EMAIL, ValidateEmailRequestPayload>;
+export type ValidateEmailResponse = RealtimeResponse<ValidateEmailResponsePayload> | RealtimeErrorResponse;
+
 /**
  * Logout request
  */
@@ -165,6 +178,10 @@ export interface LogoutResponsePayload {}
  */
 export interface LogoutRealtimePayload {}
 
+export type LogoutAction = RealtimeAction<typeof LOGOUT, LogoutRequestPayload>;
+export type LogoutResponse = RealtimeResponse<LogoutResponsePayload> | RealtimeErrorResponse;
+export type LogoutServerAction = ServerRealtimeAction<typeof REALTIME_LOGOUT, LogoutRealtimePayload>;
+
 
 /**
  * Send the email to reset the password
@@ -175,6 +192,9 @@ export interface ResetPasswordEmailSendRequestPayload {
      */
     email: string;
 }
+
+export type SendEmailForPasswordResetAction = RealtimeAction<typeof RESET_PASSWORD_EMAIL_SEND, ResetPasswordEmailSendRequestPayload>;
+export type SendEmailForPasswordResetResponse = RealtimeResponse<void> | RealtimeErrorResponse;
 
 /**
  * Reset password payload
@@ -193,3 +213,6 @@ export interface ResetPasswordRequestPayload {
      */
     password: string;
 }
+
+export type ResetPasswordAction = RealtimeAction<typeof RESET_PASSWORD, ResetPasswordRequestPayload>;
+export type ResetPasswordResponse = RealtimeResponse<void> | RealtimeErrorResponse;

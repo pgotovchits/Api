@@ -1,17 +1,6 @@
 // Utils
 export * from "./utils/Errors";
 
-// Realtime interfaces
-export * from "./interfaces/realtime/auth";
-export * from "./interfaces/realtime/communication";
-export * from "./interfaces/realtime/history";
-export * from "./interfaces/realtime/invite";
-export * from "./interfaces/realtime/note";
-export * from "./interfaces/realtime/user";
-export * from "./interfaces/realtime/visitor";
-export * from "./interfaces/realtime/website";
-export * from "./interfaces/realtime/analytics";
-
 // Events
 export * from "./events/realtimeEvents";
 
@@ -19,14 +8,15 @@ export * from "./events/realtimeEvents";
 
 export * from "./actions/action";
 export * from "./actions/realtimeAction";
-export * from "./actions/auth/constants";
-export * from "./actions/communication/constants";
-export * from "./actions/history/constants";
-export * from "./actions/invite/constants";
-export * from "./actions/note/constants";
-export * from "./actions/user/constants";
-export * from "./actions/website/constants";
-export * from "./actions/analytics/constants";
+export * from "./actions/syncronizationAction";
+export * from "./actions/analytics";
+export * from "./actions/auth";
+export * from "./actions/communication";
+export * from "./actions/history";
+export * from "./actions/invite";
+export * from "./actions/note";
+export * from "./actions/user";
+export * from "./actions/website";
 
 // Immutable stuff
 export * from "./immutable/immutableRecord";

@@ -1,9 +1,4 @@
 /**
- * Shared constants for user actions
- */
-
-
-/**
  * User update action (changes email, name, etc...)
  * @type {string}
  */

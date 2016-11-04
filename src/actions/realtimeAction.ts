@@ -3,7 +3,7 @@ import { BaseAction, isBaseAction } from "./action";
 /**
  * Realtime action interface
  */
-export interface RealtimeAction<TPayload> extends BaseAction<TPayload> {
+export interface RealtimeAction<TType, TPayload> extends BaseAction<TType, TPayload> {
     meta: {
         /**
          * Current user id in application. Being set by middleware
@@ -17,7 +17,7 @@ export interface RealtimeAction<TPayload> extends BaseAction<TPayload> {
         /**
          * If true sends action to realtime server
          */
-        realtime: boolean;
+        realtime: true;
         /**
          * True if action is optimistic and should use optimistic ui updates
          */
@@ -39,43 +39,86 @@ export interface RealtimeAction<TPayload> extends BaseAction<TPayload> {
 }
 
 /**
- * Realtime response
+ * Realtime success response
  */
 export interface RealtimeResponse<TPayload> {
     /**
-     * True if response is error response
+     * Error flag
+     * 
+     * @type null
+     * @memberOf RealtimeResponse
      */
-    error: boolean;
-    
+    error: false;
     /**
      * Response payload
+     * 
+     * @type {TPayload}
+     * @memberOf RealtimeResponse
      */
-    payload: TPayload | Error;
+    payload: TPayload;
 }
 
 /**
- * Realtime response action interface
+ * Realtime error response
+ * 
+ * @export
+ * @interface RealtimeErrorResponse
  */
-export interface RealtimeResponseAction<TRequestPayload, TResponsePayload> extends RealtimeAction<TResponsePayload> {
+export interface RealtimeErrorResponse {
+    /**
+     * Error flag
+     * 
+     * @type {boolean}
+     * @memberOf RealtimeErrorResponse
+     */
+    error: true;
+    /**
+     * Error object
+     * 
+     * @type {Error}
+     * @memberOf RealtimeErrorResponse
+     */
+    payload: Error;
+}
+
+/**
+ * Action sent by server to clients (to whole team for example) and triggered by other action/sequence,
+ * for example REALTIME_TOKEN_UPDATE/CHAT_WAS_CANCELED/etc...
+ * For now it's same as BaseAction, but we may want to add some stuff later
+ * 
+ * @export
+ * @interface ServerRealtimeAction
+ * @extends {BaseAction<TPayload>}
+ * @template TPayload
+ */
+export interface ServerRealtimeAction<TType, TPayload> extends BaseAction<TType, TPayload> {
+}
+
+/**
+ * Type guard
+ * @param action
+ */
+export function isRealtimeAction<TType, TPayload>(action: any): action is RealtimeAction<TType, TPayload> {
+    return (isBaseAction(action) && (typeof action.meta !== "undefined") && action.meta.realtime);
+}
+
+
+/**
+ * Realtime response action interface
+ * @deprecated Use syncronization actions or RealtimeResponse/RealtimeErrorResponse
+ */
+export interface RealtimeResponseAction<TType, TRequestPayload, TResponsePayload> extends RealtimeAction<TType, TResponsePayload> {
     /**
      * Original request payload. Being set by node for propagated actions or by client middleware
      */
     originalPayload: TRequestPayload;
 }
-
 /**
  * Type guard
- * @param action
- */
-export function isRealtimeAction<TPayload>(action: any): action is RealtimeAction<TPayload> {
-    return (isBaseAction(action) && (typeof action.meta !== "undefined") && action.meta.realtime);
-}
-
-/**
- * Type guard
+ * @deprecated Use type guards on client sides
  * @param action
  * @return {boolean|boolean}
  */
-export function isRealtimeResponseAction<TRequestPayload, TResponsePayload>(action: any): action is RealtimeResponseAction<TRequestPayload, TResponsePayload> {
+export function isRealtimeResponseAction<TType, TRequestPayload, TResponsePayload>(action: any): action is RealtimeResponseAction<TType, TRequestPayload, TResponsePayload> {
     return (isRealtimeAction(action) && typeof (action as any).originalPayload !== undefined);
 }

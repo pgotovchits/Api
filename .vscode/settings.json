@@ -7,5 +7,6 @@
         "**/.DS_Store": true,
         "**/.idea": true,
         "**/compiled": true
-    }
+    },
+    "typescriptHero.resolver.pathStringDelimiter": "\""
 }

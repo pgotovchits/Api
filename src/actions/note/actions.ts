@@ -1,6 +1,12 @@
-/**
- * Communication note interfaces
- */
+import { RealtimeAction, RealtimeErrorResponse, RealtimeResponse, ServerRealtimeAction } from "../realtimeAction";
+import {
+    CHANGE_NOTE,
+    CREATE_NOTE,
+    DELETE_NOTE,
+    REALTIME_NOTE_CHANGED,
+    REALTIME_NOTE_CREATED,
+    REALTIME_NOTE_DELETED
+} from "./constants";
 
 /**
  * Create note request
@@ -48,6 +54,10 @@ export interface NoteWasCreatedRealtimePayload {
     websiteId: number;
 }
 
+export type CreateNoteAction = RealtimeAction<typeof CREATE_NOTE, CreateNoteRequestPayload>;
+export type CreateNoteResponse = RealtimeResponse<CreateNoteResponsePayload> | RealtimeErrorResponse;
+export type CreateNoteServerAction = ServerRealtimeAction<typeof REALTIME_NOTE_CREATED, NoteWasCreatedRealtimePayload>;
+
 /**
  * Delete note request
  */
@@ -82,6 +92,10 @@ export interface NoteWasDeletedRealtimePayload {
      */
     websiteId: number;
 }
+
+export type DeleteNoteAction = RealtimeAction<typeof DELETE_NOTE, DeleteNoteRequestPayload>;
+export type DeleteNoteResponse = RealtimeResponse<DeleteNoteResponsePayload> | RealtimeErrorResponse;
+export type DeleteNoteServerAction = ServerRealtimeAction<typeof REALTIME_NOTE_DELETED, NoteWasDeletedRealtimePayload>;
 
 /**
  * Change note request
@@ -125,3 +139,7 @@ export interface NoteWasChangedRealtimePayload {
      */
     note: string;
 }
+
+export type ChangeNoteAction = RealtimeAction<typeof CHANGE_NOTE, ChangeNoteRequestPayload>;
+export type ChangeNoteResponse = RealtimeResponse<ChangeNoteResponsePayload> | RealtimeErrorResponse;
+export type ChangeNoteServerAction = ServerRealtimeAction<typeof REALTIME_NOTE_CHANGED, NoteWasChangedRealtimePayload>;

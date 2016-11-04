@@ -1,55 +1,15 @@
-/**
- * Common payload types for invite realtime actions
- * These may be differ than API backend responses payloads, since API backend could contain additional information for
- * realtime update other website members
- *
- * Suffix request indicates what actions is coming from frontend
- * Suffix response indicates what action is being sent by backend to frontend
- * Suffix realtime indicates what action is being sent by backend to frontend for some realtime updates, not triggered by user request
- */
-
+import { RealtimeAction, RealtimeErrorResponse, RealtimeResponse, ServerRealtimeAction } from "../realtimeAction";
 // TODO asvetliakov: Having two invite interfaces is not good
-import { UserWebsiteInfo, WebsiteMemberInfo } from "./website";
-import { BasicUserInformation } from "./user";
-/**
- * User invite information
- */
-export interface UserInviteInfo {
-    /**
-     * Invite code
-     */
-    code: string;
-    /**
-     * Linked website to this invite
-     */
-    websiteId: number;
-    /**
-     * Website name
-     */
-    websiteName: string;
-}
-
-/**
- * Invite information
- */
-export interface WebsiteInviteInfo {
-    /**
-     * Invite code
-     */
-    code: string;
-    /**
-     * Invite email
-     */
-    email: string;
-    /**
-     * Linked website to this invite
-     */
-    websiteId: number;
-    /**
-     * User id if invite was linked with existing user, otherwise undefined
-     */
-    userId?: number;
-}
+import { UserWebsiteInfo, WebsiteMemberInfo } from "../website";
+import { BasicUserInformation } from "../user";
+import { UserInviteInfo, WebsiteInviteInfo } from "./interfaces";
+import {
+    ACCEPT_INVITE,
+    DECLINE_INVITE,
+    GET_INVITE_INFO,
+    REALTIME_INCOMING_INVITE,
+    REALTIME_INVITE_CANCLED
+} from "./constants";
 
 /**
  * Get invite information request
@@ -70,6 +30,9 @@ export interface GetInviteInfoResponsePayload {
      */
     name: string;
 }
+
+export type GetInviteInfoAction = RealtimeAction<typeof GET_INVITE_INFO, GetInviteInfoRequestPayload>;
+export type GetInviteInfoResponse = RealtimeResponse<GetInviteInfoResponsePayload> | RealtimeErrorResponse;
 
 /**
  * Accept invite request
@@ -107,6 +70,9 @@ export interface AcceptInviteResponsePayload {
     members: BasicUserInformation[];
 }
 
+export type AcceptInviteAction = RealtimeAction<typeof ACCEPT_INVITE, AcceptInviteRequestPayload>;
+export type AcceptInviteResponse = RealtimeResponse<AcceptInviteResponsePayload> | RealtimeErrorResponse;
+
 /**
  * Decline invite request
  */
@@ -124,10 +90,16 @@ export interface DeclineInviteResponsePayload {
     
 }
 
+export type DeclineInviteAction = RealtimeAction<typeof DECLINE_INVITE, DeclineInviteRequestPayload>;
+export type DeclineInviteResponse = RealtimeResponse<DeclineInviteResponsePayload> | RealtimeErrorResponse;
+
+
 /**
  * New realtime invite
  */
 export interface IncomingInviteRealtimePayload extends UserInviteInfo { }
+
+export type IncomingInviteServerAction = ServerRealtimeAction<typeof REALTIME_INCOMING_INVITE, IncomingInviteRealtimePayload>;
 
 /**
  * User invite was canceled
@@ -142,3 +114,5 @@ export interface InviteWasCancledRealtimePayload {
      */
     websiteId: number;
 }
+
+export type InviteCanceledServerAction = ServerRealtimeAction<typeof REALTIME_INVITE_CANCLED, InviteWasCancledRealtimePayload>;

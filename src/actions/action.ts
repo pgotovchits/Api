@@ -1,11 +1,11 @@
 /**
  * Base action
  */
-export interface BaseAction<TPayload> {
+export interface BaseAction<TType, TPayload> {
     /**
      * Action type
      */
-    type: string;
+    type: TType;
     /**
      * Action payload
      */
@@ -30,7 +30,7 @@ export interface KeyMapPayload {
 /**
  * Type guard
  */
-export function isBaseAction<TPayload>(action: any): action is BaseAction<TPayload> {
+export function isBaseAction<TType, TPayload>(action: any): action is BaseAction<TType, TPayload> {
     return (typeof action === "object" && typeof action.type !== "undefined");
 }
 
@@ -40,6 +40,6 @@ export function isBaseAction<TPayload>(action: any): action is BaseAction<TPaylo
  * @param action
  * @returns {boolean}
  */
-export function hasOriginalPayload<TPayload>(action: any): action is BaseAction<TPayload> & { originalPayload: TPayload } {
+export function hasOriginalPayload<TType, TPayload>(action: any): action is BaseAction<TType, TPayload> & { originalPayload: TPayload } {
     return (typeof action === "object" && typeof action.originalPayload !== "undefined");
 }

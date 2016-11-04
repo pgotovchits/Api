@@ -1,73 +1,19 @@
-import { VisitorInfoInterface } from "./visitor";
-export type SocialProfileType = "facebook" | "googleplus" | "instagram" | "twitter";
-
-export interface CommonCommunicationInfo {
-    /**
-     * Communication UUID
-     */
-    id: string;
-    /**
-     * Website id
-     */
-    websiteId: number;
-    /**
-     * Communication started time in UTC string
-     */
-    startTime: string;
-    /**
-     * Visitor information
-     */
-    visitor: VisitorInfoInterface;
-}
-
-/**
- * Incoming chat communication info
- */
-export interface IncomingChatCommunicationInfo extends CommonCommunicationInfo {
-    /**
-     * Chat status
-     */
-    status: "incoming";
-}
-
-/**
- * Active chat communication info
- */
-export interface ActiveChatCommunicationInfo extends CommonCommunicationInfo {
-    /**
-     * Chat answered time
-     */
-    answeredTime: string;
-    /**
-     * Chat answered agent
-     */
-    agentId: number;
-    /**
-     * Chat status
-     */
-    status: "active";
-    /**
-     * Messages
-     */
-    messages: {
-        /**
-         * Chat message text
-         */
-        message: string;
-        /**
-         * Message date as UTC string
-         */
-        date: string;
-        /**
-         * Chat message user type
-         */
-        userType: "visitor" | "agent";
-        /**
-         * User id. Number for agents, string for visitor
-         */
-        userId: number | string;
-    }[];
-}
+import {
+    ANSWER_CHAT,
+    CANCEL_CHAT,
+    CREATE_CHAT,
+    CREATE_MESSAGE,
+    END_CHAT,
+    REALTIME_CHAT_ANSWERED,
+    REALTIME_CHAT_CANCELED,
+    REALTIME_CHAT_ENDED,
+    REALTIME_CHAT_UPDATED,
+    REALTIME_CREATE_CHAT,
+    REALTIME_NEW_MESSAGE,
+    UPDATE_CHAT
+} from "./constants";
+import { RealtimeAction, RealtimeErrorResponse, RealtimeResponse, ServerRealtimeAction } from "../realtimeAction";
+import { CommonCommunicationInfo, CancellationType, ChatUpdateType } from "./interfaces";
 
 /**
  * Create chat request
@@ -115,7 +61,23 @@ export interface CreateChatResponsePayload {
 export interface CreateChatRealtimePayload extends CommonCommunicationInfo {
 }
 
-export type CancellationType = "request" | "timeout" | "leave";
+export type CreateChatAction = RealtimeAction<typeof CREATE_CHAT, CreateChatRequestPayload>;
+export type CreateChatResponse = RealtimeResponse<CreateChatResponsePayload> | RealtimeErrorResponse;
+export type CreateChatServerAction = ServerRealtimeAction<typeof REALTIME_CREATE_CHAT, CreateChatRealtimePayload>;
+
+
+
+/**
+ * Explicit cancel chat request action
+ */
+export interface CancelChatRequestPayload {
+    /**
+     * Chat UUID
+     */
+    id: string;
+}
+
+export interface CancelChatResponsePayload {}
 
 /**
  * Chat was canceled for some reason
@@ -135,32 +97,9 @@ export interface ChatWasCanceledRealtimePayload {
     reason: CancellationType;
 }
 
-/**
- * Explicit cancel chat request action
- */
-export interface CancelChatRequestPayload {
-    /**
-     * Chat UUID
-     */
-    id: string;
-}
-
-export interface CancelChatResponsePayload {}
-
-
-/**
- * Chat ended payload
- */
-export interface ChatWasEndedRealtimePayload {
-    /**
-     * Chat UUID
-     */
-    id: string;
-    /**
-     * Website id
-     */
-    websiteId: number;
-}
+export type CancelChatAction = RealtimeAction<typeof CANCEL_CHAT, CancelChatRequestPayload>;
+export type CancelChatResponse = RealtimeResponse<CancelChatResponsePayload> | RealtimeErrorResponse;
+export type CancelChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_CANCELED, ChatWasCanceledRealtimePayload>;
 
 /**
  * Chat end request both for visitor & agent
@@ -176,6 +115,24 @@ export interface EndChatRequestPayload {
  * Chat end response
  */
 export interface EndChatResponsePayload {}
+
+/**
+ * Chat ended payload
+ */
+export interface ChatWasEndedRealtimePayload {
+    /**
+     * Chat UUID
+     */
+    id: string;
+    /**
+     * Website id
+     */
+    websiteId: number;
+}
+
+export type EndChatAction = RealtimeAction<typeof END_CHAT, EndChatRequestPayload>;
+export type EndChatResponse = RealtimeResponse<EndChatResponsePayload> | RealtimeErrorResponse;
+export type EndChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_ENDED, ChatWasEndedRealtimePayload>;
 
 /**
  * Answer chat request. Valid only for agent
@@ -218,7 +175,10 @@ export interface ChatWasAnsweredRealtimePayload {
     agentLastName: string;
 }
 
-export type ChatUpdateType = "message" | "typing";
+export type AnswerChatAction = RealtimeAction<typeof ANSWER_CHAT, AnswerChatRequestPayload>;
+export type AnswerChatResponse = RealtimeResponse<AnswerChatResponsePayload> | RealtimeErrorResponse;
+export type AnswerChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_ANSWERED, ChatWasAnsweredRealtimePayload>;
+
 
 /**
  * Action to update chat room: new message or typing indicator
@@ -272,6 +232,10 @@ export interface ChatWasUpdatedRealtimePayload extends UpdateChatRequestPayload 
     date: string;
 }
 
+export type UpdateChatAction = RealtimeAction<typeof UPDATE_CHAT, UpdateChatRequestPayload>;
+export type UpdateChatResponse = RealtimeResponse<UpdateChatResponsePayload> | RealtimeErrorResponse;
+export type UpdateChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_UPDATED, ChatWasUpdatedRealtimePayload>;
+
 /**
  * Create message request
  */
@@ -312,3 +276,7 @@ export interface CreateMessageRealtimePayload extends CommonCommunicationInfo {
      */
     message: string;
 }
+
+export type CreateMessageAction = RealtimeAction<typeof CREATE_MESSAGE, CreateMessageRequestPayload>;
+export type CreateMessageResponse = RealtimeResponse<CreateMessageResponsePayload> | RealtimeErrorResponse;
+export type CreateMessageServerAction = ServerRealtimeAction<typeof REALTIME_NEW_MESSAGE, CreateMessageRealtimePayload>;
