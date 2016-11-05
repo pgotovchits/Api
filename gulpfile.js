@@ -51,6 +51,7 @@ gulp.task("typescript", () => {
         });
 
     return merge([
+        gulp.src(["src/utils/ExtendableError.*"], { base: "src/" }).pipe(gulp.dest("compiled/")),
         tsResult.js.pipe(gulpSourcemaps.write(
             '.',
             {
@@ -76,7 +77,7 @@ gulp.task("clean-build", gulp.series("clean", "build"));
 
 // Run all tests
 gulp.task("tests", () => {
-    return gulp.src(["compiled/**/*_Spec.js"], { read: false })
+    return gulp.src(["src/**/*_Spec.ts"], { read: false })
         .pipe(gulpMocha({
             require: ["./testIndex.js"]
         }))

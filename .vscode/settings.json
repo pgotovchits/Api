@@ -5,7 +5,15 @@
         "**/.svn": true,
         "**/.hg": true,
         "**/.DS_Store": true,
-        "**/.idea": true,
+        "**/.idea": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/compiled": true
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
         "**/compiled": true
     },
     "typescriptHero.resolver.pathStringDelimiter": "\""

@@ -6,7 +6,6 @@ const chaiSubset = require("chai-subset");
 // const sourceMapSupport = require("source-map-support");
 
 const compilerOptions = require("./tsconfig.json").compilerOptions;
-delete compilerOptions.lib;
 compilerOptions.noEmitOnError = false;
 
 require("ts-node").register({

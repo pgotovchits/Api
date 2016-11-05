@@ -1,3 +1,4 @@
+import ExtendableError from "./ExtendableError";
 /**
  * Application Custom errors
  */
@@ -13,7 +14,7 @@ export interface RealtimeErrorInterface {
     action: string;
 }
 
-export class RealtimeError extends Error implements RealtimeErrorInterface {
+export class RealtimeError extends ExtendableError implements RealtimeErrorInterface {
     /**
      * Error message
      */
@@ -22,6 +23,13 @@ export class RealtimeError extends Error implements RealtimeErrorInterface {
      * Action produced error
      */
     public action: string;
+    /**
+     * Error name
+     * 
+     * @type {string}
+     * @memberOf RealtimeError
+     */
+    public name: string = "RealtimeError";
 
     /**
      * @constructor
@@ -32,6 +40,11 @@ export class RealtimeError extends Error implements RealtimeErrorInterface {
         super(message);
         this.message = message;
         this.action = action;
+        if (typeof (Error as any).captureStackTrace === "function") {
+            (Error as any).captureStackTrace(this, this.constructor);
+        } else {
+            this.stack = (new Error()).stack;
+        }
     }
 
     /**
@@ -44,6 +57,7 @@ export class RealtimeError extends Error implements RealtimeErrorInterface {
         };
     }
 }
+
 
 /**
  * Error object interface
@@ -76,7 +90,7 @@ export interface ApiErrorInterface {
 /**
  * Generic API error is base for other custom errors and represent unsuccessful HTTP api status code
  */
-export class ApiError extends Error implements ApiErrorInterface {
+export class ApiError extends ExtendableError implements ApiErrorInterface {
     /**
      * Error message
      */
@@ -97,6 +111,13 @@ export class ApiError extends Error implements ApiErrorInterface {
      * Error string type
      */
     public type: string = "ApiError";
+    /**
+     * Error name
+     * 
+     * @type {string}
+     * @memberOf ApiError
+     */
+    public name: string = "ApiError";
 
     /**
      * @constructor
@@ -108,6 +129,11 @@ export class ApiError extends Error implements ApiErrorInterface {
         this.url = url;
         this.code = code;
         this.error = error;
+        if (typeof (Error as any).captureStackTrace === "function") {
+            (Error as any).captureStackTrace(this, this.constructor);
+        } else {
+            this.stack = (new Error()).stack;
+        }
     }
 
     /**
@@ -124,12 +150,14 @@ export class ApiError extends Error implements ApiErrorInterface {
     }
 }
 
+
 /**
  * Token error represent status code 401 or 400 and indicates that provided token is not valid.
  * Usually app should redirect to /login after it
  */
 export class TokenError extends ApiError {
     public type: string = "TokenError";
+    public name: string = "TokenError";
 }
 
 /**
@@ -137,6 +165,7 @@ export class TokenError extends ApiError {
  */
 export class ValidationError extends ApiError {
     public type: string = "ValidationError";
+    public name: string = "ValidationError";
     public constructor(url: string, error: Object) {
         super("Validation error", url, 422, error);
     }

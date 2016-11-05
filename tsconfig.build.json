@@ -14,6 +14,7 @@
   "exclude": [
     "node_modules",
     "compiled",
-    "**/*_Spec.*"
+    "**/*_Spec.*",
+    "**/ExtendableError.*"
   ]
 }
