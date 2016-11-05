@@ -1,3 +1,4 @@
+import { ApiErrorInterface, RealtimeErrorInterface } from "../utils/Errors";
 import { BaseAction, isBaseAction } from "./action";
 
 /**
@@ -79,6 +80,31 @@ export interface RealtimeErrorResponse {
      * @memberOf RealtimeErrorResponse
      */
     payload: Error;
+}
+
+/**
+ * Serialized error response.
+ * We can't send RealtimeErrorResponse from websockets directly, since the class type of error payload will be lost
+ * Instead we'll recreate error payload on client side
+ * 
+ * @export
+ * @interface SerializedRealtimeErrorResponse
+ */
+export interface SerializedRealtimeErrorResponse {
+    /**
+     * Error flag
+     * 
+     * @type null
+     * @memberOf SerializedRealtimeErrorResponse
+     */
+    error: true;
+    /**
+     * Error payload converted to object
+     * 
+     * @type {(ApiErrorInterface | RealtimeErrorInterface)}
+     * @memberOf SerializedRealtimeErrorResponse
+     */
+    payload: ApiErrorInterface | RealtimeErrorInterface;
 }
 
 /**

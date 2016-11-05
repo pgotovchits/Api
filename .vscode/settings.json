@@ -16,5 +16,15 @@
         "**/.git/objects/**": true,
         "**/compiled": true
     },
-    "typescriptHero.resolver.pathStringDelimiter": "\""
+    "typescriptHero.resolver.pathStringDelimiter": "\"",
+    "typescriptHero.resolver.ignorePatterns": [
+        "typescript",
+        "tslint",
+        "node_modules/typings",
+        "node_modules/typings-core",
+        "build",
+        "out",
+        "dist",
+        "compiled"
+    ]
 }
