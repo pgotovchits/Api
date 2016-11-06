@@ -5,3 +5,4 @@ compiled
 .idea
 .config
 .env
+npm-debug.log
