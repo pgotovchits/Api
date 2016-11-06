@@ -1,3 +1,4 @@
+import { ApiErrorInterface, RealtimeErrorInterface } from "../utils/Errors";
 import { BaseAction } from "./action";
 
 /**
@@ -45,7 +46,7 @@ export interface SyncronizationResponseAction<TType, TOriginalPayload, TResponse
     originalPayload: TOriginalPayload;
 }
 
-export interface SyncronizationErrorResponseAction<TType, TOriginalPayload> extends SyncronizationAction<TType, Error> {
+export interface SyncronizationErrorResponseAction<TType, TOriginalPayload> extends SyncronizationAction<TType, ApiErrorInterface | RealtimeErrorInterface> {
     /**
      * Error flag
      * 
