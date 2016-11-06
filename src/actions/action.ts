@@ -17,7 +17,7 @@ export interface BaseAction<TType, TPayload> {
     /**
      * Action meta
      */
-    meta?: any;
+    meta?: {};
 }
 
 /**
