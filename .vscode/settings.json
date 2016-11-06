@@ -13,8 +13,7 @@
         "**/compiled": true
     },
     "files.watcherExclude": {
-        "**/.git/objects/**": true,
-        "**/compiled": true
+        "**/.git/objects/**": true
     },
     "typescriptHero.resolver.pathStringDelimiter": "\"",
     "typescriptHero.resolver.ignorePatterns": [

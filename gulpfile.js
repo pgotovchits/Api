@@ -24,7 +24,7 @@ if (process.env.VAGRANT) {
 }
 
 gulp.task("clean", () => {
-    return del("compiled/**", { dot: true });
+    return del("./compiled/**", { dot: true });
 });
 
 gulp.task("lint", () => {
