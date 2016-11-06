@@ -1,3 +1,4 @@
+import { ApiErrorInterface, RealtimeErrorInterface } from "../../utils/Errors";
 import { RealtimeAction, RealtimeErrorResponse, RealtimeResponse, ServerRealtimeAction } from "../realtimeAction";
 import { BasicUserInformation } from "../user";
 import { UserWebsiteInfo, WebsiteMemberInfo } from "../website";
@@ -8,6 +9,7 @@ import {
     LOGOUT,
     REALTIME_LOGOUT,
     REALTIME_TOKEN_UPDATE,
+    REALTIME_TOKEN_UPDATE_FAILED,
     RESET_PASSWORD,
     RESET_PASSWORD_EMAIL_SEND,
     SIGNUP,
@@ -144,6 +146,7 @@ export interface TokenUpdateRealtimePayload {
 }
 
 export type TokenUpdateServerAction = ServerRealtimeAction<typeof REALTIME_TOKEN_UPDATE, TokenUpdateRealtimePayload>;
+export type TokenUpdateFailedServerAction = ServerRealtimeAction<typeof REALTIME_TOKEN_UPDATE_FAILED, ApiErrorInterface | RealtimeErrorInterface>;
 
 /**
  * Async validate email request payload
