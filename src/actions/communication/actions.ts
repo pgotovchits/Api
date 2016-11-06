@@ -97,7 +97,7 @@ export interface ChatWasCanceledRealtimePayload {
     reason: CancellationType;
 }
 
-export type CancelChatAction = RealtimeAction<typeof CANCEL_CHAT, CancelChatRequestPayload>;
+export type CancelChatAction = RealtimeAction<typeof CANCEL_CHAT, CancelChatRequestPayload | void>;
 export type CancelChatResponse = RealtimeResponse<CancelChatResponsePayload> | RealtimeErrorResponse;
 export type CancelChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_CANCELED, ChatWasCanceledRealtimePayload>;
 
