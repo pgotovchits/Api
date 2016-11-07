@@ -2,14 +2,12 @@ import { ApiErrorInterface, RealtimeErrorInterface } from "../utils/Errors";
 import { BaseAction } from "./action";
 
 /**
- * This action is being sent to other user connections for request
+ * Attributes specific to syncronization actions
  * 
  * @export
- * @interface SyncronizationAction
- * @extends {BaseAction<TPayload>}
- * @template TPayload
+ * @interface SyncronizationMetaAttributes
  */
-export interface SyncronizationAction<TType, TPayload> extends BaseAction<TType, TPayload> {
+export interface SyncronizationMetaAttributes {
     meta: {
         /**
          * Current user id which is syncronizing
@@ -18,6 +16,17 @@ export interface SyncronizationAction<TType, TPayload> extends BaseAction<TType,
          */
         currentUserId: number;
     };
+}
+
+/**
+ * This action is being sent to other user connections for request
+ * 
+ * @export
+ * @interface SyncronizationAction
+ * @extends {BaseAction<TPayload>}
+ * @template TPayload
+ */
+export interface SyncronizationAction<TType, TPayload> extends BaseAction<TType, TPayload>, SyncronizationMetaAttributes {
 }
 
 /**
@@ -46,7 +55,24 @@ export interface SyncronizationResponseAction<TType, TOriginalPayload, TResponse
     originalPayload: TOriginalPayload;
 }
 
-export interface SyncronizationErrorResponseAction<TType, TOriginalPayload> extends SyncronizationAction<TType, ApiErrorInterface | RealtimeErrorInterface> {
+/**
+ * This action is being sent to other user connections on failed response
+ * NOTE: not inherting from BaseErrorAction/BaseAction since we need to discriminate by error property
+ * 
+ * @export
+ * @interface SyncronizationErrorResponseAction
+ * @extends {SyncronizationMetaAttributes}
+ * @template TType
+ * @template TOriginalPayload
+ */
+export interface SyncronizationErrorResponseAction<TType, TOriginalPayload> extends SyncronizationMetaAttributes {
+    /**
+     * Type
+     * 
+     * @type {TType}
+     * @memberOf SyncronizationErrorResponseAction
+     */
+    type: TType;
     /**
      * Error flag
      * 
@@ -54,6 +80,13 @@ export interface SyncronizationErrorResponseAction<TType, TOriginalPayload> exte
      * @memberOf SyncronizationErrorResponseAction
      */
     error: true;
+    /**
+     * Error payload
+     * 
+     * @type {(ApiErrorInterface | RealtimeErrorInterface)}
+     * @memberOf SyncronizationErrorResponseAction
+     */
+    payload: ApiErrorInterface | RealtimeErrorInterface;
     /**
      * Original request payload
      * 

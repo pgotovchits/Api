@@ -13,11 +13,11 @@ export interface BaseAction<TType, TPayload> {
     /**
      * True if action is error
      */
-    error?: boolean;
+    error: false;
     /**
      * Action meta
      */
-    meta?: {};
+    // meta?: any;
 }
 
 /**
@@ -28,7 +28,15 @@ export interface BaseAction<TType, TPayload> {
  * @extends {BaseAction<TType, Error>}
  * @template TType
  */
-export interface BaseErrorAction<TType> extends BaseAction<TType, Error> {
+export interface BaseErrorAction<TType> {
+    /**
+     * Action type
+     */
+    type: TType;
+    /**
+     * Action payload
+     */
+    payload: Error;
     /**
      * Error flag
      * 
@@ -36,11 +44,36 @@ export interface BaseErrorAction<TType> extends BaseAction<TType, Error> {
      * @memberOf BaseErrorAction
      */
     error: true;
+    /**
+     * Action meta
+     * 
+     * @type {any}
+     * @memberOf BaseErrorAction
+     */
+    // meta?: any;
 }
 
 /**
- * Type guard
+ * Check if action is BaseAction
+ * 
+ * @export
+ * @template TType
+ * @template TPayload
+ * @param {*} action
+ * @returns {action is BaseAction<TType, TPayload>}
  */
 export function isBaseAction<TType, TPayload>(action: any): action is BaseAction<TType, TPayload> {
-    return (typeof action === "object" && typeof action.type !== "undefined");
+    return (typeof action === "object" && typeof action.type !== "undefined" && !action.error);
+}
+
+/**
+ * Check if action is BaseErrorAction
+ * 
+ * @export
+ * @template TType
+ * @param {*} action
+ * @returns {action is BaseErrorAction<TType>}
+ */
+export function isBaseErrorAction<TType>(action: any): action is BaseErrorAction<TType> {
+    return (typeof action === "object" && typeof action.type !== "undefined" && action.error);
 }

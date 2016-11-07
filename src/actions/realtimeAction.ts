@@ -125,5 +125,5 @@ export interface ServerRealtimeAction<TType, TPayload> extends BaseAction<TType,
  * @param action
  */
 export function isRealtimeAction<TType, TPayload>(action: any): action is RealtimeAction<TType, TPayload> {
-    return (isBaseAction(action) && (typeof action.meta !== "undefined") && (action.meta as any).realtime);
+    return (isBaseAction(action) && (typeof (action as any).meta !== "undefined") && ((action as any).meta as any).realtime);
 }
