@@ -1,4 +1,4 @@
-import { RealtimeAction, RealtimeErrorResponse, RealtimeResponse, ServerRealtimeAction } from "../realtimeAction";
+import { RealtimeAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import {
     HISTORY_GET_CHAT,
     HISTORY_GET_CHATS,
@@ -28,7 +28,9 @@ export interface GetChatsResponsePayload {
 }
 
 export type GetChatsAction = RealtimeAction<typeof HISTORY_GET_CHATS, GetChatsRequestPayload>;
-export type GetChatsResponse = RealtimeResponse<GetChatsResponsePayload> | RealtimeErrorResponse;
+export type GetChatsPending<T> = RealtimeAction<T, GetChatsRequestPayload>;
+export type GetChatsSuccess<T> = RealtimeSuccessResponseAction<T, GetChatsResponsePayload>;
+export type GetChatsFailed<T> = RealtimeErrorResponseAction<T>;
 
 /**
  * Get full single chat information
@@ -46,7 +48,9 @@ export interface GetChatFullRequestPayload {
 export interface GetChatFullResponsePayload extends ChatHistoryCommunicationInfo {}
 
 export type GetChatFullAction = RealtimeAction<typeof HISTORY_GET_CHAT, GetChatFullRequestPayload>;
-export type GetChatFullResponse = RealtimeResponse<GetChatFullResponsePayload> | RealtimeErrorResponse;
+export type GetChatFullPending<T> = RealtimeAction<T, GetChatFullRequestPayload>;
+export type GetChatFullSuccess<T> = RealtimeSuccessResponseAction<T, GetChatFullResponsePayload>;
+export type GetChatFullFailed<T> = RealtimeErrorResponseAction<T>;
 
 /**
  * Get messages history request
@@ -68,7 +72,9 @@ export interface GetMessagesResponsePayload {
 }
 
 export type GetMessagesAction = RealtimeAction<typeof HISTORY_GET_MESSAGES, GetMessagesRequestPayload>;
-export type GetMessagesResponse = RealtimeResponse<GetMessagesResponsePayload> | RealtimeErrorResponse;
+export type GetMessagesPending<T> = RealtimeAction<T, GetMessagesRequestPayload>;
+export type GetMessagesSuccess<T> = RealtimeSuccessResponseAction<T, GetMessagesResponsePayload>;
+export type GetMessagesFailed<T> = RealtimeErrorResponseAction<T>;
 
 /**
  * Get single message full information
@@ -86,7 +92,9 @@ export interface GetMessageFullRequestPayload {
 export interface GetMessageFullResponsePayload extends MessageHistoryCommunicationInfo {}
 
 export type GetMessageFullAction = RealtimeAction<typeof HISTORY_GET_MESSAGE, GetMessageFullRequestPayload>;
-export type GetMessageFullResponse = RealtimeResponse<GetMessageFullResponsePayload> | RealtimeErrorResponse;
+export type GetMessageFullPending<T> = RealtimeAction<T, GetMessageFullRequestPayload>;
+export type GetMessageFullSuccess<T> = RealtimeSuccessResponseAction<T, GetMessageFullResponsePayload>;
+export type GetMessageFullFailed<T> = RealtimeErrorResponseAction<T>;
 
 
 /**

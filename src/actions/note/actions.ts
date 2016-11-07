@@ -1,4 +1,4 @@
-import { RealtimeAction, RealtimeErrorResponse, RealtimeResponse, ServerRealtimeAction } from "../realtimeAction";
+import { RealtimeAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import {
     CHANGE_NOTE,
     CREATE_NOTE,
@@ -55,8 +55,10 @@ export interface NoteWasCreatedRealtimePayload {
 }
 
 export type CreateNoteAction = RealtimeAction<typeof CREATE_NOTE, CreateNoteRequestPayload>;
-export type CreateNoteResponse = RealtimeResponse<CreateNoteResponsePayload> | RealtimeErrorResponse;
 export type CreateNoteServerAction = ServerRealtimeAction<typeof REALTIME_NOTE_CREATED, NoteWasCreatedRealtimePayload>;
+export type CreateNotePending<T> = RealtimeAction<T, CreateNoteRequestPayload>;
+export type CreateNoteSuccess<T> = RealtimeSuccessResponseAction<T, CreateNoteResponsePayload>;
+export type CreateNoteFailed<T> = RealtimeErrorResponseAction<T>;
 
 /**
  * Delete note request
@@ -94,8 +96,10 @@ export interface NoteWasDeletedRealtimePayload {
 }
 
 export type DeleteNoteAction = RealtimeAction<typeof DELETE_NOTE, DeleteNoteRequestPayload>;
-export type DeleteNoteResponse = RealtimeResponse<DeleteNoteResponsePayload> | RealtimeErrorResponse;
 export type DeleteNoteServerAction = ServerRealtimeAction<typeof REALTIME_NOTE_DELETED, NoteWasDeletedRealtimePayload>;
+export type DeleteNotePending<T> = RealtimeAction<T, DeleteNoteRequestPayload>;
+export type DeleteNoteSuccess<T> = RealtimeSuccessResponseAction<T, DeleteNoteResponsePayload>;
+export type DeleteNoteFailed<T> = RealtimeErrorResponseAction<T>;
 
 /**
  * Change note request
@@ -141,5 +145,7 @@ export interface NoteWasChangedRealtimePayload {
 }
 
 export type ChangeNoteAction = RealtimeAction<typeof CHANGE_NOTE, ChangeNoteRequestPayload>;
-export type ChangeNoteResponse = RealtimeResponse<ChangeNoteResponsePayload> | RealtimeErrorResponse;
 export type ChangeNoteServerAction = ServerRealtimeAction<typeof REALTIME_NOTE_CHANGED, NoteWasChangedRealtimePayload>;
+export type ChangeNotePending<T> = RealtimeAction<T, ChangeNoteRequestPayload>;
+export type ChangeNoteSuccess<T> = RealtimeSuccessResponseAction<T, ChangeNoteResponsePayload>;
+export type ChangeNoteFailed<T> = RealtimeErrorResponseAction<T>;

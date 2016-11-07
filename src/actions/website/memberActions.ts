@@ -6,7 +6,7 @@ import {
     REALTIME_YOUR_WEBSITE_ROLE_WAS_CHANGED,
     REALTIME_YOU_HAS_BEEN_DELETED_FROM_WEBSITE
 } from "./constants";
-import { RealtimeAction, RealtimeErrorResponse, RealtimeResponse, ServerRealtimeAction } from "../realtimeAction";
+import { RealtimeAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import { WebsiteRole } from "./interfaces";
 
 /**
@@ -46,9 +46,11 @@ export interface DeleteWebsiteMemberRealtimePayload {
 }
 
 export type DeleteWebsiteMemberAction = RealtimeAction<typeof DELETE_WEBSITE_MEMBER, DeleteWebsiteMemberRequestPayload>;
-export type DeleteWebsiteMemberResponse = RealtimeResponse<DeleteWebsiteMemberResponsePayload> | RealtimeErrorResponse;
 export type DeleteWebsiteMemberServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_MEMBER_WAS_DELETED, DeleteWebsiteMemberRealtimePayload>;
 export type YouHasBeenDeletedFromWebsiteServerAction = ServerRealtimeAction<typeof REALTIME_YOU_HAS_BEEN_DELETED_FROM_WEBSITE, DeleteWebsiteMemberRealtimePayload>;
+export type DeleteWebsiteMemberPending<T> = RealtimeAction<T, DeleteWebsiteMemberRequestPayload>;
+export type DeleteWebsiteMemberSuccess<T> = RealtimeSuccessResponseAction<T, DeleteWebsiteMemberResponsePayload>;
+export type DeleteWebsiteMemberFailed<T> = RealtimeErrorResponseAction<T>;
 
 /**
  * Change member role request
@@ -98,6 +100,8 @@ export interface ChangeWebsiteMemberRoleRealtimePayload {
 }
 
 export type ChangeWebsiteMemberRoleAction = RealtimeAction<typeof CHANGE_WEBSITE_MEMBER_ROLE, ChangeWebsiteMemberRoleRequestPayload>;
-export type ChangeWebsiteMemberRoleResponse = RealtimeResponse<ChangeWebsiteMemberRoleResponsePayload> | RealtimeErrorResponse;
 export type ChangeWebsiteMemberRoleServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_MEMBER_ROLE_WAS_CHANGED, ChangeWebsiteMemberRoleRealtimePayload>;
 export type YourWebsiteRoleChangedServerAction = ServerRealtimeAction<typeof REALTIME_YOUR_WEBSITE_ROLE_WAS_CHANGED, ChangeWebsiteMemberRoleRealtimePayload>;
+export type ChangeWebsiteMemberRolePending<T> = RealtimeAction<T, ChangeWebsiteMemberRoleRequestPayload>;
+export type ChangeWebsiteMemberRoleSuccess<T> = RealtimeSuccessResponseAction<T, ChangeWebsiteMemberRoleResponsePayload>;
+export type ChangeWebsiteMemberRoleFailed<T> = RealtimeErrorResponseAction<T>;

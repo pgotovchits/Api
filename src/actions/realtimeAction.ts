@@ -1,3 +1,4 @@
+import { BaseErrorAction } from "../";
 import { ApiErrorInterface, RealtimeErrorInterface } from "../utils/Errors";
 import { BaseAction, isBaseAction } from "./action";
 
@@ -7,22 +8,13 @@ import { BaseAction, isBaseAction } from "./action";
 export interface RealtimeAction<TType, TPayload> extends BaseAction<TType, TPayload> {
     meta: {
         /**
-         * Current user id in application. Being set by middleware
-         * NOTE: Not being transferred to node server
-         */
-        currentUserId?: number;
-        /**
          * If true and was set then use authenticated route
          */
         authenticated?: boolean;
         /**
          * If true sends action to realtime server
          */
-        realtime: true;
-        /**
-         * True if action is optimistic and should use optimistic ui updates
-         */
-        isOptimistic?: boolean;
+        realtime: boolean;
         /**
          * Array of action types:
          * First is pending
@@ -40,7 +32,11 @@ export interface RealtimeAction<TType, TPayload> extends BaseAction<TType, TPayl
 }
 
 /**
- * Realtime success response
+ * Raw response from action
+ * 
+ * @export
+ * @interface RealtimeResponse
+ * @template TPayload
  */
 export interface RealtimeResponse<TPayload> {
     /**
@@ -60,26 +56,23 @@ export interface RealtimeResponse<TPayload> {
 }
 
 /**
- * Realtime error response
+ * Realtime success response action
+ * 
+ * @export
+ * @interface RealtimeResponseAction
+ * @extends {BaseAction<TType, TPayload>}
+ * @template TType
+ * @template TPayload
+ */
+export interface RealtimeSuccessResponseAction<TType, TPayload> extends BaseAction<TType, TPayload> { }
+
+/**
+ * Realtime error response action
  * 
  * @export
  * @interface RealtimeErrorResponse
  */
-export interface RealtimeErrorResponse {
-    /**
-     * Error flag
-     * 
-     * @type {boolean}
-     * @memberOf RealtimeErrorResponse
-     */
-    error: true;
-    /**
-     * Error object
-     * 
-     * @type {Error}
-     * @memberOf RealtimeErrorResponse
-     */
-    payload: Error;
+export interface RealtimeErrorResponseAction<TType> extends BaseErrorAction<TType> {
 }
 
 /**

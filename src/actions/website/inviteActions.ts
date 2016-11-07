@@ -1,4 +1,4 @@
-import { RealtimeAction, RealtimeErrorResponse, RealtimeResponse, ServerRealtimeAction } from "../realtimeAction";
+import { RealtimeAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import { BasicUserInformation } from "../user";
 import { WebsiteInviteInfo } from "../invite";
 import { WebsiteRole } from "./interfaces";
@@ -53,8 +53,10 @@ export interface WebsiteInviteWasCancledByMemberRealtimePayload {
 }
 
 export type DeleteWebsiteInviteAction = RealtimeAction<typeof DELETE_WEBSITE_INVITE, DeleteWebsiteInviteRequestPayload>;
-export type DeleteWebsiteInviteResponse = RealtimeResponse<DeleteWebsiteInviteResponsePayload> | RealtimeErrorResponse;
 export type DeleteWebsiteInviteServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_INVITE_WAS_CANCELED_BY_MEMBER, WebsiteInviteWasCancledByMemberRealtimePayload>;
+export type DeleteWebsiteInvitePending<T> = RealtimeAction<T, DeleteWebsiteInviteRequestPayload>;
+export type DeleteWebsiteInviteSuccess<T> = RealtimeSuccessResponseAction<T, DeleteWebsiteInviteResponsePayload>;
+export type DeleteWebsiteInviteFailed<T> = RealtimeErrorResponseAction<T>;
 
 /**
  * Create website invites request
@@ -99,8 +101,10 @@ export interface WebsiteInvitesCreatedByMemberRealtimePayload extends CreateWebs
 }
 
 export type CreateWebsiteInvitesAction = RealtimeAction<typeof CREATE_WEBSITE_INVITES, CreateWebsiteInvitesRequestPayload>;
-export type CreateWebsiteInvitesResponse = RealtimeResponse<CreateWebsiteInvitesResponsePayload> | RealtimeErrorResponse;
 export type CreateWebsiteInvitesServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_INVITES_CREATED_BY_MEMBER, WebsiteInvitesCreatedByMemberRealtimePayload>;
+export type CreateWebsiteInvitesPending<T> = RealtimeAction<T, CreateWebsiteInvitesRequestPayload>;
+export type CreateWebsiteInvitesSuccess<T> = RealtimeSuccessResponseAction<T, CreateWebsiteInvitesResponsePayload>;
+export type CreateWebsiteInvitesFailed<T> = RealtimeErrorResponseAction<T>;
 
 
 /**

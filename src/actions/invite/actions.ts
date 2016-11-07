@@ -1,4 +1,4 @@
-import { RealtimeAction, RealtimeErrorResponse, RealtimeResponse, ServerRealtimeAction } from "../realtimeAction";
+import { RealtimeAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 // TODO asvetliakov: Having two invite interfaces is not good
 import { UserWebsiteInfo, WebsiteMemberInfo } from "../website";
 import { BasicUserInformation } from "../user";
@@ -32,7 +32,9 @@ export interface GetInviteInfoResponsePayload {
 }
 
 export type GetInviteInfoAction = RealtimeAction<typeof GET_INVITE_INFO, GetInviteInfoRequestPayload>;
-export type GetInviteInfoResponse = RealtimeResponse<GetInviteInfoResponsePayload> | RealtimeErrorResponse;
+export type GetInviteInfoPending<T> = RealtimeAction<T, GetInviteInfoRequestPayload>;
+export type GetInviteInfoSuccess<T> = RealtimeSuccessResponseAction<T, GetInviteInfoResponsePayload>;
+export type GetInviteInfoFailed<T> = RealtimeErrorResponseAction<T>;
 
 /**
  * Accept invite request
@@ -71,7 +73,9 @@ export interface AcceptInviteResponsePayload {
 }
 
 export type AcceptInviteAction = RealtimeAction<typeof ACCEPT_INVITE, AcceptInviteRequestPayload>;
-export type AcceptInviteResponse = RealtimeResponse<AcceptInviteResponsePayload> | RealtimeErrorResponse;
+export type AcceptInvitePending<T> = RealtimeAction<T, AcceptInviteRequestPayload>;
+export type AcceptInviteSuccess<T> = RealtimeSuccessResponseAction<T, AcceptInviteResponsePayload>;
+export type AcceptInviteFailed<T> = RealtimeErrorResponseAction<T>;
 
 /**
  * Decline invite request
@@ -91,7 +95,9 @@ export interface DeclineInviteResponsePayload {
 }
 
 export type DeclineInviteAction = RealtimeAction<typeof DECLINE_INVITE, DeclineInviteRequestPayload>;
-export type DeclineInviteResponse = RealtimeResponse<DeclineInviteResponsePayload> | RealtimeErrorResponse;
+export type DeclineInvitePending<T> = RealtimeAction<T, DeclineInviteRequestPayload>;
+export type DeclineInviteSuccess<T> = RealtimeSuccessResponseAction<T, DeclineInviteResponsePayload>;
+export type DeclineInviteFailed<T> = RealtimeErrorResponseAction<T>;
 
 
 /**

@@ -1,4 +1,4 @@
-import { RealtimeAction, RealtimeErrorResponse, RealtimeResponse } from "../realtimeAction";
+import { RealtimeAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction } from "../realtimeAction";
 import { GET_ANALYTICS } from "./constants";
 /**
  * Fetch analytics request
@@ -63,4 +63,6 @@ export interface GetAnalyticsResponsePayload {
 }
 
 export type GetAnalyticsAction = RealtimeAction<typeof GET_ANALYTICS, GetAnalyticsRequestPayload>;
-export type GetAnalyticsResponse = RealtimeResponse<GetAnalyticsResponsePayload> | RealtimeErrorResponse;
+export type GetAnalyticsPending<T> = RealtimeAction<T, GetAnalyticsRequestPayload>;
+export type GetAnalyticsSuccess<T> = RealtimeSuccessResponseAction<T, GetAnalyticsResponsePayload>;
+export type GetAnalyticsFailed<T> = RealtimeErrorResponseAction<T>;
