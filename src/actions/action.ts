@@ -13,7 +13,7 @@ export interface BaseAction<TType, TPayload> {
     /**
      * True if action is error
      */
-    error: false;
+    error?: false;
     /**
      * Action meta
      */
