@@ -21,6 +21,24 @@ export interface BaseAction<TType, TPayload> {
 }
 
 /**
+ * Base action with error payload
+ * 
+ * @export
+ * @interface BaseErrorAction
+ * @extends {BaseAction<TType, Error>}
+ * @template TType
+ */
+export interface BaseErrorAction<TType> extends BaseAction<TType, Error> {
+    /**
+     * Error flag
+     * 
+     * @type null
+     * @memberOf BaseErrorAction
+     */
+    error: true;
+}
+
+/**
  * Type guard
  */
 export function isBaseAction<TType, TPayload>(action: any): action is BaseAction<TType, TPayload> {
