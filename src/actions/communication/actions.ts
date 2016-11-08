@@ -12,7 +12,7 @@ import {
     REALTIME_NEW_MESSAGE,
     UPDATE_CHAT
 } from "./constants";
-import { RealtimeAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
+import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import { CommonCommunicationInfo, CancellationType, ChatUpdateType } from "./interfaces";
 
 /**
@@ -61,11 +61,10 @@ export interface CreateChatResponsePayload {
 export interface CreateChatRealtimePayload extends CommonCommunicationInfo {
 }
 
-export type CreateChatAction = RealtimeAction<typeof CREATE_CHAT, CreateChatRequestPayload>;
+export type CreateChatRequestAction = RealtimeRequestAction<typeof CREATE_CHAT, CreateChatRequestPayload>;
+export type CreateChatSuccessAction = RealtimeSuccessResponseAction<typeof CREATE_CHAT, CreateChatResponsePayload, CreateChatRequestPayload>;
+export type CreateChatFailedAction = RealtimeErrorResponseAction<typeof CREATE_CHAT, CreateChatRequestPayload>;
 export type CreateChatServerAction = ServerRealtimeAction<typeof REALTIME_CREATE_CHAT, CreateChatRealtimePayload>;
-export type CreateChatPending<T> = RealtimeAction<T, CreateChatRequestPayload>;
-export type CreateChatSuccess<T> = RealtimeSuccessResponseAction<T, CreateChatResponsePayload>;
-export type CreateChatFailed<T> = RealtimeErrorResponseAction<T>;
 
 
 
@@ -99,11 +98,10 @@ export interface ChatWasCanceledRealtimePayload {
     reason: CancellationType;
 }
 
-export type CancelChatAction = RealtimeAction<typeof CANCEL_CHAT, CancelChatRequestPayload | void>;
+export type CancelChatRequestAction = RealtimeRequestAction<typeof CANCEL_CHAT, CancelChatRequestPayload | void>;
+export type CancelChatSuccessAction = RealtimeSuccessResponseAction<typeof CANCEL_CHAT, CancelChatResponsePayload, CancelChatRequestPayload | void>;
+export type CancelChatFailedAction = RealtimeErrorResponseAction<typeof CANCEL_CHAT, CancelChatRequestPayload | void>;
 export type CancelChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_CANCELED, ChatWasCanceledRealtimePayload>;
-export type CancelChatPending<T> = RealtimeAction<T, CancelChatRequestPayload | void>;
-export type CancelChatSuccess<T> = RealtimeSuccessResponseAction<T, CancelChatResponsePayload>;
-export type CancelChatFailed<T> = RealtimeErrorResponseAction<T>;
 
 /**
  * Chat end request both for visitor & agent
@@ -134,11 +132,10 @@ export interface ChatWasEndedRealtimePayload {
     websiteId: number;
 }
 
-export type EndChatAction = RealtimeAction<typeof END_CHAT, EndChatRequestPayload>;
+export type EndChatRequestAction = RealtimeRequestAction<typeof END_CHAT, EndChatRequestPayload>;
+export type EndChatSuccessAction = RealtimeSuccessResponseAction<typeof END_CHAT, EndChatResponsePayload, EndChatRequestPayload>;
+export type EndChatFailedAction = RealtimeErrorResponseAction<typeof END_CHAT, EndChatRequestPayload>;
 export type EndChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_ENDED, ChatWasEndedRealtimePayload>;
-export type EndChatPending<T> = RealtimeAction<T, EndChatRequestPayload>;
-export type EndChatSuccess<T> = RealtimeSuccessResponseAction<T, EndChatResponsePayload>;
-export type EndChatFailed<T> = RealtimeErrorResponseAction<T>;
 
 /**
  * Answer chat request. Valid only for agent
@@ -181,11 +178,10 @@ export interface ChatWasAnsweredRealtimePayload {
     agentLastName: string;
 }
 
-export type AnswerChatAction = RealtimeAction<typeof ANSWER_CHAT, AnswerChatRequestPayload>;
+export type AnswerChatRequestAction = RealtimeRequestAction<typeof ANSWER_CHAT, AnswerChatRequestPayload>;
+export type AnswerChatSuccessAction = RealtimeSuccessResponseAction<typeof ANSWER_CHAT, AnswerChatResponsePayload, AnswerChatRequestPayload>;
+export type AnswerChatFailedAction = RealtimeErrorResponseAction<typeof ANSWER_CHAT, AnswerChatRequestPayload>;
 export type AnswerChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_ANSWERED, ChatWasAnsweredRealtimePayload>;
-export type AnswerChatPending<T> = RealtimeAction<T, AnswerChatRequestPayload>;
-export type AnswerChatSuccess<T> = RealtimeSuccessResponseAction<T, AnswerChatResponsePayload>;
-export type AnswerChatFailed<T> = RealtimeErrorResponseAction<T>;
 
 
 /**
@@ -240,11 +236,10 @@ export interface ChatWasUpdatedRealtimePayload extends UpdateChatRequestPayload 
     date: string;
 }
 
-export type UpdateChatAction = RealtimeAction<typeof UPDATE_CHAT, UpdateChatRequestPayload>;
+export type UpdateChatRequestAction = RealtimeRequestAction<typeof UPDATE_CHAT, UpdateChatRequestPayload>;
+export type UpdateChatSuccessAction = RealtimeSuccessResponseAction<typeof UPDATE_CHAT, UpdateChatResponsePayload, UpdateChatRequestPayload>;
+export type UpdateChatFailedAction = RealtimeErrorResponseAction<typeof UPDATE_CHAT, UpdateChatRequestPayload>;
 export type UpdateChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_UPDATED, ChatWasUpdatedRealtimePayload>;
-export type UpdateChatPending<T> = RealtimeAction<T, UpdateChatRequestPayload>;
-export type UpdateChatSuccess<T> = RealtimeSuccessResponseAction<T, UpdateChatResponsePayload>;
-export type UpdateChatFailed<T> = RealtimeErrorResponseAction<T>;
 
 /**
  * Create message request
@@ -287,8 +282,7 @@ export interface CreateMessageRealtimePayload extends CommonCommunicationInfo {
     message: string;
 }
 
-export type CreateMessageAction = RealtimeAction<typeof CREATE_MESSAGE, CreateMessageRequestPayload>;
+export type CreateMessageRequestAction = RealtimeRequestAction<typeof CREATE_MESSAGE, CreateMessageRequestPayload>;
+export type CreateMessageSuccessAction = RealtimeSuccessResponseAction<typeof CREATE_MESSAGE, CreateMessageResponsePayload, CreateMessageRequestPayload>;
+export type CreateMessageFailedAction = RealtimeErrorResponseAction<typeof CREATE_MESSAGE, CreateMessageRequestPayload>;
 export type CreateMessageServerAction = ServerRealtimeAction<typeof REALTIME_NEW_MESSAGE, CreateMessageRealtimePayload>;
-export type CreateMessagePending<T> = RealtimeAction<T, CreateMessageRequestPayload>;
-export type CreateMessageSuccess<T> = RealtimeSuccessResponseAction<T, CreateMessageResponsePayload>;
-export type CreateMessageFailed<T> = RealtimeErrorResponseAction<T>;

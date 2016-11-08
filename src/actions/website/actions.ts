@@ -1,4 +1,4 @@
-import { RealtimeAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
+import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import { WebsiteInviteInfo } from "../invite";
 import { BasicUserInformation } from "../user";
 import { UserWebsiteInfo } from "./interfaces";
@@ -35,11 +35,10 @@ export interface DeleteWebsiteRealtimePayload {
     deletedByUserId: number;
 }
 
-export type DeleteWebsiteAction = RealtimeAction<typeof DELETE_WEBSITE, DeleteWebsiteRequestPayload>;
+export type DeleteWebsiteRequestAction = RealtimeRequestAction<typeof DELETE_WEBSITE, DeleteWebsiteRequestPayload>;
+export type DeleteWebsiteSuccessAction = RealtimeSuccessResponseAction<typeof DELETE_WEBSITE, DeleteWebsiteResponsePayload, DeleteWebsiteRequestPayload>;
+export type DeleteWebsiteFailedAction = RealtimeErrorResponseAction<typeof DELETE_WEBSITE, DeleteWebsiteRequestPayload>
 export type DeleteWebsiteServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_WAS_DELETED, DeleteWebsiteRealtimePayload>;
-export type DeleteWebsitePending<T> = RealtimeAction<T, DeleteWebsiteRequestPayload>;
-export type DeleteWebsiteSuccess<T> = RealtimeSuccessResponseAction<T, DeleteWebsiteResponsePayload>;
-export type DeleteWebsiteFailed<T> = RealtimeErrorResponseAction<T>
 
 /**
  * Create website request
@@ -73,10 +72,9 @@ export interface CreateWebsiteResponsePayload {
     members: BasicUserInformation[];
 }
 
-export type CreateWebsiteAction = RealtimeAction<typeof CREATE_WEBSITE, CreateWebsiteRequestPayload>;
-export type CreateWebsitePending<T> = RealtimeSuccessResponseAction<T, CreateWebsiteRequestPayload>;
-export type CreateWebsiteSuccess<T> = RealtimeSuccessResponseAction<T, CreateWebsiteResponsePayload>;
-export type CreateWebsiteFailed<T> = RealtimeErrorResponseAction<T>;
+export type CreateWebsiteRequestAction = RealtimeRequestAction<typeof CREATE_WEBSITE, CreateWebsiteRequestPayload>;
+export type CreateWebsiteSuccessAction = RealtimeSuccessResponseAction<typeof CREATE_WEBSITE, CreateWebsiteResponsePayload, CreateWebsiteRequestPayload>;
+export type CreateWebsiteFailedAction = RealtimeErrorResponseAction<typeof CREATE_WEBSITE, CreateWebsiteRequestPayload>;
 
 /**
  * Change website name request
@@ -115,11 +113,10 @@ export interface ChangeWebsiteNameRealtimePayload {
     userId: number;
 }
 
-export type ChangeWebsiteNameAction = RealtimeAction<typeof CHANGE_WEBSITE_NAME, ChangeWebsiteNameRequestPayload>;
+export type ChangeWebsiteNameRequestAction = RealtimeRequestAction<typeof CHANGE_WEBSITE_NAME, ChangeWebsiteNameRequestPayload>;
+export type ChangeWebsiteNameSuccessAction = RealtimeSuccessResponseAction<typeof CHANGE_WEBSITE_NAME, ChangeWebsiteNameResponsePayload, ChangeWebsiteNameRequestPayload>;
+export type ChangeWebsiteNameFailedAction = RealtimeErrorResponseAction<typeof CHANGE_WEBSITE_NAME, ChangeWebsiteNameRequestPayload>;
 export type ChangeWebsiteNameServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_NAME_CHANGED, ChangeWebsiteNameRealtimePayload>;
-export type ChangeWebsiteNamePending<T> = RealtimeAction<T, ChangeWebsiteNameRequestPayload>;
-export type ChangeWebsiteNameSuccess<T> = RealtimeSuccessResponseAction<T, ChangeWebsiteNameResponsePayload>;
-export type ChangeWebsiteNameFailed<T> = RealtimeErrorResponseAction<T>;
 
 
 
@@ -151,8 +148,7 @@ export interface WebsiteMemberLeaveRealtimePayload {
     userId: number;
 }
 
-export type LeaveWebsiteAction = RealtimeAction<typeof LEAVE_WEBSITE, LeaveWebsiteRequestPayload>;
+export type LeaveWebsiteRequestAction = RealtimeRequestAction<typeof LEAVE_WEBSITE, LeaveWebsiteRequestPayload>;
+export type LeaveWebsiteSuccessAction = RealtimeSuccessResponseAction<typeof LEAVE_WEBSITE, LeaveWebsiteResponsePayload, LeaveWebsiteRequestPayload>;
+export type LeaveWebsiteFailedAction = RealtimeErrorResponseAction<typeof LEAVE_WEBSITE, LeaveWebsiteRequestPayload>;
 export type LeaveWebsiteServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_MEMBER_LEAVE, WebsiteMemberLeaveRealtimePayload>;
-export type LeaveWebsitePending<T> = RealtimeAction<T, LeaveWebsiteRequestPayload>;
-export type LeaveWebsiteSuccess<T> = RealtimeSuccessResponseAction<T, LeaveWebsiteResponsePayload>;
-export type LeaveWebsiteFailed<T> = RealtimeErrorResponseAction<T>;

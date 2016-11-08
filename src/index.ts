@@ -8,7 +8,6 @@ export * from "./events/realtimeEvents";
 
 export * from "./actions/action";
 export * from "./actions/realtimeAction";
-export * from "./actions/syncronizationAction";
 export * from "./actions/analytics";
 export * from "./actions/auth";
 export * from "./actions/communication";

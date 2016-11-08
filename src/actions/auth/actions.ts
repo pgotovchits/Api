@@ -1,5 +1,5 @@
 import { ApiErrorInterface, RealtimeErrorInterface } from "../../utils/Errors";
-import { RealtimeAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
+import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import { BasicUserInformation } from "../user";
 import { UserWebsiteInfo, WebsiteMemberInfo } from "../website";
 import { WebsiteInviteInfo, UserInviteInfo } from "../invite";
@@ -56,10 +56,9 @@ export interface SignupResponsePayload {
     token: string;
 }
 
-export type SignupAction = RealtimeAction<typeof SIGNUP, SignupRequestPayload>;
-export type SignupPending<T> = RealtimeAction<T, SignupRequestPayload>;
-export type SignupSuccess<T> = RealtimeSuccessResponseAction<T, SignupResponsePayload>;
-export type SignupFailed<T> = RealtimeErrorResponseAction<T>;
+export type SignupRequestAction = RealtimeRequestAction<typeof SIGNUP, SignupRequestPayload>;
+export type SignupSuccessAction = RealtimeSuccessResponseAction<typeof SIGNUP, SignupResponsePayload, SignupRequestPayload>;
+export type SignupFailedAction = RealtimeErrorResponseAction<typeof SIGNUP, SignupRequestPayload>;
 
 /**
  * Login by token request
@@ -134,10 +133,9 @@ export interface LoginResponsePayload {
     activeChats: ActiveChatCommunicationInfo[];
 }
 
-export type LoginAction = RealtimeAction<typeof LOGIN, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>
-export type LoginPending<T> = RealtimeAction<T, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>;
-export type LoginSuccess<T> = RealtimeSuccessResponseAction<T, LoginResponsePayload>;
-export type LoginFailed<T> = RealtimeErrorResponseAction<T>;
+export type LoginRequestAction = RealtimeRequestAction<typeof LOGIN, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>
+export type LoginSuccessAction = RealtimeSuccessResponseAction<typeof LOGIN, LoginResponsePayload, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>;
+export type LoginFailedAction = RealtimeErrorResponseAction<typeof LOGIN, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>;
 
 /**
  * Used by REALTIME_TOKEN_UPDATE notification
@@ -167,10 +165,9 @@ export interface ValidateEmailRequestPayload {
  */
 export interface ValidateEmailResponsePayload { }
 
-export type ValidateEmailAction = RealtimeAction<typeof VALIDATE_EMAIL, ValidateEmailRequestPayload>;
-export type ValidateEmailPending<T> = RealtimeAction<T, ValidateEmailRequestPayload>;
-export type ValidateEmailSuccess<T> = RealtimeSuccessResponseAction<T, ValidateEmailResponsePayload>;
-export type ValidateEmailFailed<T> = RealtimeErrorResponseAction<T>;
+export type ValidateEmailRequestAction = RealtimeRequestAction<typeof VALIDATE_EMAIL, ValidateEmailRequestPayload>;
+export type ValidateEmailSuccessAction = RealtimeSuccessResponseAction<typeof VALIDATE_EMAIL, ValidateEmailResponsePayload, ValidateEmailRequestPayload>;
+export type ValidateEmailFailedAction = RealtimeErrorResponseAction<typeof VALIDATE_EMAIL, ValidateEmailRequestPayload>;
 
 /**
  * Logout request
@@ -187,11 +184,10 @@ export interface LogoutResponsePayload {}
  */
 export interface LogoutRealtimePayload {}
 
-export type LogoutAction = RealtimeAction<typeof LOGOUT, LogoutRequestPayload>;
+export type LogoutRequestAction = RealtimeRequestAction<typeof LOGOUT, LogoutRequestPayload>;
+export type LogoutSuccessAction = RealtimeSuccessResponseAction<typeof LOGOUT, LogoutResponsePayload, LogoutRequestPayload>;
+export type LogoutFailedAction = RealtimeErrorResponseAction<typeof LOGOUT, LogoutRequestPayload>;
 export type LogoutServerAction = ServerRealtimeAction<typeof REALTIME_LOGOUT, LogoutRealtimePayload>;
-export type LogoutPending<T> = RealtimeAction<T, LogoutRequestPayload>;
-export type LogoutSuccess<T> = RealtimeSuccessResponseAction<T, LogoutResponsePayload>;
-export type LogoutFailed<T> = RealtimeErrorResponseAction<T>;
 
 
 /**
@@ -204,10 +200,9 @@ export interface ResetPasswordEmailSendRequestPayload {
     email: string;
 }
 
-export type SendEmailForPasswordResetAction = RealtimeAction<typeof RESET_PASSWORD_EMAIL_SEND, ResetPasswordEmailSendRequestPayload>;
-export type SendEmailForPasswordResetPending<T> = RealtimeAction<T, ResetPasswordEmailSendRequestPayload>;
-export type SendEmailForPasswordResetSuccess<T> = RealtimeSuccessResponseAction<T, void>;
-export type SendEmailForPasswordResetFailed<T> = RealtimeErrorResponseAction<T>;
+export type SendEmailForPasswordResetRequestAction = RealtimeRequestAction<typeof RESET_PASSWORD_EMAIL_SEND, ResetPasswordEmailSendRequestPayload>;
+export type SendEmailForPasswordResetSuccessAction = RealtimeSuccessResponseAction<typeof RESET_PASSWORD_EMAIL_SEND, void, ResetPasswordEmailSendRequestPayload>;
+export type SendEmailForPasswordResetFailedAction = RealtimeErrorResponseAction<typeof RESET_PASSWORD_EMAIL_SEND, ResetPasswordEmailSendRequestPayload>;
 
 /**
  * Reset password payload
@@ -227,7 +222,6 @@ export interface ResetPasswordRequestPayload {
     password: string;
 }
 
-export type ResetPasswordAction = RealtimeAction<typeof RESET_PASSWORD, ResetPasswordRequestPayload>;
-export type ResetPasswordPending<T> = RealtimeAction<T, ResetPasswordRequestPayload>;
-export type ResetPasswordSuccess<T> = RealtimeSuccessResponseAction<T, void>;
-export type ResetPasswordFailed<T> = RealtimeErrorResponseAction<T>;
+export type ResetPasswordRequestAction = RealtimeRequestAction<typeof RESET_PASSWORD, ResetPasswordRequestPayload>;
+export type ResetPasswordSuccessAction = RealtimeSuccessResponseAction<typeof RESET_PASSWORD, void, ResetPasswordRequestPayload>;
+export type ResetPasswordFailedAction = RealtimeErrorResponseAction<typeof RESET_PASSWORD, ResetPasswordRequestPayload>;

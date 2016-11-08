@@ -232,5 +232,10 @@ export function createFromObject(error?: RealtimeErrorInterface | ApiErrorInterf
                 return new ValidationError(error.url, error.error ? error.error : {});
         }
     }
+    
+    if (error.message) {
+        return new Error(error.message);
+    }
+    
     return new Error("Unknown error");
 }

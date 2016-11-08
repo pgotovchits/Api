@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { ApiError, ValidationError, TokenError, createFromObject, RealtimeError } from "../Errors";
+import { ApiError, ValidationError, TokenError, createFromObject, RealtimeError, REALTIME_ERROR, API_ERROR, TOKEN_ERROR, VALIDATION_ERROR } from "../Errors";
 
 describe("Errors", () => {
     describe("RealtimeError", () => {
@@ -19,7 +19,8 @@ describe("Errors", () => {
             const errorObj = error.toObject();
             expect(errorObj).to.deep.equal({
                 message: "test error",
-                action: "test action"
+                action: "test action",
+                type: REALTIME_ERROR
             });
         });
     });
@@ -46,6 +47,7 @@ describe("Errors", () => {
             expect(errorObj.message).to.equal("test");
             expect(errorObj.url).to.equal("test.com");
             expect(errorObj.error).to.deep.equal({ error: "test" });
+            expect(errorObj.type).to.equal(API_ERROR);
         });
     });
 
@@ -55,6 +57,11 @@ describe("Errors", () => {
             expect(error).to.be.instanceOf(TokenError);
             expect(error).to.be.instanceOf(ApiError);
             expect(error).to.be.instanceOf(Error);
+        });
+        
+        it("Should contain correct type", () => {
+            const error = new TokenError("invalid", "test.com", 400);
+            expect(error.toObject().type).to.equal(TOKEN_ERROR);
         });
     });
 
@@ -72,6 +79,11 @@ describe("Errors", () => {
             expect(error.code).to.equal(422);
             expect(error.url).to.equal("test.com");
             expect(error.error).to.deep.equal({ email: "required" });
+        });
+        
+        it("Should contain correct type", () => {
+            const error = new ValidationError("test.com", { email: "required" });
+            expect(error.toObject().type).to.equal(VALIDATION_ERROR);
         });
     });
 
@@ -92,7 +104,8 @@ describe("Errors", () => {
         it("Should create realtime error", () => {
             const error = createFromObject({
                 message: "test error",
-                action: "test action"
+                action: "test action",
+                type: REALTIME_ERROR
             });
             expect(error).to.be.instanceOf(RealtimeError);
             expect(error.message).to.equal("test error");

@@ -1,4 +1,4 @@
-import { RealtimeAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
+import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 // TODO asvetliakov: Having two invite interfaces is not good
 import { UserWebsiteInfo, WebsiteMemberInfo } from "../website";
 import { BasicUserInformation } from "../user";
@@ -31,10 +31,9 @@ export interface GetInviteInfoResponsePayload {
     name: string;
 }
 
-export type GetInviteInfoAction = RealtimeAction<typeof GET_INVITE_INFO, GetInviteInfoRequestPayload>;
-export type GetInviteInfoPending<T> = RealtimeAction<T, GetInviteInfoRequestPayload>;
-export type GetInviteInfoSuccess<T> = RealtimeSuccessResponseAction<T, GetInviteInfoResponsePayload>;
-export type GetInviteInfoFailed<T> = RealtimeErrorResponseAction<T>;
+export type GetInviteInfoRequestAction = RealtimeRequestAction<typeof GET_INVITE_INFO, GetInviteInfoRequestPayload>;
+export type GetInviteInfoSuccessAction = RealtimeSuccessResponseAction<typeof GET_INVITE_INFO, GetInviteInfoResponsePayload, GetInviteInfoRequestPayload>;
+export type GetInviteInfoFailedAction = RealtimeErrorResponseAction<typeof GET_INVITE_INFO, GetInviteInfoRequestPayload>;
 
 /**
  * Accept invite request
@@ -72,10 +71,9 @@ export interface AcceptInviteResponsePayload {
     members: BasicUserInformation[];
 }
 
-export type AcceptInviteAction = RealtimeAction<typeof ACCEPT_INVITE, AcceptInviteRequestPayload>;
-export type AcceptInvitePending<T> = RealtimeAction<T, AcceptInviteRequestPayload>;
-export type AcceptInviteSuccess<T> = RealtimeSuccessResponseAction<T, AcceptInviteResponsePayload>;
-export type AcceptInviteFailed<T> = RealtimeErrorResponseAction<T>;
+export type AcceptInviteRequestAction = RealtimeRequestAction<typeof ACCEPT_INVITE, AcceptInviteRequestPayload>;
+export type AcceptInviteSuccessAction = RealtimeSuccessResponseAction<typeof ACCEPT_INVITE, AcceptInviteResponsePayload, AcceptInviteRequestPayload>;
+export type AcceptInviteFailedAction = RealtimeErrorResponseAction<typeof ACCEPT_INVITE, AcceptInviteRequestPayload>;
 
 /**
  * Decline invite request
@@ -94,10 +92,9 @@ export interface DeclineInviteResponsePayload {
     
 }
 
-export type DeclineInviteAction = RealtimeAction<typeof DECLINE_INVITE, DeclineInviteRequestPayload>;
-export type DeclineInvitePending<T> = RealtimeAction<T, DeclineInviteRequestPayload>;
-export type DeclineInviteSuccess<T> = RealtimeSuccessResponseAction<T, DeclineInviteResponsePayload>;
-export type DeclineInviteFailed<T> = RealtimeErrorResponseAction<T>;
+export type DeclineInviteRequestAction = RealtimeRequestAction<typeof DECLINE_INVITE, DeclineInviteRequestPayload>;
+export type DeclineInviteSuccessAction = RealtimeSuccessResponseAction<typeof DECLINE_INVITE, DeclineInviteResponsePayload, DeclineInviteRequestPayload>;
+export type DeclineInviteFailedAction = RealtimeErrorResponseAction<typeof DECLINE_INVITE, DeclineInviteRequestPayload>;
 
 
 /**
