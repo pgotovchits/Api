@@ -1,8 +1,16 @@
 import ExtendableError from "./ExtendableError";
-/**
- * Application Custom errors
- */
 
+export const REALTIME_ERROR = "RealtimeError";
+export const API_ERROR = "ApiError";
+export const TOKEN_ERROR = "TokenError";
+export const VALIDATION_ERROR = "ValidationError";
+
+/**
+ * Generic error happened while executing action handler
+ * 
+ * @export
+ * @interface RealtimeErrorInterface
+ */
 export interface RealtimeErrorInterface {
     /**
      * Error message
@@ -12,8 +20,23 @@ export interface RealtimeErrorInterface {
      * Action produced error
      */
     action: string;
+    /**
+     * Error type
+     * 
+     * @type {typeof REALTIME_ERROR}
+     * @memberOf RealtimeErrorInterface
+     */
+    type: typeof REALTIME_ERROR;
 }
 
+/**
+ * Generic error occured while executing action handler
+ * 
+ * @export
+ * @class RealtimeError
+ * @extends {ExtendableError}
+ * @implements {RealtimeErrorInterface}
+ */
 export class RealtimeError extends ExtendableError implements RealtimeErrorInterface {
     /**
      * Error message
@@ -29,7 +52,14 @@ export class RealtimeError extends ExtendableError implements RealtimeErrorInter
      * @type {string}
      * @memberOf RealtimeError
      */
-    public name: string = "RealtimeError";
+    public name: string = REALTIME_ERROR;
+    /**
+     * Error type
+     * 
+     * @type {"RealtimeError"}
+     * @memberOf RealtimeError
+     */
+    public type: typeof REALTIME_ERROR = REALTIME_ERROR; 
 
     /**
      * @constructor
@@ -53,10 +83,13 @@ export class RealtimeError extends ExtendableError implements RealtimeErrorInter
     public toObject(): RealtimeErrorInterface {
         return {
             action: this.action,
-            message: this.message
+            message: this.message,
+            type: this.type
         };
     }
 }
+
+export type APIErrors = typeof API_ERROR | typeof TOKEN_ERROR | typeof VALIDATION_ERROR;
 
 
 /**
@@ -75,12 +108,10 @@ export interface ApiErrorInterface {
      * JSON error object
      */
     error?: Object;
-
     /**
      * Error string type
      */
-    type: string;
-
+    type: APIErrors;
     /**
      * Error message
      */
@@ -110,14 +141,14 @@ export class ApiError extends ExtendableError implements ApiErrorInterface {
     /**
      * Error string type
      */
-    public type: string = "ApiError";
+    public type: APIErrors = API_ERROR;
     /**
      * Error name
      * 
      * @type {string}
      * @memberOf ApiError
      */
-    public name: string = "ApiError";
+    public name: string = API_ERROR;
 
     /**
      * @constructor
@@ -156,27 +187,27 @@ export class ApiError extends ExtendableError implements ApiErrorInterface {
  * Usually app should redirect to /login after it
  */
 export class TokenError extends ApiError {
-    public type: string = "TokenError";
-    public name: string = "TokenError";
+    public type: typeof TOKEN_ERROR = TOKEN_ERROR;
+    public name: string = TOKEN_ERROR;
 }
 
 /**
  * Validation error represents status code 422 and contains validation errors in error property
  */
 export class ValidationError extends ApiError {
-    public type: string = "ValidationError";
-    public name: string = "ValidationError";
+    public type: typeof VALIDATION_ERROR = VALIDATION_ERROR;
+    public name: string = VALIDATION_ERROR;
     public constructor(url: string, error: Object) {
         super("Validation error", url, 422, error);
     }
 }
 
 export function isApiError(error: any): error is ApiErrorInterface {
-    return (error && error.type);
+    return (error && error.type && (error.type === API_ERROR || error.type === TOKEN_ERROR || error.type === VALIDATION_ERROR));
 }
 
 export function isRealtimeError(error: any): error is RealtimeErrorInterface {
-    return (error && typeof error.action !== "undefined");
+    return (error && error.type && error.type === REALTIME_ERROR);
 }
 
 /**
@@ -186,21 +217,20 @@ export function createFromObject(error?: RealtimeErrorInterface | ApiErrorInterf
     if (!error) {
         return new Error();
     }
+    
+    if (isRealtimeError(error)) {
+        return new RealtimeError(error.message, error.action);
+    }
 
     if (isApiError(error)) {
         switch (error.type) {
-            case "ApiError":
+            case API_ERROR:
                 return new ApiError(error.message, error.url, error.code, error.error);
-            case "TokenError":
+            case TOKEN_ERROR:
                 return new TokenError(error.message, error.url, error.code, error.error);
-            case "ValidationError":
+            case VALIDATION_ERROR:
                 return new ValidationError(error.url, error.error ? error.error : {});
-            default:
-                return new ApiError(error.message, error.url, error.code, error.error);
         }
-    } else if (isRealtimeError(error)) {
-        return new RealtimeError(error.message, error.action);
-    } else {
-        return new Error(error.message);
     }
+    return new Error("Unknown error");
 }
