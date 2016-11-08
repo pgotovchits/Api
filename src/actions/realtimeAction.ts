@@ -113,12 +113,6 @@ export interface RealtimeSuccessResponseAction<TType, TResponsePayload, TRequest
          * @type {boolean}
          */
         realtime: false;
-        /**
-         * Action flow type
-         * 
-         * @type {typeof REALTIME_ACTION_SUCCESS}
-         */
-        type: typeof REALTIME_ACTION_SUCCESS;
     };
     /**
      * Original request payload
