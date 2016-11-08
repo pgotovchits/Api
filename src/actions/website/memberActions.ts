@@ -111,3 +111,11 @@ export type ChangeWebsiteMemberRoleActions =
     ChangeWebsiteMemberRoleRequestAction |
     ChangeWebsiteMemberRoleSuccessAction |
     ChangeWebsiteMemberRoleFailedAction;
+    
+export type WebsiteMemberActions =
+    DeleteWebsiteMemberActions |
+    DeleteWebsiteMemberServerAction |
+    YouHasBeenDeletedFromWebsiteServerAction |
+    ChangeWebsiteMemberRoleActions |
+    ChangeWebsiteMemberRoleServerAction |
+    YourWebsiteRoleChangedServerAction;

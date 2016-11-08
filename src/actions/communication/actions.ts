@@ -313,3 +313,21 @@ export type CreateMessageActions =
     CreateMessageRequestAction |
     CreateMessageSuccessAction |
     CreateMessageFailedAction;
+    
+    
+/**
+ * All communication actions
+ */
+export type CommunicationActions =
+    CreateChatActions |
+    CreateChatServerAction |
+    CancelChatActions |
+    CancelChatServerAction |
+    EndChatActions |
+    EndChatServerAction |
+    AnswerChatActions |
+    AnswerChatServerAction |
+    UpdateChatActions |
+    UpdateChatServerAction |
+    CreateMessageActions |
+    CreateMessageServerAction;

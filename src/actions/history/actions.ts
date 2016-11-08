@@ -125,3 +125,10 @@ export interface MessageWasViewedRealtimePayload {
 }
 
 export type MessageViewedServerAction = ServerRealtimeAction<typeof REALTIME_MESSAGE_VIEWED, MessageWasViewedRealtimePayload>;
+
+export type HistoryActions =
+    GetChatsActions |
+    GetChatFullActions |
+    GetMessagesActions |
+    GetMessageFullActions |
+    MessageViewedServerAction;

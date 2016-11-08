@@ -256,3 +256,15 @@ export type ResetPasswordActions =
     ResetPasswordRequestAction |
     ResetPasswordSuccessAction |
     ResetPasswordFailedAction;
+
+
+export type AuthActions =
+    SignupActions |
+    LoginActions |
+    TokenUpdateServerAction |
+    TokenUpdateFailedServerAction |
+    ValidateEmailActions |
+    LogoutActions |
+    LogoutServerAction |
+    SendEmailForPasswordResetActions |
+    ResetPasswordActions;

@@ -166,3 +166,12 @@ export type LeaveWebsiteActions =
     LeaveWebsiteRequestAction |
     LeaveWebsiteSuccessAction |
     LeaveWebsiteFailedAction;
+    
+export type WebsiteActions =
+    DeleteWebsiteActions |
+    DeleteWebsiteServerAction |
+    CreateWebsiteActions |
+    ChangeWebsiteNameActions |
+    ChangeWebsiteNameServerAction |
+    LeaveWebsiteActions |
+    LeaveWebsiteServerAction;

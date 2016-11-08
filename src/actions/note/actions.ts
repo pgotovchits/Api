@@ -158,3 +158,12 @@ export type ChangeNoteActions =
     ChangeNoteRequestAction |
     ChangeNoteSuccessAction |
     ChangeNoteFailedAction;
+    
+    
+export type NoteActions =
+    CreateNoteActions |
+    CreateNoteServerAction |
+    DeleteNoteActions |
+    DeleteNoteServerAction |
+    ChangeNoteActions |
+    ChangeNoteServerAction;

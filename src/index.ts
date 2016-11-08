@@ -4,8 +4,10 @@ export * from "./utils/Errors";
 // Events
 export * from "./events/realtimeEvents";
 
-// Actions
+// All actions
+export * from "./actions/actions";
 
+// Specific actions
 export * from "./actions/action";
 export * from "./actions/realtimeAction";
 export * from "./actions/analytics";

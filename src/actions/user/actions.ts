@@ -101,3 +101,10 @@ export type RegisterForPushNotificationsActions =
     RegisterForPushNotificationsRequestAction |
     RegisterForPushNotificationsSuccessAction |
     RegisterForPushNotificationsFailedAction;
+    
+
+export type UserActions =
+    UpdateUserActions |
+    UpdateUserServerAction |
+    UpdateUserPasswordActions |
+    RegisterForPushNotificationsActions;

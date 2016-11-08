@@ -131,3 +131,13 @@ export interface InviteWasCancledRealtimePayload {
 }
 
 export type InviteCanceledServerAction = ServerRealtimeAction<typeof REALTIME_INVITE_CANCLED, InviteWasCancledRealtimePayload>;
+
+/**
+ * All invite actions
+ */
+export type InviteActions =
+    GetInviteInfoActions |
+    AcceptInviteActions |
+    DeclineInviteActions |
+    IncomingInviteServerAction |
+    InviteCanceledServerAction;

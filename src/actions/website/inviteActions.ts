@@ -156,3 +156,11 @@ export interface WebsiteInviteWasDeclinedRealtimePayload {
 }
 
 export type WebsiteInviteDeclinedServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_INVITE_WAS_DECLINED, WebsiteInviteWasDeclinedRealtimePayload>;
+
+export type WebsiteInviteActions =
+    DeleteWebsiteInviteActions |
+    DeleteWebsiteInviteServerAction |
+    CreateWebsiteInvitesActions |
+    CreateWebsiteInvitesServerAction |
+    WebsiteInviteAcceptedServerAction |
+    WebsiteInviteDeclinedServerAction;

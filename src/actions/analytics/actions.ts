@@ -66,3 +66,9 @@ export type GetAnalyticsRequestAction = RealtimeRequestAction<typeof GET_ANALYTI
 export type GetAnalyticsSuccessAction = RealtimeSuccessResponseAction<typeof GET_ANALYTICS, GetAnalyticsResponsePayload, GetAnalyticsRequestPayload>;
 export type GetAnalyticsFailedAction = RealtimeErrorResponseAction<typeof GET_ANALYTICS, GetAnalyticsRequestPayload>;
 export type GetAnalyticsActions = GetAnalyticsRequestAction | GetAnalyticsSuccessAction | GetAnalyticsFailedAction;
+
+
+/**
+ * Common type for all analytics realtime actions
+ */
+export type AnalyticsActions = GetAnalyticsActions;
