@@ -31,13 +31,6 @@ export interface RealtimeAction<TType, TPayload> {
      */
     error?: boolean;
     meta: {
-        /**
-         * If true and was set then use authenticated route
-         */
-        authenticated?: boolean;
-        /**
-         * If true sends action to realtime server
-         */
         realtime: boolean;
         /**
          * Action flow type
@@ -45,16 +38,6 @@ export interface RealtimeAction<TType, TPayload> {
          * @type {typeof REALTIME_ACTION_PENDING}
          */
         type: typeof REALTIME_ACTION_REQUEST | typeof REALTIME_ACTION_SUCCESS | typeof REALTIME_ACTION_FAILED;
-        /**
-         * Do not send success/failed response for action
-         * 
-         * @type {boolean}
-         */
-        simpleFlow?: boolean;
-        /**
-         * Do not perform action propagation to other user connections
-         */
-        noPropagate?: boolean;
     };
 }
 
@@ -77,6 +60,10 @@ export interface RealtimeRequestAction<TType, TPayload> extends RealtimeAction<T
     error: false;
     meta: {
         /**
+         * If true and was set then use authenticated route
+         */
+        authenticated?: boolean;
+        /**
          * Realtime flag
          * 
          * @type {boolean}
@@ -88,6 +75,16 @@ export interface RealtimeRequestAction<TType, TPayload> extends RealtimeAction<T
          * @type {typeof REALTIME_ACTION_REQUEST}
          */
         type: typeof REALTIME_ACTION_REQUEST;
+        /**
+         * Do not send success/failed response for action
+         * 
+         * @type {boolean}
+         */
+        simpleFlow?: boolean;
+        /**
+         * Do not perform action propagation to other user connections
+         */
+        noPropagate?: boolean;
     };
 }
 
