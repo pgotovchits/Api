@@ -6,6 +6,22 @@ export const REALTIME_ACTION_SUCCESS = "success";
 export const REALTIME_ACTION_FAILED = "failed";
 
 /**
+ * Realtime metadata
+ * 
+ * @export
+ * @interface RealtimeActionMetaInformation
+ */
+export interface RealtimeActionMetaInformation {
+    /**
+     * Realtime flag
+     * 
+     * @type {boolean}
+     * @memberOf RealtimeActionMetaInformation
+     */
+    realtime: boolean;
+}
+
+/**
  * Realtime base action interface
  */
 export interface RealtimeAction<TType, TPayload> {
@@ -30,9 +46,13 @@ export interface RealtimeAction<TType, TPayload> {
      * @memberOf RealtimeAction
      */
     error?: boolean;
-    meta: {
-        realtime: boolean;
-    };
+    /**
+     * Metadata information for all realtime action types
+     * 
+     * @type {RealtimeActionMetaInformation}
+     * @memberOf RealtimeAction
+     */
+    meta: RealtimeActionMetaInformation;
 }
 
 /**
@@ -58,7 +78,7 @@ export interface RealtimeRequestAction<TType, TPayload> extends RealtimeAction<T
      * @memberOf RealtimeRequestAction
      */
     error: false;
-    meta: {
+    meta: RealtimeActionMetaInformation & {
         /**
          * If true and was set then use authenticated route
          */
@@ -106,7 +126,7 @@ export interface RealtimeSuccessResponseAction<TType, TResponsePayload, TRequest
      * @memberOf RealtimeSuccessResponseAction
      */
     error: false;
-    meta: {
+    meta: RealtimeActionMetaInformation & {
         /**
          * Realtime flag. The response will not be processed on server again, so must be false
          * 
@@ -143,7 +163,7 @@ export interface RealtimeErrorResponseAction<TType, TRequestPayload> extends Rea
      * @memberOf RealtimeErrorResponseAction
      */
     error: true;
-    meta: {
+    meta: RealtimeActionMetaInformation & {
         /**
          * Realtime flag. Te response will not be processed on server again, so must be false
          * 
