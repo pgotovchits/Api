@@ -33,6 +33,13 @@ export interface RealtimeAction<TType, TPayload> {
      */
     type: TType;
     /**
+     * Action flow type
+     * 
+     * @type {(typeof REALTIME_ACTION_REQUEST | typeof REALTIME_ACTION_SUCCESS | typeof REALTIME_ACTION_FAILED)}
+     * @memberOf RealtimeAction
+     */
+    flowType: typeof REALTIME_ACTION_REQUEST | typeof REALTIME_ACTION_SUCCESS | typeof REALTIME_ACTION_FAILED;
+    /**
      * Action payload
      * 
      * @type {TPayload}
