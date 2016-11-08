@@ -64,11 +64,12 @@ export interface RealtimeRequestAction<TType, TPayload> extends RealtimeAction<T
          */
         authenticated?: boolean;
         /**
-         * Realtime flag
+         * Realtime flag. If false it won't be processsed on server
+         * When server is sending syncronization request for this action it set this to false automatically
          * 
          * @type {boolean}
          */
-        realtime: true;
+        realtime: boolean;
         /**
          * Action type
          * 
