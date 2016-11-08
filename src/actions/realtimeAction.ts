@@ -32,12 +32,6 @@ export interface RealtimeAction<TType, TPayload> {
     error?: boolean;
     meta: {
         realtime: boolean;
-        /**
-         * Action flow type
-         * 
-         * @type {typeof REALTIME_ACTION_PENDING}
-         */
-        type: typeof REALTIME_ACTION_REQUEST | typeof REALTIME_ACTION_SUCCESS | typeof REALTIME_ACTION_FAILED;
     };
 }
 
@@ -51,6 +45,12 @@ export interface RealtimeAction<TType, TPayload> {
  * @template TPayload
  */
 export interface RealtimeRequestAction<TType, TPayload> extends RealtimeAction<TType, TPayload> {
+    /**
+     * Action flow type
+     * 
+     * @type {typeof REALTIME_ACTION_REQUEST}
+     */
+    flowType: typeof REALTIME_ACTION_REQUEST;
     /**
      * Error flag
      * 
@@ -70,12 +70,6 @@ export interface RealtimeRequestAction<TType, TPayload> extends RealtimeAction<T
          * @type {boolean}
          */
         realtime: boolean;
-        /**
-         * Action type
-         * 
-         * @type {typeof REALTIME_ACTION_REQUEST}
-         */
-        type: typeof REALTIME_ACTION_REQUEST;
         /**
          * Do not send success/failed response for action
          * 
@@ -99,6 +93,12 @@ export interface RealtimeRequestAction<TType, TPayload> extends RealtimeAction<T
  * @template TPayload
  */
 export interface RealtimeSuccessResponseAction<TType, TResponsePayload, TRequestPayload> extends RealtimeAction<TType, TResponsePayload> {
+    /**
+     * Action flow type
+     * 
+     * @type {typeof REALTIME_ACTION_SUCCESS}
+     */
+    flowType: typeof REALTIME_ACTION_SUCCESS;
     /**
      * Error flag. For success response it's false
      * 
@@ -137,6 +137,12 @@ export interface RealtimeSuccessResponseAction<TType, TResponsePayload, TRequest
  */
 export interface RealtimeErrorResponseAction<TType, TRequestPayload> extends RealtimeAction<TType, ApiErrorInterface | RealtimeErrorInterface> {
     /**
+     * Action flow type
+     * 
+     * @type {typeof REALTIME_ACTION_FAILED}
+     */
+    flowType: typeof REALTIME_ACTION_FAILED;
+    /**
      * Error flag
      * 
      * @type {boolean}
@@ -150,12 +156,6 @@ export interface RealtimeErrorResponseAction<TType, TRequestPayload> extends Rea
          * @type {boolean}
          */
         realtime: false;
-        /**
-         * Action flow type
-         * 
-         * @type {typeof REALTIME_ACTION_FAILED}
-         */
-        type: typeof REALTIME_ACTION_FAILED;
     };
     /**
      * Original request payload

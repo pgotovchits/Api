@@ -66,8 +66,6 @@ export type CreateChatSuccessAction = RealtimeSuccessResponseAction<typeof CREAT
 export type CreateChatFailedAction = RealtimeErrorResponseAction<typeof CREATE_CHAT, CreateChatRequestPayload>;
 export type CreateChatServerAction = ServerRealtimeAction<typeof REALTIME_CREATE_CHAT, CreateChatRealtimePayload>;
 
-
-
 /**
  * Explicit cancel chat request action
  */
