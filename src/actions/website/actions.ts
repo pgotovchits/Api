@@ -39,6 +39,10 @@ export type DeleteWebsiteRequestAction = RealtimeRequestAction<typeof DELETE_WEB
 export type DeleteWebsiteSuccessAction = RealtimeSuccessResponseAction<typeof DELETE_WEBSITE, DeleteWebsiteResponsePayload, DeleteWebsiteRequestPayload>;
 export type DeleteWebsiteFailedAction = RealtimeErrorResponseAction<typeof DELETE_WEBSITE, DeleteWebsiteRequestPayload>
 export type DeleteWebsiteServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_WAS_DELETED, DeleteWebsiteRealtimePayload>;
+export type DeleteWebsiteActions =
+    DeleteWebsiteRequestAction |
+    DeleteWebsiteSuccessAction |
+    DeleteWebsiteFailedAction;
 
 /**
  * Create website request
@@ -75,6 +79,10 @@ export interface CreateWebsiteResponsePayload {
 export type CreateWebsiteRequestAction = RealtimeRequestAction<typeof CREATE_WEBSITE, CreateWebsiteRequestPayload>;
 export type CreateWebsiteSuccessAction = RealtimeSuccessResponseAction<typeof CREATE_WEBSITE, CreateWebsiteResponsePayload, CreateWebsiteRequestPayload>;
 export type CreateWebsiteFailedAction = RealtimeErrorResponseAction<typeof CREATE_WEBSITE, CreateWebsiteRequestPayload>;
+export type CreateWebsiteActions =
+    CreateWebsiteRequestAction |
+    CreateWebsiteSuccessAction |
+    CreateWebsiteFailedAction;
 
 /**
  * Change website name request
@@ -117,8 +125,10 @@ export type ChangeWebsiteNameRequestAction = RealtimeRequestAction<typeof CHANGE
 export type ChangeWebsiteNameSuccessAction = RealtimeSuccessResponseAction<typeof CHANGE_WEBSITE_NAME, ChangeWebsiteNameResponsePayload, ChangeWebsiteNameRequestPayload>;
 export type ChangeWebsiteNameFailedAction = RealtimeErrorResponseAction<typeof CHANGE_WEBSITE_NAME, ChangeWebsiteNameRequestPayload>;
 export type ChangeWebsiteNameServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_NAME_CHANGED, ChangeWebsiteNameRealtimePayload>;
-
-
+export type ChangeWebsiteNameActions =
+    ChangeWebsiteNameRequestAction |
+    ChangeWebsiteNameSuccessAction |
+    ChangeWebsiteNameFailedAction;
 
 /**
  * Leave website request
@@ -152,3 +162,7 @@ export type LeaveWebsiteRequestAction = RealtimeRequestAction<typeof LEAVE_WEBSI
 export type LeaveWebsiteSuccessAction = RealtimeSuccessResponseAction<typeof LEAVE_WEBSITE, LeaveWebsiteResponsePayload, LeaveWebsiteRequestPayload>;
 export type LeaveWebsiteFailedAction = RealtimeErrorResponseAction<typeof LEAVE_WEBSITE, LeaveWebsiteRequestPayload>;
 export type LeaveWebsiteServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_MEMBER_LEAVE, WebsiteMemberLeaveRealtimePayload>;
+export type LeaveWebsiteActions =
+    LeaveWebsiteRequestAction |
+    LeaveWebsiteSuccessAction |
+    LeaveWebsiteFailedAction;

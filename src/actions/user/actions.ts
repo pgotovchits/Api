@@ -47,6 +47,10 @@ export type UpdateUserRequestAction = RealtimeRequestAction<typeof USER_UPDATE, 
 export type UpdateUserSuccessAction = RealtimeSuccessResponseAction<typeof USER_UPDATE, UpdateUserResponsePayload, UpdateUserRequestPayload>;
 export type UpdateUserFailedAction = RealtimeErrorResponseAction<typeof USER_UPDATE, UpdateUserRequestPayload>;
 export type UpdateUserServerAction = ServerRealtimeAction<typeof REALTIME_USER_WAS_UPDATED, UpdateUserRealtimePayload>;
+export type UpdateUserActions =
+    UpdateUserRequestAction |
+    UpdateUserSuccessAction |
+    UpdateUserFailedAction;
 
 /**
  * Update user password request
@@ -70,6 +74,10 @@ export interface UpdateUserPasswordResponsePayload {}
 export type UpdateUserPasswordRequestAction = RealtimeRequestAction<typeof USER_PASSWORD_UPDATE, UpdateUserPasswordRequestPayload>;
 export type UpdateUserPasswordSuccessAction = RealtimeSuccessResponseAction<typeof USER_PASSWORD_UPDATE, UpdateUserPasswordResponsePayload, UpdateUserPasswordRequestPayload>;
 export type UpdateUserPasswordFailedAction = RealtimeErrorResponseAction<typeof USER_PASSWORD_UPDATE, UpdateUserPasswordRequestPayload>;
+export type UpdateUserPasswordActions =
+    UpdateUserPasswordRequestAction |
+    UpdateUserPasswordSuccessAction |
+    UpdateUserPasswordFailedAction;
 
 /**
  * Register for push notifications request
@@ -89,3 +97,7 @@ export interface RegisterForPushNotificationsResponsePayload {}
 export type RegisterForPushNotificationsRequestAction = RealtimeRequestAction<typeof REGISTER_FOR_PUSH_NOTIFICATIONS, RegisterForPushNotificationsRequestPayload>;
 export type RegisterForPushNotificationsSuccessAction = RealtimeSuccessResponseAction<typeof REGISTER_FOR_PUSH_NOTIFICATIONS, RegisterForPushNotificationsResponsePayload, RegisterForPushNotificationsRequestPayload>;
 export type RegisterForPushNotificationsFailedAction = RealtimeErrorResponseAction<typeof REGISTER_FOR_PUSH_NOTIFICATIONS, RegisterForPushNotificationsRequestPayload>;
+export type RegisterForPushNotificationsActions =
+    RegisterForPushNotificationsRequestAction |
+    RegisterForPushNotificationsSuccessAction |
+    RegisterForPushNotificationsFailedAction;

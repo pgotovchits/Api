@@ -50,6 +50,10 @@ export type DeleteWebsiteMemberSuccessAction = RealtimeSuccessResponseAction<typ
 export type DeleteWebsiteMemberFailedAction = RealtimeErrorResponseAction<typeof DELETE_WEBSITE_MEMBER, DeleteWebsiteMemberRequestPayload>;
 export type DeleteWebsiteMemberServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_MEMBER_WAS_DELETED, DeleteWebsiteMemberRealtimePayload>;
 export type YouHasBeenDeletedFromWebsiteServerAction = ServerRealtimeAction<typeof REALTIME_YOU_HAS_BEEN_DELETED_FROM_WEBSITE, DeleteWebsiteMemberRealtimePayload>;
+export type DeleteWebsiteMemberActions =
+    DeleteWebsiteMemberRequestAction |
+    DeleteWebsiteMemberSuccessAction |
+    DeleteWebsiteMemberFailedAction;
 
 /**
  * Change member role request
@@ -103,3 +107,7 @@ export type ChangeWebsiteMemberRoleSuccessAction = RealtimeSuccessResponseAction
 export type ChangeWebsiteMemberRoleFailedAction = RealtimeErrorResponseAction<typeof CHANGE_WEBSITE_MEMBER_ROLE, ChangeWebsiteMemberRoleRequestPayload>;
 export type ChangeWebsiteMemberRoleServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_MEMBER_ROLE_WAS_CHANGED, ChangeWebsiteMemberRoleRealtimePayload>;
 export type YourWebsiteRoleChangedServerAction = ServerRealtimeAction<typeof REALTIME_YOUR_WEBSITE_ROLE_WAS_CHANGED, ChangeWebsiteMemberRoleRealtimePayload>;
+export type ChangeWebsiteMemberRoleActions =
+    ChangeWebsiteMemberRoleRequestAction |
+    ChangeWebsiteMemberRoleSuccessAction |
+    ChangeWebsiteMemberRoleFailedAction;

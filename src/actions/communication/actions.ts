@@ -65,6 +65,12 @@ export type CreateChatRequestAction = RealtimeRequestAction<typeof CREATE_CHAT, 
 export type CreateChatSuccessAction = RealtimeSuccessResponseAction<typeof CREATE_CHAT, CreateChatResponsePayload, CreateChatRequestPayload>;
 export type CreateChatFailedAction = RealtimeErrorResponseAction<typeof CREATE_CHAT, CreateChatRequestPayload>;
 export type CreateChatServerAction = ServerRealtimeAction<typeof REALTIME_CREATE_CHAT, CreateChatRealtimePayload>;
+export type CreateChatActions =
+    CreateChatRequestAction |
+    CreateChatSuccessAction |
+    CreateChatFailedAction;
+
+
 
 /**
  * Explicit cancel chat request action
@@ -100,6 +106,12 @@ export type CancelChatRequestAction = RealtimeRequestAction<typeof CANCEL_CHAT, 
 export type CancelChatSuccessAction = RealtimeSuccessResponseAction<typeof CANCEL_CHAT, CancelChatResponsePayload, CancelChatRequestPayload | void>;
 export type CancelChatFailedAction = RealtimeErrorResponseAction<typeof CANCEL_CHAT, CancelChatRequestPayload | void>;
 export type CancelChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_CANCELED, ChatWasCanceledRealtimePayload>;
+export type CancelChatActions =
+    CancelChatRequestAction |
+    CancelChatSuccessAction |
+    CancelChatFailedAction;
+
+
 
 /**
  * Chat end request both for visitor & agent
@@ -134,6 +146,12 @@ export type EndChatRequestAction = RealtimeRequestAction<typeof END_CHAT, EndCha
 export type EndChatSuccessAction = RealtimeSuccessResponseAction<typeof END_CHAT, EndChatResponsePayload, EndChatRequestPayload>;
 export type EndChatFailedAction = RealtimeErrorResponseAction<typeof END_CHAT, EndChatRequestPayload>;
 export type EndChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_ENDED, ChatWasEndedRealtimePayload>;
+export type EndChatActions =
+    EndChatRequestAction |
+    EndChatSuccessAction |
+    EndChatFailedAction;
+
+
 
 /**
  * Answer chat request. Valid only for agent
@@ -180,7 +198,10 @@ export type AnswerChatRequestAction = RealtimeRequestAction<typeof ANSWER_CHAT, 
 export type AnswerChatSuccessAction = RealtimeSuccessResponseAction<typeof ANSWER_CHAT, AnswerChatResponsePayload, AnswerChatRequestPayload>;
 export type AnswerChatFailedAction = RealtimeErrorResponseAction<typeof ANSWER_CHAT, AnswerChatRequestPayload>;
 export type AnswerChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_ANSWERED, ChatWasAnsweredRealtimePayload>;
-
+export type AnswerChatActions =
+    AnswerChatRequestAction |
+    AnswerChatSuccessAction |
+    AnswerChatFailedAction;
 
 /**
  * Action to update chat room: new message or typing indicator
@@ -238,6 +259,10 @@ export type UpdateChatRequestAction = RealtimeRequestAction<typeof UPDATE_CHAT, 
 export type UpdateChatSuccessAction = RealtimeSuccessResponseAction<typeof UPDATE_CHAT, UpdateChatResponsePayload, UpdateChatRequestPayload>;
 export type UpdateChatFailedAction = RealtimeErrorResponseAction<typeof UPDATE_CHAT, UpdateChatRequestPayload>;
 export type UpdateChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_UPDATED, ChatWasUpdatedRealtimePayload>;
+export type UpdateChatActions =
+    UpdateChatRequestAction |
+    UpdateChatSuccessAction |
+    UpdateChatFailedAction;
 
 /**
  * Create message request
@@ -284,3 +309,7 @@ export type CreateMessageRequestAction = RealtimeRequestAction<typeof CREATE_MES
 export type CreateMessageSuccessAction = RealtimeSuccessResponseAction<typeof CREATE_MESSAGE, CreateMessageResponsePayload, CreateMessageRequestPayload>;
 export type CreateMessageFailedAction = RealtimeErrorResponseAction<typeof CREATE_MESSAGE, CreateMessageRequestPayload>;
 export type CreateMessageServerAction = ServerRealtimeAction<typeof REALTIME_NEW_MESSAGE, CreateMessageRealtimePayload>;
+export type CreateMessageActions =
+    CreateMessageRequestAction |
+    CreateMessageSuccessAction |
+    CreateMessageFailedAction;

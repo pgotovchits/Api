@@ -65,3 +65,4 @@ export interface GetAnalyticsResponsePayload {
 export type GetAnalyticsRequestAction = RealtimeRequestAction<typeof GET_ANALYTICS, GetAnalyticsRequestPayload>;
 export type GetAnalyticsSuccessAction = RealtimeSuccessResponseAction<typeof GET_ANALYTICS, GetAnalyticsResponsePayload, GetAnalyticsRequestPayload>;
 export type GetAnalyticsFailedAction = RealtimeErrorResponseAction<typeof GET_ANALYTICS, GetAnalyticsRequestPayload>;
+export type GetAnalyticsActions = GetAnalyticsRequestAction | GetAnalyticsSuccessAction | GetAnalyticsFailedAction;

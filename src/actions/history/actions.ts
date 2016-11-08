@@ -30,6 +30,12 @@ export interface GetChatsResponsePayload {
 export type GetChatsRequestAction = RealtimeRequestAction<typeof HISTORY_GET_CHATS, GetChatsRequestPayload>;
 export type GetChatsSuccessAction = RealtimeSuccessResponseAction<typeof HISTORY_GET_CHATS, GetChatsResponsePayload, GetChatsRequestPayload>;
 export type GetChatsFailedAction = RealtimeErrorResponseAction<typeof HISTORY_GET_CHATS, GetChatsRequestPayload>;
+export type GetChatsActions =
+    GetChatsRequestAction |
+    GetChatsSuccessAction |
+    GetChatsFailedAction;
+
+
 
 /**
  * Get full single chat information
@@ -49,6 +55,10 @@ export interface GetChatFullResponsePayload extends ChatHistoryCommunicationInfo
 export type GetChatFullRequestAction = RealtimeRequestAction<typeof HISTORY_GET_CHAT, GetChatFullRequestPayload>;
 export type GetChatFullSuccessAction = RealtimeSuccessResponseAction<typeof HISTORY_GET_CHAT, GetChatFullResponsePayload, GetChatFullRequestPayload>;
 export type GetChatFullFailedAction = RealtimeErrorResponseAction<typeof HISTORY_GET_CHAT, GetChatFullRequestPayload>;
+export type GetChatFullActions =
+    GetChatFullRequestAction |
+    GetChatFullSuccessAction |
+    GetChatFullFailedAction;
 
 /**
  * Get messages history request
@@ -72,6 +82,10 @@ export interface GetMessagesResponsePayload {
 export type GetMessagesRequestAction = RealtimeRequestAction<typeof HISTORY_GET_MESSAGES, GetMessagesRequestPayload>;
 export type GetMessagesSuccessAction = RealtimeSuccessResponseAction<typeof HISTORY_GET_MESSAGES, GetMessagesResponsePayload, GetMessagesRequestPayload>;
 export type GetMessagesFailedAction = RealtimeErrorResponseAction<typeof HISTORY_GET_MESSAGES, GetMessagesRequestPayload>;
+export type GetMessagesActions =
+    GetMessagesRequestAction |
+    GetMessagesSuccessAction |
+    GetMessagesFailedAction;
 
 /**
  * Get single message full information
@@ -91,7 +105,10 @@ export interface GetMessageFullResponsePayload extends MessageHistoryCommunicati
 export type GetMessageFullRequestAction = RealtimeRequestAction<typeof HISTORY_GET_MESSAGE, GetMessageFullRequestPayload>;
 export type GetMessageFullSuccessAction = RealtimeSuccessResponseAction<typeof HISTORY_GET_MESSAGE, GetMessageFullResponsePayload, GetMessageFullRequestPayload>;
 export type GetMessageFullFailedAction = RealtimeErrorResponseAction<typeof HISTORY_GET_MESSAGE, GetMessageFullRequestPayload>;
-
+export type GetMessageFullActions =
+    GetMessageFullRequestAction |
+    GetMessageFullSuccessAction |
+    GetMessageFullFailedAction;
 
 /**
  * Update message realtime payload

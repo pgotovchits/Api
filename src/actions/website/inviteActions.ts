@@ -56,6 +56,10 @@ export type DeleteWebsiteInviteRequestAction = RealtimeRequestAction<typeof DELE
 export type DeleteWebsiteInviteSuccessAction = RealtimeSuccessResponseAction<typeof DELETE_WEBSITE_INVITE, DeleteWebsiteInviteResponsePayload, DeleteWebsiteInviteRequestPayload>;
 export type DeleteWebsiteInviteFailedAction = RealtimeErrorResponseAction<typeof DELETE_WEBSITE_INVITE, DeleteWebsiteInviteRequestPayload>;
 export type DeleteWebsiteInviteServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_INVITE_WAS_CANCELED_BY_MEMBER, WebsiteInviteWasCancledByMemberRealtimePayload>;
+export type DeleteWebsiteInviteActions =
+    DeleteWebsiteInviteRequestAction |
+    DeleteWebsiteInviteSuccessAction |
+    DeleteWebsiteInviteFailedAction;
 
 /**
  * Create website invites request
@@ -103,6 +107,10 @@ export type CreateWebsiteInvitesRequestAction = RealtimeRequestAction<typeof CRE
 export type CreateWebsiteInvitesSuccessAction = RealtimeSuccessResponseAction<typeof CREATE_WEBSITE_INVITES, CreateWebsiteInvitesResponsePayload, CreateWebsiteInvitesRequestPayload>;
 export type CreateWebsiteInvitesFailedAction = RealtimeErrorResponseAction<typeof CREATE_WEBSITE_INVITES, CreateWebsiteInvitesRequestPayload>;
 export type CreateWebsiteInvitesServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_INVITES_CREATED_BY_MEMBER, WebsiteInvitesCreatedByMemberRealtimePayload>;
+export type CreateWebsiteInvitesActions =
+    CreateWebsiteInvitesRequestAction |
+    CreateWebsiteInvitesSuccessAction |
+    CreateWebsiteInvitesFailedAction;
 
 
 /**

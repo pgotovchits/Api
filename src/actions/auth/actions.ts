@@ -59,6 +59,11 @@ export interface SignupResponsePayload {
 export type SignupRequestAction = RealtimeRequestAction<typeof SIGNUP, SignupRequestPayload>;
 export type SignupSuccessAction = RealtimeSuccessResponseAction<typeof SIGNUP, SignupResponsePayload, SignupRequestPayload>;
 export type SignupFailedAction = RealtimeErrorResponseAction<typeof SIGNUP, SignupRequestPayload>;
+export type SignupActions =
+    SignupRequestAction |
+    SignupSuccessAction |
+    SignupFailedAction;
+
 
 /**
  * Login by token request
@@ -136,6 +141,12 @@ export interface LoginResponsePayload {
 export type LoginRequestAction = RealtimeRequestAction<typeof LOGIN, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>
 export type LoginSuccessAction = RealtimeSuccessResponseAction<typeof LOGIN, LoginResponsePayload, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>;
 export type LoginFailedAction = RealtimeErrorResponseAction<typeof LOGIN, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>;
+export type LoginActions =
+    LoginRequestAction |
+    LoginSuccessAction |
+    LoginFailedAction;
+
+
 
 /**
  * Used by REALTIME_TOKEN_UPDATE notification
@@ -168,6 +179,12 @@ export interface ValidateEmailResponsePayload { }
 export type ValidateEmailRequestAction = RealtimeRequestAction<typeof VALIDATE_EMAIL, ValidateEmailRequestPayload>;
 export type ValidateEmailSuccessAction = RealtimeSuccessResponseAction<typeof VALIDATE_EMAIL, ValidateEmailResponsePayload, ValidateEmailRequestPayload>;
 export type ValidateEmailFailedAction = RealtimeErrorResponseAction<typeof VALIDATE_EMAIL, ValidateEmailRequestPayload>;
+export type ValidateEmailActions =
+    ValidateEmailRequestAction |
+    ValidateEmailSuccessAction |
+    ValidateEmailFailedAction;
+
+
 
 /**
  * Logout request
@@ -188,6 +205,11 @@ export type LogoutRequestAction = RealtimeRequestAction<typeof LOGOUT, LogoutReq
 export type LogoutSuccessAction = RealtimeSuccessResponseAction<typeof LOGOUT, LogoutResponsePayload, LogoutRequestPayload>;
 export type LogoutFailedAction = RealtimeErrorResponseAction<typeof LOGOUT, LogoutRequestPayload>;
 export type LogoutServerAction = ServerRealtimeAction<typeof REALTIME_LOGOUT, LogoutRealtimePayload>;
+export type LogoutActions =
+    LogoutRequestAction |
+    LogoutSuccessAction |
+    LogoutFailedAction;
+
 
 
 /**
@@ -203,6 +225,11 @@ export interface ResetPasswordEmailSendRequestPayload {
 export type SendEmailForPasswordResetRequestAction = RealtimeRequestAction<typeof RESET_PASSWORD_EMAIL_SEND, ResetPasswordEmailSendRequestPayload>;
 export type SendEmailForPasswordResetSuccessAction = RealtimeSuccessResponseAction<typeof RESET_PASSWORD_EMAIL_SEND, void, ResetPasswordEmailSendRequestPayload>;
 export type SendEmailForPasswordResetFailedAction = RealtimeErrorResponseAction<typeof RESET_PASSWORD_EMAIL_SEND, ResetPasswordEmailSendRequestPayload>;
+export type SendEmailForPasswordResetActions =
+    SendEmailForPasswordResetRequestAction |
+    SendEmailForPasswordResetSuccessAction |
+    SendEmailForPasswordResetFailedAction;
+
 
 /**
  * Reset password payload
@@ -225,3 +252,7 @@ export interface ResetPasswordRequestPayload {
 export type ResetPasswordRequestAction = RealtimeRequestAction<typeof RESET_PASSWORD, ResetPasswordRequestPayload>;
 export type ResetPasswordSuccessAction = RealtimeSuccessResponseAction<typeof RESET_PASSWORD, void, ResetPasswordRequestPayload>;
 export type ResetPasswordFailedAction = RealtimeErrorResponseAction<typeof RESET_PASSWORD, ResetPasswordRequestPayload>;
+export type ResetPasswordActions =
+    ResetPasswordRequestAction |
+    ResetPasswordSuccessAction |
+    ResetPasswordFailedAction;

@@ -58,6 +58,10 @@ export type CreateNoteRequestAction = RealtimeRequestAction<typeof CREATE_NOTE, 
 export type CreateNoteSuccessAction = RealtimeSuccessResponseAction<typeof CREATE_NOTE, CreateNoteResponsePayload, CreateNoteRequestPayload>;
 export type CreateNoteFailedAction = RealtimeErrorResponseAction<typeof CREATE_NOTE, CreateNoteRequestPayload>;
 export type CreateNoteServerAction = ServerRealtimeAction<typeof REALTIME_NOTE_CREATED, NoteWasCreatedRealtimePayload>;
+export type CreateNoteActions =
+    CreateNoteRequestAction |
+    CreateNoteSuccessAction |
+    CreateNoteFailedAction;
 
 /**
  * Delete note request
@@ -98,6 +102,10 @@ export type DeleteNoteRequestAction = RealtimeRequestAction<typeof DELETE_NOTE, 
 export type DeleteNoteSuccessAction = RealtimeSuccessResponseAction<typeof DELETE_NOTE, DeleteNoteResponsePayload, DeleteNoteRequestPayload>;
 export type DeleteNoteFailedAction = RealtimeErrorResponseAction<typeof DELETE_NOTE, DeleteNoteRequestPayload>;
 export type DeleteNoteServerAction = ServerRealtimeAction<typeof REALTIME_NOTE_DELETED, NoteWasDeletedRealtimePayload>;
+export type DeleteNoteActions =
+    DeleteNoteRequestAction |
+    DeleteNoteSuccessAction |
+    DeleteNoteFailedAction;
 
 /**
  * Change note request
@@ -146,3 +154,7 @@ export type ChangeNoteRequestAction = RealtimeRequestAction<typeof CHANGE_NOTE, 
 export type ChangeNoteSuccessAction = RealtimeSuccessResponseAction<typeof CHANGE_NOTE, ChangeNoteResponsePayload, ChangeNoteRequestPayload>;
 export type ChangeNoteFailedAction = RealtimeErrorResponseAction<typeof CHANGE_NOTE, ChangeNoteRequestPayload>;
 export type ChangeNoteServerAction = ServerRealtimeAction<typeof REALTIME_NOTE_CHANGED, NoteWasChangedRealtimePayload>;
+export type ChangeNoteActions =
+    ChangeNoteRequestAction |
+    ChangeNoteSuccessAction |
+    ChangeNoteFailedAction;
