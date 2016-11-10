@@ -107,7 +107,7 @@ export interface ApiErrorInterface {
     /**
      * JSON error object
      */
-    error?: Object;
+    error?: {};
     /**
      * Error string type
      */
@@ -137,7 +137,7 @@ export class ApiError extends ExtendableError implements ApiErrorInterface {
     /**
      * JSON error object
      */
-    public error?: Object;
+    public error?: {};
     /**
      * Error string type
      */
