@@ -56,9 +56,7 @@ gulp.task("typescript", () => {
             '.',
             {
                 includeContent: false,
-                sourceRoot: function (file) {
-                    return path.join(path.relative(file.path, './src'), 'src')
-                }
+                sourceRoot: "../src"
             }))
             .pipe(gulp.dest('./compiled')),
         tsResult.dts.pipe(gulp.dest("./compiled"))
