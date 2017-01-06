@@ -9,6 +9,9 @@
     "strictNullChecks": true,
     "noEmitOnError": true,
     "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
     "suppressImplicitAnyIndexErrors": true,
     "types": ["jest"]
   },
