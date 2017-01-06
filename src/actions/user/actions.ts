@@ -5,14 +5,14 @@
  * Suffix realtime indicates what action is being sent by backend to frontend for some realtime updates, not triggered by user request
  */
 
-import { BasicUserInformation } from "./interfaces";
+import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import {
     REALTIME_USER_WAS_UPDATED,
     REGISTER_FOR_PUSH_NOTIFICATIONS,
     USER_PASSWORD_UPDATE,
     USER_UPDATE
 } from "./constants";
-import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
+import { BasicUserInformation } from "./interfaces";
 
 /**
  * Change user action request

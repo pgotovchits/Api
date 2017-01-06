@@ -8,7 +8,6 @@ const gutil = require("gulp-util");
 const gulpSourcemaps = require("gulp-sourcemaps");
 const del = require("del");
 const ts = require("gulp-typescript");
-const gulpMocha = require("gulp-mocha");
 const tslint = require("gulp-tslint");
 const typescript = require("typescript");
 const merge = require("merge2");
@@ -71,20 +70,3 @@ gulp.task("typescript:watch", gulp.series("typescript", "lint", () => {
 
 gulp.task("build", gulp.series("typescript", "lint"));
 gulp.task("clean-build", gulp.series("clean", "build"));
-
-
-// Run all tests
-gulp.task("tests", () => {
-    return gulp.src(["src/**/*_Spec.ts"], { read: false })
-        .pipe(gulpMocha({
-            require: ["./testIndex.js"]
-        }))
-        .on("error", gutil.log);
-});
-
-// Watch: compile typescript & run all tests
-gulp.task("tests:watch", gulp.series("tests", () => {
-    // gulp.watch("src/app/!**!/!*", gulpWatchOpts, gulp.series("typescript"));
-    // gulp.watch(["src/app/**/*", "src/shared/**/*"], gulpWatchOpts, gulp.series("typescript"));
-    gulp.watch(["compiled/**/*_Spec.js"], gulpWatchOpts, gulp.series("tests"));
-}));

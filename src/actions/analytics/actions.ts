@@ -1,4 +1,4 @@
-import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction } from "../realtimeAction";
+import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction } from "../realtimeAction";
 import { GET_ANALYTICS } from "./constants";
 /**
  * Fetch analytics request

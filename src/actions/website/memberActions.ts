@@ -1,12 +1,12 @@
+import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import {
     CHANGE_WEBSITE_MEMBER_ROLE,
     DELETE_WEBSITE_MEMBER,
     REALTIME_WEBSITE_MEMBER_ROLE_WAS_CHANGED,
     REALTIME_WEBSITE_MEMBER_WAS_DELETED,
-    REALTIME_YOUR_WEBSITE_ROLE_WAS_CHANGED,
-    REALTIME_YOU_HAS_BEEN_DELETED_FROM_WEBSITE
+    REALTIME_YOU_HAS_BEEN_DELETED_FROM_WEBSITE,
+    REALTIME_YOUR_WEBSITE_ROLE_WAS_CHANGED
 } from "./constants";
-import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import { WebsiteRole } from "./interfaces";
 
 /**

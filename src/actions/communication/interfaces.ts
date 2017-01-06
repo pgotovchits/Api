@@ -57,7 +57,7 @@ export interface ActiveChatCommunicationInfo extends CommonCommunicationInfo {
     /**
      * Messages
      */
-    messages: {
+    messages: Array<{
         /**
          * Chat message text
          */
@@ -74,5 +74,5 @@ export interface ActiveChatCommunicationInfo extends CommonCommunicationInfo {
          * User id. Number for agents, string for visitor
          */
         userId: number | string;
-    }[];
+    }>;
 }

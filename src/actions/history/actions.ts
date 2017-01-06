@@ -1,4 +1,4 @@
-import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
+import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import {
     HISTORY_GET_CHAT,
     HISTORY_GET_CHATS,

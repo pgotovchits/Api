@@ -1,3 +1,4 @@
+import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import {
     ANSWER_CHAT,
     CANCEL_CHAT,
@@ -12,8 +13,7 @@ import {
     REALTIME_NEW_MESSAGE,
     UPDATE_CHAT
 } from "./constants";
-import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
-import { CommonCommunicationInfo, CancellationType, ChatUpdateType } from "./interfaces";
+import { CancellationType, ChatUpdateType, CommonCommunicationInfo } from "./interfaces";
 
 /**
  * Create chat request

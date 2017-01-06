@@ -1,9 +1,9 @@
 import { ApiErrorInterface, RealtimeErrorInterface } from "../../utils/Errors";
-import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
+import { ActiveChatCommunicationInfo, IncomingChatCommunicationInfo } from "../communication";
+import { UserInviteInfo, WebsiteInviteInfo } from "../invite";
+import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import { BasicUserInformation } from "../user";
 import { UserWebsiteInfo, WebsiteMemberInfo } from "../website";
-import { WebsiteInviteInfo, UserInviteInfo } from "../invite";
-import { IncomingChatCommunicationInfo, ActiveChatCommunicationInfo } from "../communication";
 import {
     LOGIN,
     LOGOUT,
@@ -138,7 +138,7 @@ export interface LoginResponsePayload {
     activeChats: ActiveChatCommunicationInfo[];
 }
 
-export type LoginRequestAction = RealtimeRequestAction<typeof LOGIN, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>
+export type LoginRequestAction = RealtimeRequestAction<typeof LOGIN, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>;
 export type LoginSuccessAction = RealtimeSuccessResponseAction<typeof LOGIN, LoginResponsePayload, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>;
 export type LoginFailedAction = RealtimeErrorResponseAction<typeof LOGIN, LoginByTokenRequestPayload | LoginByCredentialsRequestPayload>;
 export type LoginActions =

@@ -1,7 +1,6 @@
-import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
-import { BasicUserInformation } from "../user";
 import { WebsiteInviteInfo } from "../invite";
-import { WebsiteRole } from "./interfaces";
+import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
+import { BasicUserInformation } from "../user";
 import {
     CREATE_WEBSITE_INVITES,
     DELETE_WEBSITE_INVITE,
@@ -10,6 +9,7 @@ import {
     REALTIME_WEBSITE_INVITE_WAS_DECLINED,
     REALTIME_WEBSITE_INVITES_CREATED_BY_MEMBER
 } from "./constants";
+import { WebsiteRole } from "./interfaces";
 
 /**
  * Delete website invite request

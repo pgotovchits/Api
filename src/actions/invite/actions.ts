@@ -1,8 +1,7 @@
-import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
+import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
+import { BasicUserInformation } from "../user";
 // TODO asvetliakov: Having two invite interfaces is not good
 import { UserWebsiteInfo, WebsiteMemberInfo } from "../website";
-import { BasicUserInformation } from "../user";
-import { UserInviteInfo, WebsiteInviteInfo } from "./interfaces";
 import {
     ACCEPT_INVITE,
     DECLINE_INVITE,
@@ -10,6 +9,7 @@ import {
     REALTIME_INCOMING_INVITE,
     REALTIME_INVITE_CANCLED
 } from "./constants";
+import { UserInviteInfo, WebsiteInviteInfo } from "./interfaces";
 
 /**
  * Get invite information request

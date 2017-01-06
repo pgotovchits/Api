@@ -1,7 +1,6 @@
-import { RealtimeRequestAction, RealtimeErrorResponseAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import { WebsiteInviteInfo } from "../invite";
+import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import { BasicUserInformation } from "../user";
-import { UserWebsiteInfo } from "./interfaces";
 import {
     CHANGE_WEBSITE_NAME,
     CREATE_WEBSITE,
@@ -11,6 +10,7 @@ import {
     REALTIME_WEBSITE_NAME_CHANGED,
     REALTIME_WEBSITE_WAS_DELETED
 } from "./constants";
+import { UserWebsiteInfo } from "./interfaces";
 
 
 export interface DeleteWebsiteRequestPayload {
@@ -37,7 +37,7 @@ export interface DeleteWebsiteRealtimePayload {
 
 export type DeleteWebsiteRequestAction = RealtimeRequestAction<typeof DELETE_WEBSITE, DeleteWebsiteRequestPayload>;
 export type DeleteWebsiteSuccessAction = RealtimeSuccessResponseAction<typeof DELETE_WEBSITE, DeleteWebsiteResponsePayload, DeleteWebsiteRequestPayload>;
-export type DeleteWebsiteFailedAction = RealtimeErrorResponseAction<typeof DELETE_WEBSITE, DeleteWebsiteRequestPayload>
+export type DeleteWebsiteFailedAction = RealtimeErrorResponseAction<typeof DELETE_WEBSITE, DeleteWebsiteRequestPayload>;
 export type DeleteWebsiteServerAction = ServerRealtimeAction<typeof REALTIME_WEBSITE_WAS_DELETED, DeleteWebsiteRealtimePayload>;
 export type DeleteWebsiteActions =
     DeleteWebsiteRequestAction |

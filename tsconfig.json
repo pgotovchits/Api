@@ -10,7 +10,7 @@
     "noEmitOnError": true,
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "types": ["mocha", "chai-subset", "sinon-chai"]
+    "types": ["jest"]
   },
   "exclude": [
     "node_modules",
