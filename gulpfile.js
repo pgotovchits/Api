@@ -70,3 +70,4 @@ gulp.task("typescript:watch", gulp.series("typescript", "lint", () => {
 
 gulp.task("build", gulp.series("typescript", "lint"));
 gulp.task("clean-build", gulp.series("clean", "build"));
+gulp.task("clean:build", gulp.series("clean", "build"));
