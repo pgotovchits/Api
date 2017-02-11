@@ -91,9 +91,9 @@ export type GetChatFullActions =
 
 export interface SetNotifiedRequestPayload {
     /**
-     * Array of communication uuids to be set notified
+     * Array of communication uuids/teamIds to be set notified
      */
-    uuids: string[];
+    comms: Array<{ uuid: string, teamId: number }>;
 }
 
 export interface SetNotifiedResponsePayload { }
@@ -112,9 +112,9 @@ export type SetNotifiedActions =
     
 export interface SetUnnotifiedRealtimePayload {
     /**
-     * List of communication uuids to be set unnotified
+     * Array of communication uuids/teamIds to be set unnotified
      */
-    uuids: string[];
+    comms: Array<{ uuid: string, teamId: number }>;
 }
 
 export type SetUnnotifiedServerAction = ServerRealtimeAction<typeof REALTIME_WAS_UNNOTIFIED, SetUnnotifiedRealtimePayload>;
