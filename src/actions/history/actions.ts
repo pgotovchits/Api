@@ -129,6 +129,10 @@ export interface CommunicationClaimedRealtimePayload {
      * Agent id which claimed communication
      */
     agentId: number;
+    /**
+     * True if communication also notified
+     */
+    notifiedNow: boolean;
 }
 
 export type CommunicationClaimedServerAction = ServerRealtimeAction<typeof REALTIME_WAS_CLAIMED, CommunicationClaimedRealtimePayload>;
