@@ -1,7 +1,7 @@
 import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
-import { BasicUserInformation } from "../user";
 // TODO asvetliakov: Having two invite interfaces is not good
-import { UserWebsiteInfo, WebsiteMemberInfo } from "../website";
+import { TeamMemberInfo, UserTeamInfo } from "../team";
+import { BasicUserInformation } from "../user";
 import {
     ACCEPT_INVITE,
     DECLINE_INVITE,
@@ -9,7 +9,7 @@ import {
     REALTIME_INCOMING_INVITE,
     REALTIME_INVITE_CANCLED
 } from "./constants";
-import { UserInviteInfo, WebsiteInviteInfo } from "./interfaces";
+import { TeamInviteInfo, UserInviteInfo } from "./interfaces";
 
 /**
  * Get invite information request
@@ -26,7 +26,7 @@ export interface GetInviteInfoRequestPayload {
  */
 export interface GetInviteInfoResponsePayload {
     /**
-     * Website name which invite belongs to
+     * Team name which invite belongs to
      */
     name: string;
 }
@@ -58,19 +58,19 @@ export interface AcceptInviteResponsePayload {
      */
     code: string;
     /**
-     * New website information
+     * New Team information
      */
-    website: UserWebsiteInfo;
+    team: UserTeamInfo;
     /**
-     * Website member -> role mapping for new website
+     * Team member -> role mapping for new team
      */
-    websiteMembers: WebsiteMemberInfo[];
+    teamMembers: TeamMemberInfo[];
     /**
-     * Website invites
+     * Team invites
      */
-    websiteInvites: WebsiteInviteInfo[];
+    teamInvites: TeamInviteInfo[];
     /**
-     * Other users (website members, invite members, etc...)
+     * Other users (team members, invite members, etc...)
      */
     members: BasicUserInformation[];
 }
@@ -125,9 +125,9 @@ export interface InviteWasCancledRealtimePayload {
      */
     code: string;
     /**
-     * Website id
+     * Team id
      */
-    websiteId: number;
+    teamId: number;
 }
 
 export type InviteCanceledServerAction = ServerRealtimeAction<typeof REALTIME_INVITE_CANCLED, InviteWasCancledRealtimePayload>;

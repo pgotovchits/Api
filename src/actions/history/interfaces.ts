@@ -1,30 +1,5 @@
 import { CommonCommunicationInfo } from "../communication";
 
-/**
- * Common history communication request
- */
-export interface HistoryCommunicationRequest {
-    /**
-     * Page number
-     */
-    page: number;
-    /**
-     * Page size
-     */
-    pageSize: number;
-    /**
-     * Filter by website id
-     */
-    websiteId?: number;
-    /**
-     * Start date filter
-     */
-    startTime?: string;
-    /**
-     * End date filter
-     */
-    endTime?: string;
-}
 
 /**
  * Communication note
@@ -66,7 +41,7 @@ export interface ChatMessageInfo {
     /**
      * Message type
      */
-        type: "agent" | "visitor";
+    type: "agent" | "visitor";
     /**
      * Message itself
      */
@@ -94,19 +69,8 @@ export interface ChatHistoryCommunicationInfo extends HistoryCommunicationInfo {
      * Chat status
      */
     status: "missed" | "answered";
-}
-
-export interface MessageHistoryCommunicationInfo extends HistoryCommunicationInfo {
     /**
-     * Message viewed date
+     * Additional message attached to chat
      */
-    viewedTime?: string;
-    /**
-     * Message text
-     */
-    message: string;
-    /**
-     * Message status
-     */
-    status: "viewed" | "created";
+    postscriptumMessage?: string;
 }

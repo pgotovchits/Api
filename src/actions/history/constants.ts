@@ -11,20 +11,22 @@ export const HISTORY_GET_CHATS = "history/GET_CHATS";
 export const HISTORY_GET_CHAT = "history/GET_CHAT";
 
 /**
- * Get messages history information (for history messages page)
- * @type {string}
+ * Set communication(s) notified
  */
-export const HISTORY_GET_MESSAGES = "history/GET_MESSAGES";
+export const SET_NOTIFIED = "communication/SET_NOTIFIED";
 
 /**
- * Get full single message history information
- * @type {string}
+ * Communication(s) was notified
  */
-export const HISTORY_GET_MESSAGE = "history/GET_MESSAGE";
-
+export const REALTIME_WAS_NOTIFIED = "communication/WAS_NOTIFIED";
 
 /**
- * Message viewed by agent realtime action
- * @type {string}
+ * Communication(s) was un-notified
+ * For now it's for only one case when visitor add postscriptum message to already notified communication
  */
-export const REALTIME_MESSAGE_VIEWED = "history/REALTIME_MESSAGE_VIEWED";
+export const REALTIME_WAS_UNNOTIFIED = "communication/WAS_UNNOTIFIED";
+
+/**
+ * History communication was claimed (assigned ownership)
+ */
+export const REALTIME_WAS_CLAIMED = "communication/WAS_CLAIMED";

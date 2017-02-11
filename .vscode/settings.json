@@ -26,5 +26,9 @@
         "dist",
         "compiled"
     ],
-    "tslint.autoFixOnSave": true
+    "tslint.autoFixOnSave": true,
+    "tsimporter.doubleQuotes": true,
+    "docthis.includeTypes": false,
+    "docthis.includeMemberOfOnClassMembers": false,
+    "docthis.includeMemberOfOnInterfaceMembers": false
 }

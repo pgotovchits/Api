@@ -29,7 +29,7 @@ export const ANSWER_CHAT = "communication/ACCEPT_CHAT";
 export const UPDATE_CHAT = "communication/UPDATE_CHAT";
 
 /**
- * Create chat realtime action (for website agents)
+ * Create chat realtime action (for team agents)
  * @type {string}
  */
 export const REALTIME_CREATE_CHAT = "communication/NEW_CHAT";
@@ -59,13 +59,11 @@ export const REALTIME_CHAT_ANSWERED = "communication/CHAT_ANSWERED";
 export const REALTIME_CHAT_UPDATED = "communication/CHAT_UPDATED";
 
 /**
- * New message
- * @type {string}
+ * Add postscriptum message (only for visitor)
  */
-export const CREATE_MESSAGE = "communication/CREATE_MESSAGE";
+export const ADD_POSTSCRIPTUM = "communication/ADD_POSTSCRIPTUM";
 
 /**
- * New message realtime action (for website agents)
- * @type {string}
+ * Postscriptum message was added by visitor
  */
-export const REALTIME_NEW_MESSAGE = "communication/NEW_MESSAGE";
+export const REALTIME_POSTSCRIPTUM_ADDED = "communication/POSTSCRIPTUM_ADDED";

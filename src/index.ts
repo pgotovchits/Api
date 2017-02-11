@@ -18,5 +18,5 @@ export * from "./actions/history";
 export * from "./actions/invite";
 export * from "./actions/note";
 export * from "./actions/user";
-export * from "./actions/website";
+export * from "./actions/team";
 export * from "./actions/visitor";

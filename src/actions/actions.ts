@@ -4,8 +4,8 @@ import { CommunicationActions } from "./communication";
 import { HistoryActions } from "./history";
 import { InviteActions } from "./invite";
 import { NoteActions } from "./note";
+import { TeamActions, TeamInviteActions, TeamMemberActions } from "./team";
 import { UserActions } from "./user";
-import { WebsiteActions, WebsiteInviteActions, WebsiteMemberActions } from "./website";
 
 /**
  * All realtime actions
@@ -18,6 +18,6 @@ export type RealtimeActions =
     InviteActions |
     NoteActions |
     UserActions |
-    WebsiteActions |
-    WebsiteInviteActions |
-    WebsiteMemberActions;
+    TeamActions |
+    TeamInviteActions |
+    TeamMemberActions;

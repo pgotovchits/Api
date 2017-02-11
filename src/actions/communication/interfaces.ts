@@ -15,9 +15,9 @@ export interface CommonCommunicationInfo {
      */
     id: string;
     /**
-     * Website id
+     * Team id
      */
-    websiteId: number;
+    teamId: number;
     /**
      * Communication started time in UTC string
      */
@@ -26,6 +26,11 @@ export interface CommonCommunicationInfo {
      * Visitor information
      */
     visitor: VisitorInfoInterface;
+
+    /**
+     * Notified flag
+     */
+    notified: boolean;
 }
 
 /**
@@ -36,6 +41,10 @@ export interface IncomingChatCommunicationInfo extends CommonCommunicationInfo {
      * Chat status
      */
     status: "incoming";
+    /**
+     * Incoming chat is non notified
+     */
+    notified: false;
 }
 
 /**
@@ -75,4 +84,8 @@ export interface ActiveChatCommunicationInfo extends CommonCommunicationInfo {
          */
         userId: number | string;
     }>;
+    /**
+     * Active chat is notified
+     */
+    notified: true;
 }

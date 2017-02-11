@@ -2,16 +2,44 @@ import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResp
 import {
     HISTORY_GET_CHAT,
     HISTORY_GET_CHATS,
-    HISTORY_GET_MESSAGE,
-    HISTORY_GET_MESSAGES,
-    REALTIME_MESSAGE_VIEWED
 } from "./constants";
-import { ChatHistoryCommunicationInfo, HistoryCommunicationRequest, MessageHistoryCommunicationInfo } from "./interfaces";
+import { REALTIME_WAS_CLAIMED, REALTIME_WAS_NOTIFIED, REALTIME_WAS_UNNOTIFIED, SET_NOTIFIED } from "./constants";
+import { ChatHistoryCommunicationInfo } from "./interfaces";
+
+/**
+ * Common history communication request
+ */
+export interface ChatHistoryCommunicationRequest {
+    /**
+     * Page number
+     */
+    page: number;
+    /**
+     * Page size
+     */
+    pageSize: number;
+    /**
+     * Filter by team id
+     */
+    teamId?: number;
+    /**
+     * Start date filter
+     */
+    startTime?: string;
+    /**
+     * End date filter
+     */
+    endTime?: string;
+    /**
+     * Chat status
+     */
+    status: "missed" | "answered";
+}
 
 /**
  * Get chat history request
  */
-export interface GetChatsRequestPayload extends HistoryCommunicationRequest {}
+export interface GetChatsRequestPayload extends ChatHistoryCommunicationRequest {}
 
 /**
  * Get chat history response
@@ -60,75 +88,55 @@ export type GetChatFullActions =
     GetChatFullSuccessAction |
     GetChatFullFailedAction;
 
-/**
- * Get messages history request
- */
-export interface GetMessagesRequestPayload extends HistoryCommunicationRequest {}
 
-/**
- * Get messages history response
- */
-export interface GetMessagesResponsePayload {
+export interface SetNotifiedRequestPayload {
     /**
-     * Total number of messages
+     * Array of communication uuids to be set notified
      */
-    total: number;
-    /**
-     * Map of communication UUID -> message info
-     */
-    messages: { [key: string]: MessageHistoryCommunicationInfo };
+    uuids: string[];
 }
 
-export type GetMessagesRequestAction = RealtimeRequestAction<typeof HISTORY_GET_MESSAGES, GetMessagesRequestPayload>;
-export type GetMessagesSuccessAction = RealtimeSuccessResponseAction<typeof HISTORY_GET_MESSAGES, GetMessagesResponsePayload, GetMessagesRequestPayload>;
-export type GetMessagesFailedAction = RealtimeErrorResponseAction<typeof HISTORY_GET_MESSAGES, GetMessagesRequestPayload>;
-export type GetMessagesActions =
-    GetMessagesRequestAction |
-    GetMessagesSuccessAction |
-    GetMessagesFailedAction;
+export interface SetNotifiedResponsePayload { }
 
-/**
- * Get single message full information
- */
-export interface GetMessageFullRequestPayload {
+export interface SetNotifiedRealtimePayload extends SetNotifiedRequestPayload { }
+
+export type SetNotifiedRequestAction = RealtimeRequestAction<typeof SET_NOTIFIED, SetNotifiedRequestPayload>;
+export type SetNotifiedSuccessAction = RealtimeSuccessResponseAction<typeof SET_NOTIFIED, SetNotifiedResponsePayload, SetNotifiedRequestPayload>;
+export type SetNotifiedFailedAction = RealtimeErrorResponseAction<typeof SET_NOTIFIED, SetNotifiedRequestPayload>;
+export type SetNotifiedServerAction = ServerRealtimeAction<typeof REALTIME_WAS_NOTIFIED, SetNotifiedRealtimePayload>;
+
+export type SetNotifiedActions =
+    SetNotifiedRequestAction |
+    SetNotifiedSuccessAction |
+    SetNotifiedFailedAction;
+    
+export interface SetUnnotifiedRealtimePayload {
     /**
-     * Message UUID
+     * List of communication uuids to be set unnotified
      */
-    id: string;
+    uuids: string[];
 }
 
-/**
- * Get single message full information response
- */
-export interface GetMessageFullResponsePayload extends MessageHistoryCommunicationInfo {}
+export type SetUnnotifiedServerAction = ServerRealtimeAction<typeof REALTIME_WAS_UNNOTIFIED, SetUnnotifiedRealtimePayload>;
 
-export type GetMessageFullRequestAction = RealtimeRequestAction<typeof HISTORY_GET_MESSAGE, GetMessageFullRequestPayload>;
-export type GetMessageFullSuccessAction = RealtimeSuccessResponseAction<typeof HISTORY_GET_MESSAGE, GetMessageFullResponsePayload, GetMessageFullRequestPayload>;
-export type GetMessageFullFailedAction = RealtimeErrorResponseAction<typeof HISTORY_GET_MESSAGE, GetMessageFullRequestPayload>;
-export type GetMessageFullActions =
-    GetMessageFullRequestAction |
-    GetMessageFullSuccessAction |
-    GetMessageFullFailedAction;
 
-/**
- * Update message realtime payload
- */
-export interface MessageWasViewedRealtimePayload {
+export interface CommunicationClaimedRealtimePayload {
     /**
-     * Message id
+     * Communication uuid
      */
-    id: string;
+    uuid: string;
     /**
-     * Agent id which viewed message
+     * Agent id which claimed communication
      */
     agentId: number;
 }
 
-export type MessageViewedServerAction = ServerRealtimeAction<typeof REALTIME_MESSAGE_VIEWED, MessageWasViewedRealtimePayload>;
+export type CommunicationClaimedServerAction = ServerRealtimeAction<typeof REALTIME_WAS_CLAIMED, CommunicationClaimedRealtimePayload>;
 
 export type HistoryActions =
     GetChatsActions |
     GetChatFullActions |
-    GetMessagesActions |
-    GetMessageFullActions |
-    MessageViewedServerAction;
+    SetNotifiedActions |
+    SetNotifiedServerAction |
+    SetUnnotifiedServerAction |
+    CommunicationClaimedServerAction;

@@ -7,19 +7,19 @@ export interface UserInviteInfo {
      */
     code: string;
     /**
-     * Linked website to this invite
+     * Linked team to this invite
      */
-    websiteId: number;
+    teamId: number;
     /**
-     * Website name
+     * Team name
      */
-    websiteName: string;
+    teamName: string;
 }
 
 /**
  * Invite information
  */
-export interface WebsiteInviteInfo {
+export interface TeamInviteInfo {
     /**
      * Invite code
      */
@@ -29,9 +29,9 @@ export interface WebsiteInviteInfo {
      */
     email: string;
     /**
-     * Linked website to this invite
+     * Linked team to this invite
      */
-    websiteId: number;
+    teamId: number;
     /**
      * User id if invite was linked with existing user, otherwise undefined
      */

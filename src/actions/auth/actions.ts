@@ -1,9 +1,9 @@
 import { ApiErrorInterface, RealtimeErrorInterface } from "../../utils/Errors";
 import { ActiveChatCommunicationInfo, IncomingChatCommunicationInfo } from "../communication";
-import { UserInviteInfo, WebsiteInviteInfo } from "../invite";
+import { TeamInviteInfo, UserInviteInfo } from "../invite";
 import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
+import { TeamMemberInfo, UserTeamInfo } from "../team";
 import { BasicUserInformation } from "../user";
-import { UserWebsiteInfo, WebsiteMemberInfo } from "../website";
 import {
     LOGIN,
     LOGOUT,
@@ -37,9 +37,9 @@ export interface SignupRequestPayload {
      */
     password: string;
     /**
-     * Website name
+     * Team name
      */
-    website?: string;
+    team?: string;
     /**
      * Invite code
      */
@@ -105,19 +105,19 @@ export interface LoginResponsePayload {
      */
     user: BasicUserInformation;
     /**
-     * User websites
+     * User teams
      */
-    websites: UserWebsiteInfo[];
+    teams: UserTeamInfo[];
     /**
-     * Website member -> role mapping
+     * Team member -> role mapping
      */
-    websiteMembers: WebsiteMemberInfo[];
+    teamMembers: TeamMemberInfo[];
     /**
-     * Website invites
+     * Team invites
      */
-    websiteInvites: WebsiteInviteInfo[];
+    teamInvites: TeamInviteInfo[];
     /**
-     * Other users (website members, invite members, etc...)
+     * Other users (team members, invite members, etc...)
      */
     members: BasicUserInformation[];
     /**
@@ -125,9 +125,9 @@ export interface LoginResponsePayload {
      */
     invites: UserInviteInfo[];
     /**
-     * Total unread messages for all user websites
+     * Total unread messages for all user teams
      */
-    totalUnreadMessages: number;
+    totalNonNotifiedMissedChats: number;
     /**
      * Incoming chats
      */

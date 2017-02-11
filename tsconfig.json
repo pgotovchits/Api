@@ -15,6 +15,9 @@
     "suppressImplicitAnyIndexErrors": true,
     "types": ["jest"]
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules",
     "compiled"

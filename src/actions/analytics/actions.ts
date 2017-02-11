@@ -5,9 +5,9 @@ import { GET_ANALYTICS } from "./constants";
  */
 export interface GetAnalyticsRequestPayload {
     /**
-     * Website id. Omitting it will fetch for all websites
+     * Team id. Omitting it will fetch for all teams
      */
-    websiteId?: number;
+    teamId?: number;
     /**
      * Days to fetch
      */
@@ -19,7 +19,7 @@ export interface GetAnalyticsRequestPayload {
  */
 export interface GetAnalyticsResponsePayload {
     /**
-     * Each key is websiteId. Object keys in JS are always strings
+     * Each key is teamId. Object keys in JS are always strings
      */
     [key: string]: {
         /**

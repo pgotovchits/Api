@@ -3,16 +3,15 @@ import {
     ANSWER_CHAT,
     CANCEL_CHAT,
     CREATE_CHAT,
-    CREATE_MESSAGE,
     END_CHAT,
     REALTIME_CHAT_ANSWERED,
     REALTIME_CHAT_CANCELED,
     REALTIME_CHAT_ENDED,
     REALTIME_CHAT_UPDATED,
     REALTIME_CREATE_CHAT,
-    REALTIME_NEW_MESSAGE,
     UPDATE_CHAT
 } from "./constants";
+import { ADD_POSTSCRIPTUM, REALTIME_POSTSCRIPTUM_ADDED } from "./constants";
 import { CancellationType, ChatUpdateType, CommonCommunicationInfo } from "./interfaces";
 
 /**
@@ -20,7 +19,7 @@ import { CancellationType, ChatUpdateType, CommonCommunicationInfo } from "./int
  */
 export interface CreateChatRequestPayload {
     /**
-     * Website code
+     * Team code
      */
     code?: string;
     /**
@@ -46,13 +45,13 @@ export interface CreateChatResponsePayload {
      */
     id: string;
     /**
-     * Website name
+     * Team name
      */
-    websiteName: string;
+    teamName: string;
     /**
-     * Website id
+     * Team id
      */
-    websiteId: number;
+    teamId: number;
 }
 
 /**
@@ -93,9 +92,9 @@ export interface ChatWasCanceledRealtimePayload {
      */
     id: string;
     /**
-     * Website id
+     * Team id
      */
-    websiteId: number;
+    teamId: number;
     /**
      * Cancellation reason
      */
@@ -137,9 +136,9 @@ export interface ChatWasEndedRealtimePayload {
      */
     id: string;
     /**
-     * Website id
+     * Team id
      */
-    websiteId: number;
+    teamId: number;
 }
 
 export type EndChatRequestAction = RealtimeRequestAction<typeof END_CHAT, EndChatRequestPayload>;
@@ -169,7 +168,7 @@ export interface AnswerChatRequestPayload {
 export interface AnswerChatResponsePayload {}
 
 /**
- * Chat has been answered realtime action. Being sent to visitor and website side
+ * Chat has been answered realtime action. Being sent to visitor and team side
  */
 export interface ChatWasAnsweredRealtimePayload {
     /**
@@ -177,9 +176,9 @@ export interface ChatWasAnsweredRealtimePayload {
      */
     id: string;
     /**
-     * Website id
+     * Team id
      */
-    websiteId: number;
+    teamId: number;
     /**
      * Answered agent id
      */
@@ -237,9 +236,9 @@ export interface UpdateChatResponsePayload {}
  */
 export interface ChatWasUpdatedRealtimePayload extends UpdateChatRequestPayload {
     /**
-     * Website id which chat belongs to
+     * Team id which chat belongs to
      */
-    websiteId: number;
+    teamId: number;
     /**
      * User type for update action
      */
@@ -263,57 +262,40 @@ export type UpdateChatActions =
     UpdateChatRequestAction |
     UpdateChatSuccessAction |
     UpdateChatFailedAction;
-
-/**
- * Create message request
- */
-export interface CreateMessageRequestPayload {
-    /**
-     * Website code
-     */
-    code: string;
-    /**
-     * Message
-     */
-    message: string;
-    /**
-     * User (visitor) email
-     */
-    email?: string;
-    /**
-     * User (visitor) name
-     */
-    name?: string;
-    /**
-     * URL page which visitor came from. Taken from referrer
-     */
-    page?: string;
-}
-
-/**
- * Create message response
- */
-export interface CreateMessageResponsePayload {}
-
-/**
- * Message was created realtime payload
- */
-export interface CreateMessageRealtimePayload extends CommonCommunicationInfo {
-    /**
-     * Message text
-     */
-    message: string;
-}
-
-export type CreateMessageRequestAction = RealtimeRequestAction<typeof CREATE_MESSAGE, CreateMessageRequestPayload>;
-export type CreateMessageSuccessAction = RealtimeSuccessResponseAction<typeof CREATE_MESSAGE, CreateMessageResponsePayload, CreateMessageRequestPayload>;
-export type CreateMessageFailedAction = RealtimeErrorResponseAction<typeof CREATE_MESSAGE, CreateMessageRequestPayload>;
-export type CreateMessageServerAction = ServerRealtimeAction<typeof REALTIME_NEW_MESSAGE, CreateMessageRealtimePayload>;
-export type CreateMessageActions =
-    CreateMessageRequestAction |
-    CreateMessageSuccessAction |
-    CreateMessageFailedAction;
     
+
+export interface AddPostscriptumMessageRequestPayload {
+    /**
+     * Communication uuid
+     */
+    uuid: string;
+    /**
+     * Postscriptum message
+     */
+    message: string;
+}
+
+export interface AddPostscriptumMessageResponsePayload { }
+
+export interface AddPostscriptumMessageRealtimePayload extends AddPostscriptumMessageRequestPayload {
+    /**
+     * Will be true if communication should be un-notified
+     */
+    unNotified: boolean;
+}
+
+export type AddPostscriptumMessageRequestAction = RealtimeRequestAction<typeof ADD_POSTSCRIPTUM, AddPostscriptumMessageRequestPayload>;
+export type AddPostscriptumMessageSuccessAction = RealtimeSuccessResponseAction<typeof ADD_POSTSCRIPTUM, AddPostscriptumMessageResponsePayload, AddPostscriptumMessageRequestPayload>;
+export type AddPostscriptumMessageFailedAction = RealtimeErrorResponseAction<typeof ADD_POSTSCRIPTUM, AddPostscriptumMessageRequestPayload>;
+export type AddPostscriptumMessageServerAction = ServerRealtimeAction<typeof REALTIME_POSTSCRIPTUM_ADDED, AddPostscriptumMessageRealtimePayload>;
+
+export type AddPostscriptumMessageActions =
+    AddPostscriptumMessageRequestAction |
+    AddPostscriptumMessageSuccessAction |
+    AddPostscriptumMessageFailedAction;
+
+
+
     
 /**
  * All communication actions
@@ -329,5 +311,5 @@ export type CommunicationActions =
     AnswerChatServerAction |
     UpdateChatActions |
     UpdateChatServerAction |
-    CreateMessageActions |
-    CreateMessageServerAction;
+    AddPostscriptumMessageActions |
+    AddPostscriptumMessageServerAction;

@@ -49,9 +49,9 @@ export interface NoteWasCreatedRealtimePayload {
      */
     agentId: number;
     /**
-     * Website id
+     * Team id
      */
-    websiteId: number;
+    teamId: number;
 }
 
 export type CreateNoteRequestAction = RealtimeRequestAction<typeof CREATE_NOTE, CreateNoteRequestPayload>;
@@ -93,9 +93,9 @@ export interface NoteWasDeletedRealtimePayload {
      */
     agentId: number;
     /**
-     * Website id
+     * Team id
      */
-    websiteId: number;
+    teamId: number;
 }
 
 export type DeleteNoteRequestAction = RealtimeRequestAction<typeof DELETE_NOTE, DeleteNoteRequestPayload>;
@@ -141,9 +141,9 @@ export interface NoteWasChangedRealtimePayload {
      */
     agentId: number;
     /**
-     * Website id
+     * Team id
      */
-    websiteId: number;
+    teamId: number;
     /**
      * New note text
      */
