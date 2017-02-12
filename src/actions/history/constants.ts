@@ -27,6 +27,11 @@ export const REALTIME_WAS_NOTIFIED = "communication/WAS_NOTIFIED";
 export const REALTIME_WAS_UNNOTIFIED = "communication/WAS_UNNOTIFIED";
 
 /**
+ * Claim communication
+ */
+export const SET_CLAIMED = "communication/SET_CLAIMED";
+
+/**
  * History communication was claimed (assigned ownership)
  */
 export const REALTIME_WAS_CLAIMED = "communication/WAS_CLAIMED";

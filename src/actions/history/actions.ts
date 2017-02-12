@@ -3,7 +3,7 @@ import {
     HISTORY_GET_CHAT,
     HISTORY_GET_CHATS,
 } from "./constants";
-import { REALTIME_WAS_CLAIMED, REALTIME_WAS_NOTIFIED, REALTIME_WAS_UNNOTIFIED, SET_NOTIFIED } from "./constants";
+import { REALTIME_WAS_CLAIMED, REALTIME_WAS_NOTIFIED, REALTIME_WAS_UNNOTIFIED, SET_CLAIMED, SET_NOTIFIED } from "./constants";
 import { ChatHistoryCommunicationInfo } from "./interfaces";
 
 /**
@@ -119,6 +119,23 @@ export interface SetUnnotifiedRealtimePayload {
 
 export type SetUnnotifiedServerAction = ServerRealtimeAction<typeof REALTIME_WAS_UNNOTIFIED, SetUnnotifiedRealtimePayload>;
 
+export interface SetClaimedRequestPayload {
+    uuid: string;
+    teamId: number;
+}
+
+export interface SetClaimedResponsePayload {
+}
+
+export type SetClaimedRequestAction = RealtimeRequestAction<typeof SET_CLAIMED, SetClaimedRequestPayload>;
+export type SetClaimedSuccessAction = RealtimeSuccessResponseAction<typeof SET_CLAIMED, SetClaimedResponsePayload, SetClaimedRequestPayload>;
+export type SetClaimedFailedAction = RealtimeErrorResponseAction<typeof SET_CLAIMED, SetClaimedRequestPayload>;
+
+export type SetClaimedActions =
+    SetClaimedRequestAction |
+    SetClaimedSuccessAction |
+    SetClaimedFailedAction;
+
 
 export interface CommunicationClaimedRealtimePayload {
     /**
@@ -143,4 +160,5 @@ export type HistoryActions =
     SetNotifiedActions |
     SetNotifiedServerAction |
     SetUnnotifiedServerAction |
+    SetClaimedActions |
     CommunicationClaimedServerAction;
