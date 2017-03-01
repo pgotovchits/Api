@@ -27,7 +27,7 @@ async function copyExtenableError() {
 }
 
 gulp.task("typescript", async () => {
-    await compileTypescript(__dirname, true);
+    await compileTypescript(true);
     await copyExtenableError();
 });
 /**
