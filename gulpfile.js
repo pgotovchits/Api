@@ -1,17 +1,9 @@
 "use strict";
-
-const fs = require("fs");
-const path = require("path");
-
 const gulp = require("gulp");
-const gutil = require("gulp-util");
-const gulpSourcemaps = require("gulp-sourcemaps");
 const del = require("del");
-const ts = require("gulp-typescript");
-const tslint = require("gulp-tslint");
-const typescript = require("typescript");
-const merge = require("merge2");
 
+const { streamToPromise, runWithPromise } = require("@ramble/helpers/gulp/common");
+const { compileTypescript, lintTypescript } = require("@ramble/helpers/gulp/typescript")("tsconfig.build.json");
 
 const dotenv = require("dotenv");
 dotenv.load({ silent: true });
@@ -26,48 +18,37 @@ gulp.task("clean", () => {
     return del("./compiled/**", { dot: true });
 });
 
-gulp.task("lint", () => {
-    return gulp.src("./src/**/*.ts", { since: gulp.lastRun("lint") })
-        .pipe(tslint({ tslint: require("tslint"), formatter: "verbose" }))
-        .pipe(tslint.report());
+gulp.task("lint", async () => {
+    return await lintTypescript("./src/**/*.ts", { since: gulp.lastRun("lint") });
 });
 
-const tsProject = ts.createProject("tsconfig.build.json", {
-    typescript: typescript,
-    noEmitOnError: true,
-    noEmit: false
-});
+async function copyExtenableError() {
+    return streamToPromise(gulp.src("src/utils/ExtendableError.*", { base: "src/" }).pipe(gulp.dest("compiled/")));
+}
 
-/**
- * Compile typescript files
- */
-gulp.task("typescript", () => {
-    const tsResult = tsProject.src()
-        .pipe(gulpSourcemaps.init())
-        .pipe(tsProject())
-        .once("error", function () {
-            this.once("finish", () => process.exit(1));
-        });
-
-    return merge([
-        gulp.src(["src/utils/ExtendableError.*"], { base: "src/" }).pipe(gulp.dest("compiled/")),
-        tsResult.js.pipe(gulpSourcemaps.write(
-            '.',
-            {
-                includeContent: false,
-                sourceRoot: "../src"
-            }))
-            .pipe(gulp.dest('./compiled')),
-        tsResult.dts.pipe(gulp.dest("./compiled"))
-    ]);
+gulp.task("typescript", async () => {
+    await compileTypescript(__dirname, true);
+    await copyExtenableError();
 });
 /**
  * Watch typescript
  */
-gulp.task("typescript:watch", gulp.series("typescript", "lint", () => {
-    gulp.watch("src/**/*", gulpWatchOpts, gulp.parallel("typescript", "lint"));
-}));
+gulp.task("typescript:watch", () => {
+    return new Promise(async () => {
+        try {
+            await runWithPromise("typescript", "lint");
+        } catch (e) {
+            // ignore
+        }
+        gulp.watch("src/**/*", gulpWatchOpts, async () => {
+            try {
+                await runWithPromise("typescript", "lint");
+            } catch (e) {
+                // ignore
+            }
+        });
+    });
+});
 
 gulp.task("build", gulp.series("typescript", "lint"));
-gulp.task("clean-build", gulp.series("clean", "build"));
 gulp.task("clean:build", gulp.series("clean", "build"));
