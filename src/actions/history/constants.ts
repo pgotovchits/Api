@@ -35,3 +35,13 @@ export const SET_CLAIMED = "communication/SET_CLAIMED";
  * History communication was claimed (assigned ownership)
  */
 export const REALTIME_WAS_CLAIMED = "communication/WAS_CLAIMED";
+
+/**
+ * Communication(s) archived
+ */
+export const SET_ARCHIVED_STATUS = "communication/SET_ARCHIVED_STATUS";
+
+/**
+ * Communication(s) was archived
+ */
+export const REALTIME_ARCHIVED_STATUS_CHANGED = "communication/ARCHIVED_STATUS_CHANGED";

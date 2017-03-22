@@ -3,7 +3,7 @@ import {
     HISTORY_GET_CHAT,
     HISTORY_GET_CHATS,
 } from "./constants";
-import { REALTIME_WAS_CLAIMED, REALTIME_WAS_NOTIFIED, REALTIME_WAS_UNNOTIFIED, SET_CLAIMED, SET_NOTIFIED } from "./constants";
+import { REALTIME_ARCHIVED_STATUS_CHANGED, REALTIME_WAS_CLAIMED, REALTIME_WAS_NOTIFIED, REALTIME_WAS_UNNOTIFIED, SET_ARCHIVED_STATUS, SET_CLAIMED, SET_NOTIFIED } from "./constants";
 import { ChatHistoryCommunicationInfo } from "./interfaces";
 
 /**
@@ -34,6 +34,18 @@ export interface ChatHistoryCommunicationRequest {
      * Chat status
      */
     status: "missed" | "answered";
+    /**
+     * Filter by archived status
+     */
+    archived?: boolean;
+    /**
+     * Filter by notified status
+     */
+    notified?: boolean;
+    /**
+     * Include only communications with postscriptum message
+     */
+    withPostscriptumMessage?: true;
 }
 
 /**
@@ -119,6 +131,44 @@ export interface SetUnnotifiedRealtimePayload {
 
 export type SetUnnotifiedServerAction = ServerRealtimeAction<typeof REALTIME_WAS_UNNOTIFIED, SetUnnotifiedRealtimePayload>;
 
+/**
+ * Set archive status request
+ * 
+ * @export
+ */
+export interface SetArchivedStatusRequestPayload {
+    comms: Array<{ uuid: string, teamId: number }>;
+    archived: boolean;
+}
+
+/**
+ * Set archive status response
+ * 
+ * @export
+ */
+export interface SetArchivedStatusResponsePayload {
+
+}
+
+/**
+ * Archive status was changed for comms
+ * 
+ * @export
+ */
+export interface SetArchivedStatusRealtimePayload extends SetArchivedStatusRequestPayload {
+}
+
+export type SetArchivedStatusRequestAction = RealtimeRequestAction<typeof SET_ARCHIVED_STATUS, SetArchivedStatusRequestPayload>;
+export type SetArchivedStatusSuccessAction = RealtimeSuccessResponseAction<typeof SET_ARCHIVED_STATUS, SetArchivedStatusResponsePayload, SetArchivedStatusRequestPayload>;
+export type SetArchivedStatusFailedAction = RealtimeErrorResponseAction<typeof SET_ARCHIVED_STATUS, SetArchivedStatusRequestPayload>;
+
+export type SetArchivedStatusActions =
+    SetArchivedStatusRequestAction |
+    SetArchivedStatusSuccessAction |
+    SetArchivedStatusFailedAction;
+export type SetArchivedStatusServerAction = ServerRealtimeAction<typeof REALTIME_ARCHIVED_STATUS_CHANGED, SetArchivedStatusRealtimePayload>;
+
+
 export interface SetClaimedRequestPayload {
     uuid: string;
     teamId: number;
@@ -161,4 +211,6 @@ export type HistoryActions =
     SetNotifiedServerAction |
     SetUnnotifiedServerAction |
     SetClaimedActions |
-    CommunicationClaimedServerAction;
+    CommunicationClaimedServerAction |
+    SetArchivedStatusActions |
+    SetArchivedStatusServerAction;

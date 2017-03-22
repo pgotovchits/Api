@@ -28,6 +28,10 @@ export interface HistoryCommunicationInfo extends CommonCommunicationInfo {
      * Note if exists
      */
     note?: HistoryCommunicationNote;
+    /**
+     * Archived status
+     */
+    archived: boolean;
 }
 
 /**
