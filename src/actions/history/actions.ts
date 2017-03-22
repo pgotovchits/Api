@@ -139,6 +139,7 @@ export type SetUnnotifiedServerAction = ServerRealtimeAction<typeof REALTIME_WAS
 export interface SetArchivedStatusRequestPayload {
     comms: Array<{ uuid: string, teamId: number }>;
     archived: boolean;
+    requested: "answered" | "missed";
 }
 
 /**
