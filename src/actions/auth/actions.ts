@@ -308,5 +308,5 @@ export type AuthActions =
     LogoutServerAction |
     SendEmailForPasswordResetActions |
     ResetPasswordActions |
-    ActivateUserFailedAction |
+    ActivateUserActions |
     ResendActivationActions;
