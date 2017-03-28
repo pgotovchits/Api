@@ -265,8 +265,16 @@ export interface ActivateUserRequestPayload {
     token: string;
 }
 
+export interface ActivateUserResponsePayload {
+    /**
+     * Authentication token
+     * 
+     */
+    token: string;
+}
+
 export type ActivateUserRequestAction = RealtimeRequestAction<typeof ACTIVATE_USER, ActivateUserRequestPayload>;
-export type ActivateUserSuccessAction = RealtimeSuccessResponseAction<typeof ACTIVATE_USER, LoginResponsePayload, ActivateUserRequestAction>;
+export type ActivateUserSuccessAction = RealtimeSuccessResponseAction<typeof ACTIVATE_USER, ActivateUserResponsePayload, ActivateUserRequestAction>;
 export type ActivateUserFailedAction = RealtimeErrorResponseAction<typeof ACTIVATE_USER, ActivateUserRequestAction>;
 
 export type ActivateUserActions =
