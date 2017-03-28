@@ -18,7 +18,12 @@ export const REALTIME_TOKEN_UPDATE_FAILED = "auth/REALTIME_TOKEN_UPDATE_FAILED";
  * User sign up action
  * @type {string}
  */
-export const SIGNUP = "auth/SIGNUP";
+export const SIGNUP_OLD = "auth/SIGNUP";
+
+/**
+ * TODO: Versioning
+ */
+export const SIGNUP = "auth/SIGNUP_V2";
 
 /**
  * User login action
@@ -55,3 +60,12 @@ export const RESET_PASSWORD_EMAIL_SEND = "auth/RESET_PASSWORD_EMAIL_SEND";
  * @type {string}
  */
 export const RESET_PASSWORD = "auth/RESET_PASSWORD";
+
+/**
+ * Activate user with code
+ */
+export const ACTIVATE_USER = "auth/ACTIVATE_USER";
+/**
+ * Resend activation code
+ */
+export const RESEND_ACTIVATION = "auth/RESEND_ACTIVATION";

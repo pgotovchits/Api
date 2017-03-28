@@ -4,6 +4,7 @@ import { TeamInviteInfo, UserInviteInfo } from "../invite";
 import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import { TeamMemberInfo, UserTeamInfo } from "../team";
 import { BasicUserInformation } from "../user";
+import { ACTIVATE_USER, RESEND_ACTIVATION } from "./constants";
 import {
     LOGIN,
     LOGOUT,
@@ -256,7 +257,38 @@ export type ResetPasswordActions =
     ResetPasswordRequestAction |
     ResetPasswordSuccessAction |
     ResetPasswordFailedAction;
+    
+export interface ActivateUserRequestPayload {
+    /**
+     * Activation token
+     */
+    token: string;
+}
 
+export type ActivateUserRequestAction = RealtimeRequestAction<typeof ACTIVATE_USER, ActivateUserRequestPayload>;
+export type ActivateUserSuccessAction = RealtimeSuccessResponseAction<typeof ACTIVATE_USER, LoginResponsePayload, ActivateUserRequestAction>;
+export type ActivateUserFailedAction = RealtimeErrorResponseAction<typeof ACTIVATE_USER, ActivateUserRequestAction>;
+
+export type ActivateUserActions =
+    ActivateUserRequestAction |
+    ActivateUserSuccessAction |
+    ActivateUserFailedAction;
+
+export interface ResendActivationRequestPayload {
+    /**
+     * Email to resend activation token
+     */
+    email: string;
+}
+
+export type ResendActivationRequestAction = RealtimeRequestAction<typeof RESEND_ACTIVATION, ResendActivationRequestPayload>;
+export type ResendActivationSuccessAction = RealtimeSuccessResponseAction<typeof RESEND_ACTIVATION, void, ResendActivationRequestPayload>;
+export type ResendActivationFailedAction = RealtimeErrorResponseAction<typeof RESEND_ACTIVATION, ResendActivationRequestPayload>;
+
+export type ResendActivationActions =
+    ResendActivationRequestAction |
+    ResendActivationSuccessAction |
+    ResendActivationFailedAction;
 
 export type AuthActions =
     SignupActions |
@@ -267,4 +299,6 @@ export type AuthActions =
     LogoutActions |
     LogoutServerAction |
     SendEmailForPasswordResetActions |
-    ResetPasswordActions;
+    ResetPasswordActions |
+    ActivateUserFailedAction |
+    ResendActivationActions;
