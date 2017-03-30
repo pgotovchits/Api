@@ -19,3 +19,10 @@ export interface BasicUserInformation {
      */
     lastName: string;
 }
+
+export interface FullUserInformation extends BasicUserInformation {
+    /**
+     * User settings
+     */
+    settings: object;
+}

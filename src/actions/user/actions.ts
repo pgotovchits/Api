@@ -12,7 +12,7 @@ import {
     USER_PASSWORD_UPDATE,
     USER_UPDATE
 } from "./constants";
-import { BasicUserInformation } from "./interfaces";
+import { BasicUserInformation, FullUserInformation } from "./interfaces";
 
 /**
  * Change user action request
@@ -31,17 +31,21 @@ export interface UpdateUserRequestPayload {
      * User last name
      */
     lastName?: string;
+    /**
+     * User settings
+     */
+    settings?: object;
 }
 
 /**
- * Change user action response
+ * Change user action response. Only requested values will be returned in reponse
  */
-export interface UpdateUserResponsePayload extends BasicUserInformation {}
+export interface UpdateUserResponsePayload extends Partial<FullUserInformation> {}
 
 /**
- * User updated his info
+ * User updated his info. Only changed values will be sent
  */
-export interface UpdateUserRealtimePayload extends BasicUserInformation {}
+export interface UpdateUserRealtimePayload extends Partial<BasicUserInformation> {}
 
 export type UpdateUserRequestAction = RealtimeRequestAction<typeof USER_UPDATE, UpdateUserRequestPayload>;
 export type UpdateUserSuccessAction = RealtimeSuccessResponseAction<typeof USER_UPDATE, UpdateUserResponsePayload, UpdateUserRequestPayload>;

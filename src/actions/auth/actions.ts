@@ -4,6 +4,7 @@ import { TeamInviteInfo, UserInviteInfo } from "../invite";
 import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import { TeamMemberInfo, UserTeamInfo } from "../team";
 import { BasicUserInformation } from "../user";
+import { FullUserInformation } from "../user/interfaces";
 import { ACTIVATE_USER, RESEND_ACTIVATION } from "./constants";
 import {
     LOGIN,
@@ -102,9 +103,9 @@ export interface LoginResponsePayload {
      */
     token: string;
     /**
-     * User information
+     * User information with settings
      */
-    user: BasicUserInformation;
+    user: FullUserInformation;
     /**
      * User teams
      */
