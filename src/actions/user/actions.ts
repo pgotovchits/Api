@@ -45,7 +45,7 @@ export interface UpdateUserResponsePayload extends Partial<FullUserInformation> 
 /**
  * User updated his info. Only changed values will be sent
  */
-export interface UpdateUserRealtimePayload extends Partial<BasicUserInformation> {}
+export interface UpdateUserRealtimePayload extends BasicUserInformation {}
 
 export type UpdateUserRequestAction = RealtimeRequestAction<typeof USER_UPDATE, UpdateUserRequestPayload>;
 export type UpdateUserSuccessAction = RealtimeSuccessResponseAction<typeof USER_UPDATE, UpdateUserResponsePayload, UpdateUserRequestPayload>;
