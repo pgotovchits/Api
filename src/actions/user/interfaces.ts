@@ -24,5 +24,5 @@ export interface FullUserInformation extends BasicUserInformation {
     /**
      * User settings
      */
-    settings: object;
+    settings: { [key: string]: string | number | boolean };
 }

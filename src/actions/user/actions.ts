@@ -34,7 +34,7 @@ export interface UpdateUserRequestPayload {
     /**
      * User settings
      */
-    settings?: object;
+    settings?: { [key: string]: string | number | boolean };
 }
 
 /**
