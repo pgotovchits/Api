@@ -10,6 +10,7 @@ import {
     REALTIME_TEAM_NAME_CHANGED,
     REALTIME_TEAM_WAS_DELETED
 } from "./constants";
+import { ADD_TEAM_CODE, REALTIME_CODE_ADDED } from "./constants";
 import { UserTeamInfo } from "./interfaces";
 
 
@@ -167,6 +168,36 @@ export type LeaveTeamActions =
     LeaveTeamSuccessAction |
     LeaveTeamFailedAction;
     
+export interface AddTeamCodeRequestPayload {
+    /**
+     * Team code
+     */
+    code: string;
+    /**
+     * Team id
+     */
+    teamId: number;
+}
+
+export interface AddTeamCodeResponsePayload { }
+
+export interface AddTeamCodeRealtimePayload extends AddTeamCodeRequestPayload {
+    /**
+     * User id which added the new code
+     */
+    userId: number;
+}
+
+export type AddTeamCodeRequestAction = RealtimeRequestAction<typeof ADD_TEAM_CODE, AddTeamCodeRequestPayload>;
+export type AddTeamCodeSuccessAction = RealtimeSuccessResponseAction<typeof ADD_TEAM_CODE, AddTeamCodeResponsePayload, AddTeamCodeRequestPayload>;
+export type AddTeamCodeFailedAction = RealtimeErrorResponseAction<typeof ADD_TEAM_CODE, AddTeamCodeRequestAction>;
+export type AddTeamCodeServerAction = ServerRealtimeAction<typeof REALTIME_CODE_ADDED, AddTeamCodeRealtimePayload>;
+
+export type AddTeamCodeActions =
+    AddTeamCodeRequestAction |
+    AddTeamCodeSuccessAction |
+    AddTeamCodeFailedAction;
+
 export type TeamActions =
     DeleteTeamActions |
     DeleteTeamServerAction |
@@ -174,4 +205,6 @@ export type TeamActions =
     ChangeTeamNameActions |
     ChangeTeamNameServerAction |
     LeaveTeamActions |
-    LeaveTeamServerAction;
+    LeaveTeamServerAction |
+    AddTeamCodeActions |
+    AddTeamCodeServerAction;
