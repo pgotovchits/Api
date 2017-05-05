@@ -10,7 +10,7 @@ import {
     REALTIME_TEAM_NAME_CHANGED,
     REALTIME_TEAM_WAS_DELETED
 } from "./constants";
-import { ADD_TEAM_CODE, REALTIME_CODE_ADDED } from "./constants";
+import { ADD_TEAM_CODE, CHECK_TEAM_CODE, REALTIME_CODE_ADDED } from "./constants";
 import { UserTeamInfo } from "./interfaces";
 
 
@@ -198,6 +198,25 @@ export type AddTeamCodeActions =
     AddTeamCodeSuccessAction |
     AddTeamCodeFailedAction;
 
+
+export interface CheckTeamCodeRequestPayload {
+    /**
+     * Team code
+     */
+    code: string;
+}
+
+export interface CheckTeamCodeResponsePayload { }
+
+export type CheckTeamCodeRequestAction = RealtimeRequestAction<typeof CHECK_TEAM_CODE, CheckTeamCodeRequestPayload>;
+export type CheckTeamCodeSuccessAction = RealtimeSuccessResponseAction<typeof CHECK_TEAM_CODE, CheckTeamCodeResponsePayload, CheckTeamCodeRequestPayload>;
+export type CheckTeamCodeFailedAction = RealtimeErrorResponseAction<typeof CHECK_TEAM_CODE, CheckTeamCodeRequestAction>;
+
+export type CheckTeamCodeActions =
+    CheckTeamCodeRequestAction |
+    CheckTeamCodeSuccessAction |
+    CheckTeamCodeFailedAction;
+
 export type TeamActions =
     DeleteTeamActions |
     DeleteTeamServerAction |
@@ -207,4 +226,5 @@ export type TeamActions =
     LeaveTeamActions |
     LeaveTeamServerAction |
     AddTeamCodeActions |
-    AddTeamCodeServerAction;
+    AddTeamCodeServerAction |
+    CheckTeamCodeActions;

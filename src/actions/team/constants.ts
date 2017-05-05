@@ -63,6 +63,11 @@ export const CREATE_TEAM_INVITES = "team/CREATE_INVITES";
 export const ADD_TEAM_CODE = "team/ADD_CODE";
 
 /**
+ * Check team code availability
+ */
+export const CHECK_TEAM_CODE = "team/CHECK_CODE";
+
+/**
  * Invites was created by other user in team
  */
 export const REALTIME_TEAM_INVITES_CREATED_BY_MEMBER = "team/INVITES_CREATED_BY_MEMBER";
