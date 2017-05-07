@@ -43,6 +43,10 @@ export interface SignupRequestPayload {
      */
     team?: string;
     /**
+     * Custom team code
+     */
+    teamCode?: string;
+    /**
      * Invite code
      */
     inviteCode?: string;
