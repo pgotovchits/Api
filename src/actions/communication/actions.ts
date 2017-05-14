@@ -1,17 +1,20 @@
 import { RealtimeErrorResponseAction, RealtimeRequestAction, RealtimeSuccessResponseAction, ServerRealtimeAction } from "../realtimeAction";
 import {
     ANSWER_CHAT,
-    CANCEL_CHAT,
-    CREATE_CHAT,
     END_CHAT,
     REALTIME_CHAT_ANSWERED,
     REALTIME_CHAT_CANCELED,
     REALTIME_CHAT_ENDED,
     REALTIME_CHAT_UPDATED,
     REALTIME_CREATE_CHAT,
-    UPDATE_CHAT
+    REALTIME_POSTSCRIPTUM_ADDED,
+    UPDATE_CHAT,
+    VISITOR_ADD_POSTSCRIPTUM,
+    VISITOR_CANCEL_CHAT,
+    VISITOR_CREATE_CHAT,
+    VISITOR_END_CHAT
 } from "./constants";
-import { ADD_POSTSCRIPTUM, REALTIME_POSTSCRIPTUM_ADDED } from "./constants";
+import { VISITOR_UPDATE_CHAT } from "./constants";
 import { CancellationType, ChatUpdateType, CommonCommunicationInfo } from "./interfaces";
 
 /**
@@ -60,9 +63,9 @@ export interface CreateChatResponsePayload {
 export interface CreateChatRealtimePayload extends CommonCommunicationInfo {
 }
 
-export type CreateChatRequestAction = RealtimeRequestAction<typeof CREATE_CHAT, CreateChatRequestPayload>;
-export type CreateChatSuccessAction = RealtimeSuccessResponseAction<typeof CREATE_CHAT, CreateChatResponsePayload, CreateChatRequestPayload>;
-export type CreateChatFailedAction = RealtimeErrorResponseAction<typeof CREATE_CHAT, CreateChatRequestPayload>;
+export type CreateChatRequestAction = RealtimeRequestAction<typeof VISITOR_CREATE_CHAT, CreateChatRequestPayload>;
+export type CreateChatSuccessAction = RealtimeSuccessResponseAction<typeof VISITOR_CREATE_CHAT, CreateChatResponsePayload, CreateChatRequestPayload>;
+export type CreateChatFailedAction = RealtimeErrorResponseAction<typeof VISITOR_CREATE_CHAT, CreateChatRequestPayload>;
 export type CreateChatServerAction = ServerRealtimeAction<typeof REALTIME_CREATE_CHAT, CreateChatRealtimePayload>;
 export type CreateChatActions =
     CreateChatRequestAction |
@@ -101,9 +104,9 @@ export interface ChatWasCanceledRealtimePayload {
     reason: CancellationType;
 }
 
-export type CancelChatRequestAction = RealtimeRequestAction<typeof CANCEL_CHAT, CancelChatRequestPayload | void>;
-export type CancelChatSuccessAction = RealtimeSuccessResponseAction<typeof CANCEL_CHAT, CancelChatResponsePayload, CancelChatRequestPayload | void>;
-export type CancelChatFailedAction = RealtimeErrorResponseAction<typeof CANCEL_CHAT, CancelChatRequestPayload | void>;
+export type CancelChatRequestAction = RealtimeRequestAction<typeof VISITOR_CANCEL_CHAT, CancelChatRequestPayload | void>;
+export type CancelChatSuccessAction = RealtimeSuccessResponseAction<typeof VISITOR_CANCEL_CHAT, CancelChatResponsePayload, CancelChatRequestPayload | void>;
+export type CancelChatFailedAction = RealtimeErrorResponseAction<typeof VISITOR_CANCEL_CHAT, CancelChatRequestPayload | void>;
 export type CancelChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_CANCELED, ChatWasCanceledRealtimePayload>;
 export type CancelChatActions =
     CancelChatRequestAction |
@@ -144,11 +147,17 @@ export interface ChatWasEndedRealtimePayload {
 export type EndChatRequestAction = RealtimeRequestAction<typeof END_CHAT, EndChatRequestPayload>;
 export type EndChatSuccessAction = RealtimeSuccessResponseAction<typeof END_CHAT, EndChatResponsePayload, EndChatRequestPayload>;
 export type EndChatFailedAction = RealtimeErrorResponseAction<typeof END_CHAT, EndChatRequestPayload>;
+export type VisitorEndChatRequestAction = RealtimeRequestAction<typeof VISITOR_END_CHAT, EndChatRequestPayload>;
+export type VisitorEndChatSuccessAction = RealtimeSuccessResponseAction<typeof VISITOR_END_CHAT, EndChatResponsePayload, EndChatRequestPayload>;
+export type VisitorEndChatFailedAction = RealtimeErrorResponseAction<typeof VISITOR_END_CHAT, EndChatRequestPayload>;
 export type EndChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_ENDED, ChatWasEndedRealtimePayload>;
 export type EndChatActions =
     EndChatRequestAction |
     EndChatSuccessAction |
-    EndChatFailedAction;
+    EndChatFailedAction |
+    VisitorEndChatRequestAction |
+    VisitorEndChatSuccessAction |
+    VisitorEndChatFailedAction;
 
 
 
@@ -257,11 +266,18 @@ export interface ChatWasUpdatedRealtimePayload extends UpdateChatRequestPayload 
 export type UpdateChatRequestAction = RealtimeRequestAction<typeof UPDATE_CHAT, UpdateChatRequestPayload>;
 export type UpdateChatSuccessAction = RealtimeSuccessResponseAction<typeof UPDATE_CHAT, UpdateChatResponsePayload, UpdateChatRequestPayload>;
 export type UpdateChatFailedAction = RealtimeErrorResponseAction<typeof UPDATE_CHAT, UpdateChatRequestPayload>;
+
+export type VisitorUpdateChatRequestAction = RealtimeRequestAction<typeof VISITOR_UPDATE_CHAT, UpdateChatRequestPayload>;
+export type VisitorUpdateChatSuccessAction = RealtimeSuccessResponseAction<typeof VISITOR_UPDATE_CHAT, UpdateChatResponsePayload, UpdateChatRequestPayload>;
+export type VisitorUpdateChatFailedAction = RealtimeErrorResponseAction<typeof VISITOR_UPDATE_CHAT, UpdateChatRequestPayload>;
 export type UpdateChatServerAction = ServerRealtimeAction<typeof REALTIME_CHAT_UPDATED, ChatWasUpdatedRealtimePayload>;
 export type UpdateChatActions =
     UpdateChatRequestAction |
     UpdateChatSuccessAction |
-    UpdateChatFailedAction;
+    UpdateChatFailedAction |
+    VisitorUpdateChatRequestAction |
+    VisitorUpdateChatSuccessAction |
+    VisitorUpdateChatFailedAction;
     
 
 export interface AddPostscriptumMessageRequestPayload {
@@ -284,9 +300,9 @@ export interface AddPostscriptumMessageRealtimePayload extends AddPostscriptumMe
     unNotified: boolean;
 }
 
-export type AddPostscriptumMessageRequestAction = RealtimeRequestAction<typeof ADD_POSTSCRIPTUM, AddPostscriptumMessageRequestPayload>;
-export type AddPostscriptumMessageSuccessAction = RealtimeSuccessResponseAction<typeof ADD_POSTSCRIPTUM, AddPostscriptumMessageResponsePayload, AddPostscriptumMessageRequestPayload>;
-export type AddPostscriptumMessageFailedAction = RealtimeErrorResponseAction<typeof ADD_POSTSCRIPTUM, AddPostscriptumMessageRequestPayload>;
+export type AddPostscriptumMessageRequestAction = RealtimeRequestAction<typeof VISITOR_ADD_POSTSCRIPTUM, AddPostscriptumMessageRequestPayload>;
+export type AddPostscriptumMessageSuccessAction = RealtimeSuccessResponseAction<typeof VISITOR_ADD_POSTSCRIPTUM, AddPostscriptumMessageResponsePayload, AddPostscriptumMessageRequestPayload>;
+export type AddPostscriptumMessageFailedAction = RealtimeErrorResponseAction<typeof VISITOR_ADD_POSTSCRIPTUM, AddPostscriptumMessageRequestPayload>;
 export type AddPostscriptumMessageServerAction = ServerRealtimeAction<typeof REALTIME_POSTSCRIPTUM_ADDED, AddPostscriptumMessageRealtimePayload>;
 
 export type AddPostscriptumMessageActions =

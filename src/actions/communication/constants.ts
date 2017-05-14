@@ -2,19 +2,24 @@
  * Create chat request
  * @type {string}
  */
-export const CREATE_CHAT = "communication/CREATE_CHAT";
+export const VISITOR_CREATE_CHAT = "communication/VISITOR_CREATE_CHAT";
 
 /**
  * Cancel chat (visitor side action)
  * @type {string}
  */
-export const CANCEL_CHAT = "communication/CANCEL_CHAT";
+export const VISITOR_CANCEL_CHAT = "communication/VISITOR_CANCEL_CHAT";
 
 /**
- * Chat was ended by visitor or agent
+ * Chat was ended by agent
  * @type {string}
  */
 export const END_CHAT = "communication/END_CHAT";
+
+/**
+ * Chat was ended by visitor
+ */
+export const VISITOR_END_CHAT = "communication/VISITOR_END_CHAT";
 
 /**
  * Accept chat (agent side action)
@@ -23,10 +28,16 @@ export const END_CHAT = "communication/END_CHAT";
 export const ANSWER_CHAT = "communication/ACCEPT_CHAT";
 
 /**
- * Update chat (new chat message or typing indicator) - both agent & visitor action
+ * Update chat (new chat message or typing indicator) by agent
  * @type {string}
  */
 export const UPDATE_CHAT = "communication/UPDATE_CHAT";
+
+/**
+ * Update chat by visitor
+ */
+export const VISITOR_UPDATE_CHAT = "communication/VISITOR_UPDATE_CHAT";
+
 
 /**
  * Create chat realtime action (for team agents)
@@ -61,7 +72,7 @@ export const REALTIME_CHAT_UPDATED = "communication/CHAT_UPDATED";
 /**
  * Add postscriptum message (only for visitor)
  */
-export const ADD_POSTSCRIPTUM = "communication/ADD_POSTSCRIPTUM";
+export const VISITOR_ADD_POSTSCRIPTUM = "communication/VISITOR_ADD_POSTSCRIPTUM";
 
 /**
  * Postscriptum message was added by visitor
