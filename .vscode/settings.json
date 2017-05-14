@@ -30,5 +30,6 @@
     "tsimporter.doubleQuotes": true,
     "docthis.includeTypes": false,
     "docthis.includeMemberOfOnClassMembers": false,
-    "docthis.includeMemberOfOnInterfaceMembers": false
+    "docthis.includeMemberOfOnInterfaceMembers": false,
+    "move-imports.excludedRegexp": "/(node_modules|compiled)/"
 }
