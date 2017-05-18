@@ -20,3 +20,5 @@ export * from "./actions/note";
 export * from "./actions/user";
 export * from "./actions/team";
 export * from "./actions/visitor";
+
+export * from "./actions/version";
