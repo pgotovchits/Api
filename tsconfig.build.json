@@ -9,8 +9,12 @@
     "strictNullChecks": true,
     "noEmitOnError": true,
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "outDir": "./"
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules",
     "compiled",

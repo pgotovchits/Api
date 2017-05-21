@@ -1,11 +1,11 @@
 .idea
 .npmrc
+.gitignore
+.gitattributes
+helpers
+.vscode
 gulpfile.js
 testIndex.js
 tsconfig.json
+tsconfig.build.json
 tslint.json
-typings
-typings.json
-!compiled/index.js
-!compiled/index.d.ts
-!compiled/index.js.map

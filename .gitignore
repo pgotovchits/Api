@@ -6,3 +6,7 @@ compiled
 .config
 .env
 npm-debug.log
+actions
+events
+utils
+index.*
