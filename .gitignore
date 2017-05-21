@@ -10,3 +10,7 @@ actions
 events
 utils
 index.*
+*.js
+*.map
+*.d.ts
+common

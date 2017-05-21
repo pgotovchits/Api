@@ -1,23 +1,10 @@
-// Utils
-export * from "./utils/Errors";
-
 // Events
 export * from "./events/realtimeEvents";
 
-// All actions
-export * from "./actions/actions";
+// Common stuff
+export * from "./common/action";
+export * from "./common/realtimeAction";
+export * from "./common/Errors";
 
-// Specific actions
-export * from "./actions/action";
-export * from "./actions/realtimeAction";
-export * from "./actions/analytics";
-export * from "./actions/auth";
-export * from "./actions/communication";
-export * from "./actions/history";
-export * from "./actions/invite";
-export * from "./actions/note";
-export * from "./actions/user";
-export * from "./actions/team";
-export * from "./actions/visitor";
-
-export * from "./actions/version";
+// !!! DEFAULT EXPORTED VERSION !!!
+export * from "./actions/1.1";
