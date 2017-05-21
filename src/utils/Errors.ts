@@ -1,5 +1,3 @@
-import ExtendableError from "./ExtendableError";
-
 export const REALTIME_ERROR = "RealtimeError";
 export const API_ERROR = "ApiError";
 export const TOKEN_ERROR = "TokenError";
@@ -22,9 +20,6 @@ export interface RealtimeErrorInterface {
     action: string;
     /**
      * Error type
-     * 
-     * @type {typeof REALTIME_ERROR}
-     * @memberOf RealtimeErrorInterface
      */
     type: typeof REALTIME_ERROR;
 }
@@ -34,10 +29,8 @@ export interface RealtimeErrorInterface {
  * 
  * @export
  * @class RealtimeError
- * @extends {ExtendableError}
- * @implements {RealtimeErrorInterface}
  */
-export class RealtimeError extends ExtendableError implements RealtimeErrorInterface {
+export class RealtimeError extends Error implements RealtimeErrorInterface {
     /**
      * Error message
      */
@@ -48,16 +41,10 @@ export class RealtimeError extends ExtendableError implements RealtimeErrorInter
     public action: string;
     /**
      * Error name
-     * 
-     * @type {string}
-     * @memberOf RealtimeError
      */
     public name: string = REALTIME_ERROR;
     /**
      * Error type
-     * 
-     * @type {"RealtimeError"}
-     * @memberOf RealtimeError
      */
     public type: typeof REALTIME_ERROR = REALTIME_ERROR; 
 
@@ -68,6 +55,7 @@ export class RealtimeError extends ExtendableError implements RealtimeErrorInter
      */
     public constructor(message: string, action: string) {
         super(message);
+        Object.setPrototypeOf(this, RealtimeError.prototype);
         this.message = message;
         this.action = action;
         if (typeof (Error as any).captureStackTrace === "function") {
@@ -121,7 +109,7 @@ export interface ApiErrorInterface {
 /**
  * Generic API error is base for other custom errors and represent unsuccessful HTTP api status code
  */
-export class ApiError extends ExtendableError implements ApiErrorInterface {
+export class ApiError extends Error implements ApiErrorInterface {
     /**
      * Error message
      */
@@ -144,9 +132,6 @@ export class ApiError extends ExtendableError implements ApiErrorInterface {
     public type: APIErrors = API_ERROR;
     /**
      * Error name
-     * 
-     * @type {string}
-     * @memberOf ApiError
      */
     public name: string = API_ERROR;
 
@@ -155,6 +140,7 @@ export class ApiError extends ExtendableError implements ApiErrorInterface {
      */
     public constructor(message: string, url: string, code: number, error?: Object) {
         super(message);
+        Object.setPrototypeOf(this, ApiError.prototype);
         // super() doesn't assign message for some reason
         this.message = message;
         this.url = url;
@@ -189,6 +175,11 @@ export class ApiError extends ExtendableError implements ApiErrorInterface {
 export class TokenError extends ApiError {
     public type: typeof TOKEN_ERROR = TOKEN_ERROR;
     public name: string = TOKEN_ERROR;
+    
+    public constructor(message: string, url: string, code: number, error?: Object) {
+        super(message, url, code, error);
+        Object.setPrototypeOf(this, TokenError.prototype);
+    }
 }
 
 /**
@@ -199,6 +190,7 @@ export class ValidationError extends ApiError {
     public name: string = VALIDATION_ERROR;
     public constructor(url: string, error: Object) {
         super("Validation error", url, 422, error);
+        Object.setPrototypeOf(this, ValidationError.prototype);
     }
 }
 

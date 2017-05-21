@@ -31,5 +31,5 @@
     "docthis.includeTypes": false,
     "docthis.includeMemberOfOnClassMembers": false,
     "docthis.includeMemberOfOnInterfaceMembers": false,
-    "move-imports.excludedRegexp": "/(node_modules|compiled)/"
+    "move-imports.excludedRegexp": "(node_modules|\\.js$|\\.d\\.ts$)"
 }

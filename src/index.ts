@@ -1,6 +1,5 @@
 // Utils
 export * from "./utils/Errors";
-export { default as ExtendableError } from "./utils/ExtendableError";
 
 // Events
 export * from "./events/realtimeEvents";

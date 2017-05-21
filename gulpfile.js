@@ -22,13 +22,9 @@ gulp.task("lint", async () => {
     return await lintTypescript("./src/**/*.ts", { since: gulp.lastRun("lint") });
 });
 
-async function copyExtenableError() {
-    return streamToPromise(gulp.src("src/utils/ExtendableError.*", { base: "src/" }).pipe(gulp.dest("compiled/")));
-}
 
 gulp.task("typescript", async () => {
     await compileTypescript(true);
-    await copyExtenableError();
 });
 /**
  * Watch typescript

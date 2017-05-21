@@ -7,16 +7,10 @@ export const REALTIME_ACTION_FAILED = "failed";
 
 /**
  * Realtime metadata
- * 
- * @export
- * @interface RealtimeActionMetaInformation
  */
 export interface RealtimeActionMetaInformation {
     /**
      * Realtime flag
-     * 
-     * @type {boolean}
-     * @memberOf RealtimeActionMetaInformation
      */
     realtime: boolean;
 }
@@ -27,37 +21,22 @@ export interface RealtimeActionMetaInformation {
 export interface RealtimeAction<TType, TPayload> {
     /**
      * Action type
-     * 
-     * @type {TType}
-     * @memberOf RealtimeAction
      */
     type: TType;
     /**
      * Action flow type
-     * 
-     * @type {(typeof REALTIME_ACTION_REQUEST | typeof REALTIME_ACTION_SUCCESS | typeof REALTIME_ACTION_FAILED)}
-     * @memberOf RealtimeAction
      */
     flowType: typeof REALTIME_ACTION_REQUEST | typeof REALTIME_ACTION_SUCCESS | typeof REALTIME_ACTION_FAILED;
     /**
      * Action payload
-     * 
-     * @type {TPayload}
-     * @memberOf RealtimeAction
      */
     payload: TPayload;
     /**
      * Error flag
-     * 
-     * @type {boolean}
-     * @memberOf RealtimeAction
      */
     error?: boolean;
     /**
      * Metadata information for all realtime action types
-     * 
-     * @type {RealtimeActionMetaInformation}
-     * @memberOf RealtimeAction
      */
     meta: RealtimeActionMetaInformation;
 }
@@ -67,22 +46,16 @@ export interface RealtimeAction<TType, TPayload> {
  * 
  * @export
  * @interface RealtimeRequestAction
- * @extends {RealtimeAction<TType, TPayload>}
- * @template TType
- * @template TPayload
+ * @template TType 
+ * @template TPayload 
  */
 export interface RealtimeRequestAction<TType, TPayload> extends RealtimeAction<TType, TPayload> {
     /**
      * Action flow type
-     * 
-     * @type {typeof REALTIME_ACTION_REQUEST}
      */
     flowType: typeof REALTIME_ACTION_REQUEST;
     /**
      * Error flag
-     * 
-     * @type {boolean}
-     * @memberOf RealtimeRequestAction
      */
     error: false;
     meta: RealtimeActionMetaInformation & {
@@ -93,14 +66,10 @@ export interface RealtimeRequestAction<TType, TPayload> extends RealtimeAction<T
         /**
          * Realtime flag. If false it won't be processsed on server
          * When server is sending syncronization request for this action it set this to false automatically
-         * 
-         * @type {boolean}
          */
         realtime: boolean;
         /**
          * Do not send success/failed response for action
-         * 
-         * @type {boolean}
          */
         simpleFlow?: boolean;
         /**
@@ -115,37 +84,26 @@ export interface RealtimeRequestAction<TType, TPayload> extends RealtimeAction<T
  * 
  * @export
  * @interface RealtimeResponseAction
- * @extends {BaseAction<TType, TPayload>}
  * @template TType
  * @template TPayload
  */
 export interface RealtimeSuccessResponseAction<TType, TResponsePayload, TRequestPayload> extends RealtimeAction<TType, TResponsePayload> {
     /**
      * Action flow type
-     * 
-     * @type {typeof REALTIME_ACTION_SUCCESS}
      */
     flowType: typeof REALTIME_ACTION_SUCCESS;
     /**
      * Error flag. For success response it's false
-     * 
-     * @type {boolean}
-     * @memberOf RealtimeSuccessResponseAction
      */
     error: false;
     meta: RealtimeActionMetaInformation & {
         /**
          * Realtime flag. The response will not be processed on server again, so must be false
-         * 
-         * @type {boolean}
          */
         realtime: false;
     };
     /**
      * Original request payload
-     * 
-     * @type {TRequestPayload}
-     * @memberOf RealtimeSuccessResponseAction
      */
     requestPayload: TRequestPayload;
 }
@@ -159,30 +117,20 @@ export interface RealtimeSuccessResponseAction<TType, TResponsePayload, TRequest
 export interface RealtimeErrorResponseAction<TType, TRequestPayload> extends RealtimeAction<TType, ApiErrorInterface | RealtimeErrorInterface> {
     /**
      * Action flow type
-     * 
-     * @type {typeof REALTIME_ACTION_FAILED}
      */
     flowType: typeof REALTIME_ACTION_FAILED;
     /**
      * Error flag
-     * 
-     * @type {boolean}
-     * @memberOf RealtimeErrorResponseAction
      */
     error: true;
     meta: RealtimeActionMetaInformation & {
         /**
          * Realtime flag. Te response will not be processed on server again, so must be false
-         * 
-         * @type {boolean}
          */
         realtime: false;
     };
     /**
      * Original request payload
-     * 
-     * @type {TRequestPayload}
-     * @memberOf RealtimeErrorResponseAction
      */
     requestPayload: TRequestPayload;
 }
@@ -194,20 +142,18 @@ export interface RealtimeErrorResponseAction<TType, TRequestPayload> extends Rea
  * 
  * @export
  * @interface ServerRealtimeAction
- * @extends {BaseAction<TPayload>}
  * @template TPayload
  */
-export interface ServerRealtimeAction<TType, TPayload> extends BaseAction<TType, TPayload> {
-}
+export interface ServerRealtimeAction<TType, TPayload> extends BaseAction<TType, TPayload> {}
 
 /**
  * Check if given action is any of RealtimeAction types
  * 
  * @export
- * @template TType
- * @template TPayload
- * @param {*} action
- * @returns {action is RealtimeAction<TType, TPayload>}
+ * @template TType 
+ * @template TPayload 
+ * @param action 
+ * @returns 
  */
 export function isRealtimeAction<TType, TPayload>(action: any): action is RealtimeAction<TType, TPayload> {
     return (action && typeof action.type !== "undefined" && action.meta && typeof action.meta.realtime !== "undefined");
@@ -217,11 +163,31 @@ export function isRealtimeAction<TType, TPayload>(action: any): action is Realti
  * Check if given action is RealtimeRequestAction
  * 
  * @export
- * @template TType
- * @template TPayload
- * @param {*} action
- * @returns {action is RealtimeRequestAction<TType, TPayload>}
+ * @template TType 
+ * @template TPayload 
+ * @param action 
+ * @returns 
  */
 export function isRealtimeRequestAction<TType, TPayload>(action: any): action is RealtimeRequestAction<TType, TPayload> {
     return (isRealtimeAction(action) && action.meta.realtime);
+}
+
+export type RequestKey = "Request";
+export type SuccessKey = "Success";
+export type FailedKey = "Failed";
+export type ResponseKey = "Response";
+/**
+ * Action descriptor
+ * 
+ * @export
+ * @interface ActionDescriptor
+ * @template TType 
+ * @template TRequest 
+ * @template TResponse 
+ */
+export interface ActionDescriptor<TType, TRequest, TResponse> {
+    Request: RealtimeRequestAction<TType, TRequest>;
+    Success: RealtimeSuccessResponseAction<TType, TResponse, TRequest>;
+    Failed: RealtimeErrorResponseAction<TType, TRequest>;
+    Response: RealtimeSuccessResponseAction<TType, TResponse, TRequest> | RealtimeErrorResponseAction<TType, TRequest>;
 }
