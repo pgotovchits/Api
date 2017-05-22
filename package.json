@@ -1,6 +1,6 @@
 {
   "name": "@ramble/shared",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "Shared sources",
   "main": "index.js",
   "typings": "index.d.ts",
