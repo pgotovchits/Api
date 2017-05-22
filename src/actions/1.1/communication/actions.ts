@@ -269,8 +269,10 @@ export type CommunicationActions =
     CreateChatAction |
     CancelChatAction |
     EndChatAction |
+    VisitorEndChatAction |
     AnswerChatAction |
     UpdateChatAction |
+    VisitorUpdateChatAction |
     AddPostscriptumMessageAction;
     
 export type CommunicationServerActions =
