@@ -8,58 +8,32 @@ import { NoteActions, NoteServerActions } from "./note";
 import { TeamActions, TeamInviteActions, TeamInviteServerActions, TeamMemberActions, TeamMembersServerActions, TeamServerActions } from "./team";
 import { UserActions, UserServerActions } from "./user";
 
-/**
- * All realtime actions
- */
-export type RealtimeActions =
-    AnalyticsActions[RequestKey] |
-    AnalyticsActions[SuccessKey] |
-    AnalyticsActions[FailedKey] |
+    
+export type RealtimeActionDescriptors =
+    AnalyticsActions |
+    AuthActions |
+    CommunicationActions |
+    HistoryActions |
+    InviteActions |
+    NoteActions |
+    UserActions |
+    TeamActions |
+    TeamInviteActions |
+    TeamMemberActions;
 
-    AuthActions[RequestKey] |
-    AuthActions[SuccessKey] |
-    AuthActions[FailedKey] |
+export type RealtimeServerActions =
     AuthServerActions |
-
-    CommunicationActions[RequestKey] |
-    CommunicationActions[SuccessKey] |
-    CommunicationActions[FailedKey] |
     CommunicationServerActions |
-
-    HistoryActions[RequestKey] |
-    HistoryActions[SuccessKey] |
-    HistoryActions[FailedKey] |
     HistoryServerActions |
-
-    InviteActions[RequestKey] |
-    InviteActions[SuccessKey] |
-    InviteActions[FailedKey] |
-    InviteServerActionos |
-
-    NoteActions[RequestKey] |
-    NoteActions[SuccessKey] |
-    NoteActions[FailedKey] |
     NoteServerActions |
-
-    UserActions[RequestKey] |
-    UserActions[SuccessKey] |
-    UserActions[FailedKey] |
     UserServerActions |
-
-    TeamActions[RequestKey] |
-    TeamActions[SuccessKey] |
-    TeamActions[FailedKey] |
     TeamServerActions |
-
-    TeamInviteActions[RequestKey] |
-    TeamInviteActions[SuccessKey] |
-    TeamInviteActions[FailedKey] |
+    InviteServerActionos |
     TeamInviteServerActions |
-
-    TeamMemberActions[RequestKey] |
-    TeamMemberActions[SuccessKey] |
-    TeamMemberActions[FailedKey] |
     TeamMembersServerActions;
+
+// All realtime actions to consume in reducers
+export type RealtimeActions = RealtimeActionDescriptors[RequestKey] | RealtimeActionDescriptors[SuccessKey] | RealtimeActionDescriptors[FailedKey] | RealtimeServerActions;
 
 // Action descriptors
 
