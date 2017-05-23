@@ -267,6 +267,6 @@ export type AuthActions =
     ResendActivationAction;
 
 export type AuthServerActions =
-    TokenUpdateFailedServerAction |
+    TokenUpdateServerAction |
     TokenUpdateFailedServerAction |
     LogoutServerAction;
