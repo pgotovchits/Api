@@ -48,8 +48,13 @@ export interface RealtimeAction<TType, TPayload> {
  * @interface RealtimeRequestAction
  * @template TType 
  * @template TPayload 
+ * @template TResponse
  */
-export interface RealtimeRequestAction<TType, TPayload> extends RealtimeAction<TType, TPayload> {
+export interface RealtimeRequestAction<TType, TPayload, TResponse = void> extends RealtimeAction<TType, TPayload> {
+    /**
+     * Helper to get success response payload from request action
+     */
+    _noUse?: TResponse;
     /**
      * Action flow type
      */
@@ -186,7 +191,7 @@ export type ResponseKey = "Response";
  * @template TResponse 
  */
 export interface ActionDescriptor<TType, TRequest, TResponse> {
-    Request: RealtimeRequestAction<TType, TRequest>;
+    Request: RealtimeRequestAction<TType, TRequest, TResponse>;
     Success: RealtimeSuccessResponseAction<TType, TResponse, TRequest>;
     Failed: RealtimeErrorResponseAction<TType, TRequest>;
     Response: RealtimeSuccessResponseAction<TType, TResponse, TRequest> | RealtimeErrorResponseAction<TType, TRequest>;
