@@ -6,5 +6,4 @@ export * from "./common/action";
 export * from "./common/realtimeAction";
 export * from "./common/Errors";
 
-// !!! DEFAULT EXPORTED VERSION !!!
-export * from "./actions/1.1";
+// Actions are not being exported in top-level, use import { } from "@ramble/shared/portal" or import { } from "@ramble/shared/visitor";
