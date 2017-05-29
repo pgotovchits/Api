@@ -41,3 +41,8 @@ export const REALTIME_CHAT_ENDED = "visitor/CHAT_ENDED";
  * Chat was updated by agent
  */
 export const REALTIME_CHAT_UPDATED = "visitor/CHAT_UPDATED";
+
+/**
+ * Get team information with agent availability
+ */
+export const VISITOR_GET_TEAM_INFO = "visitor/GET_TEAM_INFO";
