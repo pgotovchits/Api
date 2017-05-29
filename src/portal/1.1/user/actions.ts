@@ -12,6 +12,7 @@ import {
     USER_PASSWORD_UPDATE,
     USER_UPDATE
 } from "../../constants/user";
+import { SEND_FEEDBACK } from "../../constants/user";
 import { BasicUserInformation, FullUserInformation } from "./interfaces";
 
 /**
@@ -87,12 +88,24 @@ export interface RegisterForPushNotificationsRequestPayload {
 export interface RegisterForPushNotificationsResponsePayload {}
 
 export type RegisterForPushNotificationsAction = ActionDescriptor<typeof REGISTER_FOR_PUSH_NOTIFICATIONS, RegisterForPushNotificationsRequestPayload, RegisterForPushNotificationsResponsePayload>;
+
+export interface SendFeedbackRequestPayload {
+    /**
+     * Feedback message
+     */
+    message: string;
+}
+
+export interface SendFeedbackResponsePayload { }
+
+export type SendFeedbackAction = ActionDescriptor<typeof SEND_FEEDBACK, SendFeedbackRequestPayload, SendFeedbackResponsePayload>;
     
 
 export type UserActions =
     UpdateUserAction |
     UpdateUserPasswordAction |
-    RegisterForPushNotificationsAction;
+    RegisterForPushNotificationsAction |
+    SendFeedbackAction;
 
 export type UserServerActions =
     UpdateUserServerAction;
