@@ -185,3 +185,16 @@ export interface VisitorChatUpdatedRealtimePayload extends VisitorUpdateChatRequ
 }
 
 export type VisitorChatUpdatedAction = ServerRealtimeAction<typeof REALTIME_CHAT_UPDATED, VisitorChatUpdatedRealtimePayload>;
+
+export type ChatActions =
+    VisitorCreateChatAction |
+    VisitorCancelChatAction |
+    VisitorEndChatAction |
+    VisitorUpdateChatAction |
+    VisitorAddPostscriptumMessageAction;
+    
+export type ChatServerActions =
+    VisitorChatCanceledAction |
+    VisitorChatAnsweredAction |
+    VisitorChatEndedAction |
+    VisitorChatUpdatedAction;

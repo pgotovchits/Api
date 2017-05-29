@@ -39,3 +39,5 @@ export interface GetTeamInfoResponsePayload {
 }
 
 export type VisitorGetTeamInfoAction = ActionDescriptor<typeof VISITOR_GET_TEAM_INFO, GetTeamInfoRequestPayload, GetTeamInfoResponsePayload>;
+
+export type TeamActions = VisitorGetTeamInfoAction;
