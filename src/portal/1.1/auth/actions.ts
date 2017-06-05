@@ -1,6 +1,5 @@
 import { ApiErrorInterface, RealtimeErrorInterface } from "../../../common/Errors";
 import { ActionDescriptor, ServerRealtimeAction } from "../../../common/realtimeAction";
-import { ACTIVATE_USER, RESEND_ACTIVATION } from "../../constants/auth";
 import {
     LOGIN,
     LOGOUT,
@@ -12,6 +11,7 @@ import {
     SIGNUP,
     VALIDATE_EMAIL
 } from "../../constants/auth";
+import { ACTIVATE_USER, RESEND_ACTIVATION } from "../../constants/user";
 import { ActiveChatCommunicationInfo, IncomingChatCommunicationInfo } from "../communication";
 import { TeamInviteInfo, UserInviteInfo } from "../invite";
 import { TeamMemberInfo, UserTeamInfo } from "../team";
