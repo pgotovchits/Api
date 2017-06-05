@@ -22,3 +22,13 @@ export const REGISTER_FOR_PUSH_NOTIFICATIONS = "user/REGISTER_FOR_PUSH_NOTIFICAT
  * Send feedback message
  */
 export const SEND_FEEDBACK = "user/SEND_FEEDBACK";
+/**
+ * Activate user with code
+ * Note: Keeping auth/ for compatibility with 1.1
+ */
+export const ACTIVATE_USER = "auth/ACTIVATE_USER";
+/**
+ * Resend activation code for user
+ * Note: Keeping auth/ for compatibility with 1.1
+ */
+export const RESEND_ACTIVATION = "auth/RESEND_ACTIVATION";

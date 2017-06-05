@@ -1,12 +1,10 @@
 /**
  * Get chats history (for history chats page)
- * @type {string}
  */
 export const HISTORY_GET_CHATS = "history/GET_CHATS";
 
 /**
  * Get full single chat history information
- * @type {string}
  */
 export const HISTORY_GET_CHAT = "history/GET_CHAT";
 
