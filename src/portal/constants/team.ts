@@ -63,6 +63,11 @@ export const CREATE_TEAM_INVITES = "team/CREATE_INVITES";
 export const ADD_TEAM_CODE = "team/ADD_CODE";
 
 /**
+ * Delete team code
+ */
+export const DELETE_TEAM_CODE = "team/DELETE_CODE";
+
+/**
  * Check team code availability
  */
 export const CHECK_TEAM_CODE = "team/CHECK_CODE";
@@ -111,3 +116,8 @@ export const REALTIME_YOU_HAS_BEEN_DELETED_FROM_TEAM = "team/YOU_HAS_BEEN_DELETE
  * New team code was added
  */
 export const REALTIME_CODE_ADDED = "team/CODE_ADDED";
+
+/**
+ * team code was deleted
+ */
+export const REALTIME_CODE_DELETED = "team/CODE_DELETED";
