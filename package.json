@@ -1,7 +1,7 @@
 {
-  "name": "@ramble/shared",
+  "name": "ramblechat-api",
   "version": "1.10.1",
-  "description": "Shared sources",
+  "description": "RambleChat API for custom client applications",
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
@@ -14,12 +14,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/SharedSources"
+    "url": "https://github.com/RambleChat/Api"
   },
   "author": "Alexey Svetliakov <asvetliakov@teledini.com>",
-  "license": "Private",
+  "license": "MIT",
   "devDependencies": {
-    "@ramble/tslint-config": "^1.1.1",
     "@types/jest": "^19.2.3",
     "del": "^2.2.2",
     "jest": "^20.0.3",

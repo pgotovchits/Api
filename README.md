@@ -46,11 +46,13 @@ This will get you connected to RambleChat and ready to start sending and
 receiving events.
 
 ```javascript
-import * as io from 'socket.io-client';
-import * as CONSTANTS from 'ramblechat-api/visitor/constants';
+const io = require('socket.io-client');
+const CONSTANTS = require('ramblechat-api/visitor/constants');
 
-import { BACKEND_REALTIME_EVENT, REALTIME_ACTION_REQUEST, VISITOR_REALTIME_EVENT } from 'ramblechat-api';
-import { API_VERSION } from 'ramblechat-api/visitor';
+const { BACKEND_REALTIME_EVENT, 
+        REALTIME_ACTION_REQUEST, 
+        VISITOR_REALTIME_EVENT } = require('ramblechat-api');
+const { API_VERSION } = require('ramblechat-api/visitor');
 
 const socket = io('https://realtime.ramblechat.com:8443/visitor', {
   reconnection: false,
