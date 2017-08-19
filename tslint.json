@@ -1,4 +1,9 @@
 {
+    "rulesDirectory": [
+        "node_modules/tslint-eslint-rules/dist/rules",
+        "node_modules/tslint-microsoft-contrib",
+        "node_modules/tslint-react/rules"
+    ],
     "rules": {
         "align": [
             true,
@@ -131,7 +136,7 @@
         "prefer-const": true,
         // "strict-boolean-expressions": true,
         "prefer-method-signature": true,
-        "no-magic-numbers": true,
+        "no-magic-numbers": false,
         // "promise-function-async": true,
         // "no-inferred-empty-object-type": true,
         "no-string-throw": true,
