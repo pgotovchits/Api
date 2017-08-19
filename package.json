@@ -42,5 +42,8 @@
       "tsx",
       "js"
     ]
+  },
+  "dependencies": {
+    "npm": "^5.3.0"
   }
 }
