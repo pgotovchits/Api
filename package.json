@@ -1,6 +1,6 @@
 {
   "name": "ramblechat-api",
-  "version": "1.10.1",
+  "version": "1.10.2",
   "description": "RambleChat API for custom client applications",
   "main": "index.js",
   "typings": "index.d.ts",
