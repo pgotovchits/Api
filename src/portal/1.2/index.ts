@@ -1,6 +1,7 @@
 import { FailedKey, RequestKey, SuccessKey } from "../../common/realtimeAction";
 import { AnalyticsActions } from "./analytics";
 import { AuthActions, AuthServerActions } from "./auth";
+import { CommonServerActions } from "./common";
 import { CommunicationActions, CommunicationServerActions } from "./communication";
 import { HistoryActions, HistoryServerActions } from "./history";
 import { InviteActions, InviteServerActionos } from "./invite";
@@ -8,7 +9,6 @@ import { NoteActions, NoteServerActions } from "./note";
 import { TeamActions, TeamInviteActions, TeamInviteServerActions, TeamMemberActions, TeamMembersServerActions, TeamServerActions } from "./team";
 import { UserActions, UserServerActions } from "./user";
 
-    
 export type RealtimeActionDescriptors =
     AnalyticsActions |
     AuthActions |
@@ -30,7 +30,8 @@ export type RealtimeServerActions =
     TeamServerActions |
     InviteServerActionos |
     TeamInviteServerActions |
-    TeamMembersServerActions;
+    TeamMembersServerActions |
+    CommonServerActions;
 
 // All realtime actions to consume in reducers
 export type RealtimeActions = RealtimeActionDescriptors[RequestKey] | RealtimeActionDescriptors[SuccessKey] | RealtimeActionDescriptors[FailedKey] | RealtimeServerActions;
@@ -46,6 +47,7 @@ export * from "./note";
 export * from "./user";
 export * from "./team";
 export * from "./visitor";
+export * from "./common";
 
 export * from "../constants";
 

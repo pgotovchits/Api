@@ -41,12 +41,12 @@ export interface UpdateUserRequestPayload {
 /**
  * Change user action response. Only requested values will be returned in reponse
  */
-export interface UpdateUserResponsePayload extends Partial<FullUserInformation> {}
+export interface UpdateUserResponsePayload extends Partial<FullUserInformation> { }
 
 /**
  * User updated his info. Only changed values will be sent
  */
-export interface UpdateUserRealtimePayload extends BasicUserInformation {}
+export interface UpdateUserRealtimePayload extends BasicUserInformation { }
 
 export type UpdateUserAction = ActionDescriptor<typeof USER_UPDATE, UpdateUserRequestPayload, UpdateUserResponsePayload>;
 export type UpdateUserServerAction = ServerRealtimeAction<typeof REALTIME_USER_WAS_UPDATED, UpdateUserRealtimePayload>;
@@ -68,7 +68,7 @@ export interface UpdateUserPasswordRequestPayload {
 /**
  * Update user password response
  */
-export interface UpdateUserPasswordResponsePayload {}
+export interface UpdateUserPasswordResponsePayload { }
 
 export type UpdateUserPasswordAction = ActionDescriptor<typeof USER_PASSWORD_UPDATE, UpdateUserPasswordRequestPayload, UpdateUserPasswordResponsePayload>;
 
@@ -85,7 +85,7 @@ export interface RegisterForPushNotificationsRequestPayload {
 /**
  * Register for push notifications response
  */
-export interface RegisterForPushNotificationsResponsePayload {}
+export interface RegisterForPushNotificationsResponsePayload { }
 
 export type RegisterForPushNotificationsAction = ActionDescriptor<typeof REGISTER_FOR_PUSH_NOTIFICATIONS, RegisterForPushNotificationsRequestPayload, RegisterForPushNotificationsResponsePayload>;
 
@@ -99,7 +99,7 @@ export interface SendFeedbackRequestPayload {
 export interface SendFeedbackResponsePayload { }
 
 export type SendFeedbackAction = ActionDescriptor<typeof SEND_FEEDBACK, SendFeedbackRequestPayload, SendFeedbackResponsePayload>;
-    
+
 export interface ActivateUserRequestPayload {
     /**
      * Activation token
@@ -112,8 +112,6 @@ export interface ActivateUserResponsePayload {
 }
 
 export type ActivateUserAction = ActionDescriptor<typeof ACTIVATE_USER, ActivateUserRequestPayload, ActivateUserResponsePayload>;
-
-
 
 export type ResendActivationAction = ActionDescriptor<typeof RESEND_ACTIVATION, void, void>;
 
