@@ -85,6 +85,14 @@ export interface VisitorConnectionPayload {
      * If visitor is restoring connection and has active/pending chat, it will be returned here
      */
     chat?: VisitorRestoredInitiatedChat | VisitorRestoredActiveChat;
+    /**
+     * Last Server Version of API
+     */
+    latestApiServerVersion: number;
+    /**
+     * Requested Client Version of API
+     */
+    requestedApiVersion: number;
 }
 
 /**
