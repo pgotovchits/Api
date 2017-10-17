@@ -11,7 +11,7 @@ export interface SetMismatchResponseRealtimePayload {
      */
     requestedApiVersion: number;
 }
-export declare type Version_MismatchAction = ServerRealtimeAction<typeof VERSION_MISMATCH, SetMismatchResponseRealtimePayload>;
+export declare type VersionMismatchAction = ServerRealtimeAction<typeof VERSION_MISMATCH, SetMismatchResponseRealtimePayload>;
 
 export type CommonServerActions =
-    Version_MismatchAction;
+    VersionMismatchAction;
