@@ -48,11 +48,7 @@ export interface SignupRequestPayload {
     /**
      * Invite code
      */
-    inviteCode?: string;
-    /**
-     * User confirm password
-     */
-    confirmPassword: string;
+    inviteCode?: string;   
 }
 
 /**

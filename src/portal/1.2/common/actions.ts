@@ -1,7 +1,7 @@
 import { ServerRealtimeAction } from "../../../common/realtimeAction";
 import { VERSION_MISMATCH } from "../../constants/common";
 
-export interface SetMismatchRequestPayload {
+export interface SetMismatchResponsePayload {
     /**
      * Last Server Version of API
      */
@@ -11,7 +11,7 @@ export interface SetMismatchRequestPayload {
      */
     requestedApiVersion: number;
 }
-export declare type Version_MismatchAction = ServerRealtimeAction<typeof VERSION_MISMATCH, SetMismatchRequestPayload>;
+export declare type Version_MismatchAction = ServerRealtimeAction<typeof VERSION_MISMATCH, SetMismatchResponsePayload>;
 
 export type CommonServerActions =
     Version_MismatchAction;
